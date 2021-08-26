@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelling European Roulette &#8212; Gamble Mathematically</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Gamble Mathematically</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Modelling European Roulette
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/roulette.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-strategies">
+   Simple Strategies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-number-betting-straight-up">
+     Single number betting (Straight-up)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-numbers-betting-split">
+     Two numbers betting (Split)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#three-numbers-betting-street">
+     Three numbers betting (Street)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#four-numbers-betting-corner">
+     Four numbers betting (Corner)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#five-numbers-betting-basket">
+     Five numbers betting (Basket)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#six-numbers-betting-line">
+     Six numbers betting (Line)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#twelve-numbers-betting-column-dozens">
+     Twelve numbers betting (Column, Dozens)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eighteen-numbers-betting-red-black-even-odd-low-high">
+     Eighteen numbers betting (Red/Black, Even/Odd, Low/High)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complex-strategies">
+   Complex Strategies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#black-col-3-or-red-col-2-strategy">
+     Black-Col-3 or Red-Col-2 Strategy
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="modelling-european-roulette">
+<h1>Modelling European Roulette<a class="headerlink" href="#modelling-european-roulette" title="Permalink to this headline">¶</a></h1>
+<p><strong>Video lecture: <a class="reference external" href="https://www.youtube.com/w2-InizN_ZQ">https://www.youtube.com/w2-InizN_ZQ</a></strong></p>
+<p>Rules: <a class="reference external" href="https://www.casino.org/roulette/odds/">https://www.casino.org/roulette/odds/</a></p>
+<p>Assuming that the roulette is fair and each bet is iid. Let <span class="math notranslate nohighlight">\(p\)</span> be the prability of winning, <span class="math notranslate nohighlight">\(q\)</span> be the opposite. Let <span class="math notranslate nohighlight">\(X\)</span> be the rewards of winning for betting one dollar, or <span class="math notranslate nohighlight">\(-1\)</span> if loses.</p>
+<div class="section" id="simple-strategies">
+<h2>Simple Strategies<a class="headerlink" href="#simple-strategies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="single-number-betting-straight-up">
+<h3>Single number betting (Straight-up)<a class="headerlink" href="#single-number-betting-straight-up" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X=35\)</span> when <span class="math notranslate nohighlight">\(p=\frac{1}{37}\)</span>, or <span class="math notranslate nohighlight">\(X=-1\)</span> when loses.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E(X) &amp; = 35\times p - q = \frac{35}{37} - \frac{36}{37} = - \frac{1}{37} = -0.02702702702 \\
+E(X^2) &amp; = 35^2 \times p + q = \frac{35^2}{37} + \frac{36}{37} = 34.0810810811 \\
+Var(X) &amp; = E(X^2) - E(X)^2 = 34.0810810811 - (-0.02702702702)^2 = 34.0803506209
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="section" id="two-numbers-betting-split">
+<h3>Two numbers betting (Split)<a class="headerlink" href="#two-numbers-betting-split" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X=17\)</span> when <span class="math notranslate nohighlight">\(p=\frac{2}{37}\)</span>, or <span class="math notranslate nohighlight">\(X=-1\)</span> when loses.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E(X) &amp; = 17 \times p - q = 17 \times \frac{2}{37} - \frac{35}{37} = -0.02702702702 \\
+E(X^2) &amp; = 17^2 \times p + q = \frac{17^2 \times 2}{37} + \frac{35}{37} = 16.5675675676 \\
+Var(X) &amp; = E(X^2) - E(X)^2 = 16.5675675676 - (-0.02702702702)^2 = 16.5668371074
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="section" id="three-numbers-betting-street">
+<h3>Three numbers betting (Street)<a class="headerlink" href="#three-numbers-betting-street" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X=11\)</span> when <span class="math notranslate nohighlight">\(p=\frac{3}{37}\)</span>, or <span class="math notranslate nohighlight">\(X=-1\)</span> when loses.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E(X) &amp; = 11 \times p - q = 11 \times \frac{3}{37} - \frac{34}{37} = -0.02702702702 \\
+E(X^2) &amp; = 17^2 \times p + q = \frac{11^2 \times 3}{37} + \frac{34}{37} = 10.7297297297 \\
+Var(X) &amp; = E(X^2) - E(X)^2 = 10.7297297297 - (-0.02702702702)^2 = 10.7289992695
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="section" id="four-numbers-betting-corner">
+<h3>Four numbers betting (Corner)<a class="headerlink" href="#four-numbers-betting-corner" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X=8\)</span> when <span class="math notranslate nohighlight">\(p=\frac{4}{37}\)</span>, or <span class="math notranslate nohighlight">\(X=-1\)</span> when loses.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E(X) &amp; = 8 \times p - q = 8 \times \frac{4}{37} - \frac{33}{37} = -0.02702702702 \\
+E(X^2) &amp; = 8^2 \times p + q = \frac{8^2 \times 4}{37} + \frac{33}{37} = 7.81081081081 \\
+Var(X) &amp; = E(X^2) - E(X)^2 = 7.81081081081 - (-0.02702702702)^2 = 7.81008035062
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="section" id="five-numbers-betting-basket">
+<h3>Five numbers betting (Basket)<a class="headerlink" href="#five-numbers-betting-basket" title="Permalink to this headline">¶</a></h3>
+<p>Not available for European roulette. But if you see this in a European roulette online, remember, never bet it on. because the expected outcomes are worser.</p>
+</div>
+<div class="section" id="six-numbers-betting-line">
+<h3>Six numbers betting (Line)<a class="headerlink" href="#six-numbers-betting-line" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X=5\)</span> when <span class="math notranslate nohighlight">\(p=\frac{6}{37}\)</span>, or <span class="math notranslate nohighlight">\(X=-1\)</span> when loses.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E(X) &amp; = 5 \times p - q = 5 \times \frac{6}{37} - \frac{31}{37} = -0.02702702702 \\
+E(X^2) &amp; = 5^2 \times p + q = \frac{5^2 \times 6}{37} + \frac{31}{37} = 4.89189189189 \\
+Var(X) &amp; = E(X^2) - E(X)^2 = 4.89189189189 - (-0.02702702702)^2 = 4.8911614317
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="section" id="twelve-numbers-betting-column-dozens">
+<h3>Twelve numbers betting (Column, Dozens)<a class="headerlink" href="#twelve-numbers-betting-column-dozens" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X=2\)</span> when <span class="math notranslate nohighlight">\(p=\frac{12}{37}\)</span>, or <span class="math notranslate nohighlight">\(X=-1\)</span> when loses.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E(X) &amp; = 2 \times p - q = 2 \times \frac{12}{37} - \frac{25}{37} = -0.02702702702 \\
+E(X^2) &amp; = 2^2 \times p + q = \frac{2^2 \times 12}{37} + \frac{25}{37} = 1.97297297297 \\
+Var(X) &amp; = E(X^2) - E(X)^2 = 1.97297297297 - (-0.02702702702)^2 = 1.97224251278
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="section" id="eighteen-numbers-betting-red-black-even-odd-low-high">
+<h3>Eighteen numbers betting (Red/Black, Even/Odd, Low/High)<a class="headerlink" href="#eighteen-numbers-betting-red-black-even-odd-low-high" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X=1\)</span> when <span class="math notranslate nohighlight">\(p=\frac{18}{37}\)</span>, or <span class="math notranslate nohighlight">\(X=-1\)</span> when loses.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E(X) &amp; = 1 \times p - q = 1 \times \frac{18}{37} - \frac{19}{37} = -0.02702702702 \\
+E(X^2) &amp; = 1^2 \times p + q = \frac{1^2 \times 18}{37} + \frac{19}{37} = 1 \\
+Var(X) &amp; = E(X^2) - E(X)^2 = 1 - (-0.02702702702)^2 = 0.99926953981
+\end{aligned}
+\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="complex-strategies">
+<h2>Complex Strategies<a class="headerlink" href="#complex-strategies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="black-col-3-or-red-col-2-strategy">
+<h3>Black-Col-3 or Red-Col-2 Strategy<a class="headerlink" href="#black-col-3-or-red-col-2-strategy" title="Permalink to this headline">¶</a></h3>
+<p>Betting on All blacks + betting on Column 3 (No.36)</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span> lands on Column 3 and Red color: <span class="math notranslate nohighlight">\(X=1\)</span> and <span class="math notranslate nohighlight">\(p_1=\frac{8}{37}\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span> lands on Column 3 and Black color: <span class="math notranslate nohighlight">\(X=3\)</span> and <span class="math notranslate nohighlight">\(p_2=\frac{4}{37}\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span> lands on Non-column 3 but Black: <span class="math notranslate nohighlight">\(X=0\)</span> and <span class="math notranslate nohighlight">\(p_3=\frac{14}{37}\)</span></p></li>
+<li><p>Otherwise you lose, with <span class="math notranslate nohighlight">\(X=-2\)</span> and <span class="math notranslate nohighlight">\(q=1-p_1-p_2-p_3=\frac{11}{37}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+E(X) &amp; = 1 \times p_1 + 3 \times p_2 + 1 * p_3 - 2 \times q = \frac{8}{37} + \frac{12}{37} - \frac{22}{37} = -\frac{2}{37} = -0.05405405405 \\
+E(X^2) &amp; = 1 \times p_1 + 9 \times p_2 + 4 \times q = \frac{8}{37} + \frac{36}{37} + \frac{44}{37} = \frac{88}{37} = 2.37837837838 \\
+Var(X) &amp; = E(X^2) - E(X)^2 = 2.37837837838 - 0.05405405405^2 = 2.37545653762
+\end{aligned}
+\end{split}\]</div>
+<p>Same strategy works when you bet on all Reds + betting on Column 2(No.35)</p>
+<p>There’s no need to calculate any other complex strategies. As any complex strategies can be regarded as an additive effects of simple strategies, therefore <span class="math notranslate nohighlight">\(E(X=\sum_{k=1}^nS_k)\)</span>.</p>
+<p>I hope this has proven any gamblers that still believe they have the luck and they have the secret strategy to win in Roulettes.</p>
+<p>Stay away from Roulette!</p>
+<p><img alt="European Roulte" src="_images/inside-bet.jpg" /></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

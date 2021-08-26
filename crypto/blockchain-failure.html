@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain failure &#8212; Cryptography and Cryptocurrency</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Cryptography and Cryptocurrency</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Blockchain failure
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/blockchain-failure.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-misunderstanding-of-why-satoshi-created-blockchain">
+   The misunderstanding of why Satoshi created blockchain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#is-blockchain-really-safe">
+   Is blockchain really safe?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markov-chain-in-blockchain">
+   Markov chain in Blockchain
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="blockchain-failure">
+<h1>Blockchain failure<a class="headerlink" href="#blockchain-failure" title="Permalink to this headline">¶</a></h1>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/l-rRwSZEkLE">https://youtu.be/l-rRwSZEkLE</a></strong></p>
+<p>Your bitcoins, Ethereums are not as safe as you think. I’m not talking about someone hacked your computer and steal your bitcoins. I’m not talking about just you. I’m talking about all of you if you have blockchain based cryptocurrencies.</p>
+<p>But how come? I’ll show you mathematically in a moment.
+Before we continue, I would be so glad if you smash the like button and subscribe to my channel.</p>
+<div class="section" id="the-misunderstanding-of-why-satoshi-created-blockchain">
+<h2>The misunderstanding of why Satoshi created blockchain<a class="headerlink" href="#the-misunderstanding-of-why-satoshi-created-blockchain" title="Permalink to this headline">¶</a></h2>
+<p>Almost all mainstream media including wikipedia told you that “blockchain is created to resist modification of its data. This is because once recorded, the data in any given block cannot be altered retroactively without alteration of all subsequent blocks.”</p>
+<p>I’m sorry but I have to tell you this: this is not completely correct. Digital signature algorithms are safe enough to resist modification of data.</p>
+<p>Here is the question. Why Blockchian, why blocks? why not tables? why chains? why not trees or graphs? And why not just use traditional databases like MySQL and just broadcast each transactions over the network instead?</p>
+<p>The truth is, Satoshi created blockchain not to resist modification of data, but to prevent double spending. It’s all the reason why Satoshi created blockchain.</p>
+</div>
+<div class="section" id="is-blockchain-really-safe">
+<h2>Is blockchain really safe?<a class="headerlink" href="#is-blockchain-really-safe" title="Permalink to this headline">¶</a></h2>
+<p>In the bitcoin network, all nodes accept the longest chain as the main chain (like the main trunk of a tree). any branch that has length less that the longest chain become useless branch chains. The money you received must go into the main chain to be eventually safe.</p>
+<p>What’s the purpose of the main chain?</p>
+<p>Digital currencies are just bits, when someone send you 1 bitcoin, he could send the same bitcoin to someone else at the same time. This is called double spending. To solve this problem, Satoshi invented Blockchain. A transaction will be seen as valid transaction by all nodes on the network, as long as this transaction is included in the main chain. If the same bitcoin were used in a different transaction, but not included in the main chain, that transaction becomes invalid transaction.</p>
+<p>If an attacker can create a branch chain that is longer than the current longest chain, then the bitcoin he sent you can be reversed.</p>
+<p>Here comes the math problem: how likely can he do that?</p>
+</div>
+<div class="section" id="markov-chain-in-blockchain">
+<h2>Markov chain in Blockchain<a class="headerlink" href="#markov-chain-in-blockchain" title="Permalink to this headline">¶</a></h2>
+<p>Assuming the current longest chain is 99 blocks long, and a scammer sends you 1 bitcoin. Then all honest nodes started to mine the 100th block that includes this transaction. In the meantime, the scammer creates a new transaction that reverses the bitcoin he just sent you by sending the same bitcoin back to himself. He is also trying to mine an alterntive block as the 100th block which doesn’t include the 1 bitcoin he send you but a transaction that sends the same bitcoin back to himself.</p>
+<p>After the 100th block mined by an honest node is added to the chain, you think you have succesfully received your bitcoin. However, the scammer is still mining hard trying to catch up with the 100th block. In order to reverse the bitcoin he sent you, besides catching up with the 100th block, his alternative chain also needs to lead 1 block ahead of the honest chain to have a length of 101. If he succeed, the honest chain that includes your transaction becomes branch chain and therefore your transaction becomes invalid.</p>
+<p>What is the probability of such event?</p>
+<p>Let’s consider the scenario of an attacker trying to generate a branch chain faster than the main chain. The race between the honest chain and an attacker chain can be characterized as moving randomly on a one dimensional line. The success event is the honest chain being extended by one block, increasing its lead by +1, and the failure event is the attacker’s chain being extended by one block, reducing the gap by -1.</p>
+<p>The nature numbers shown in here are the length difference of two chains. <span class="math notranslate nohighlight">\(0\)</span> means the attacker’s chain and honest chain has the same length. If the honest chain succeeded generating the 100th block first, then the difference moves right to <span class="math notranslate nohighlight">\(1\)</span>. In order for the attacker to lead ahead, the attacker’s chain must be at least 1 block ahead of the honest chain, that is the difference needs to move two steps to the left from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(-1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+... -n, -(n-1), .... -3, -2, -1, \boldsymbol{0}, 1, 2, 3, ... n-1, n, ...
+\]</div>
+<p>If we let <span class="math notranslate nohighlight">\(X_n\)</span> denote the difference at time n, then the process <span class="math notranslate nohighlight">\(\{X_n, n=..., -2, -1, 0, 1, 2, ...\}\)</span> is a Markov chain, given the current difference and its past differences, the probability of moving to right or left only depends on its current difference.</p>
+<p>To simply our mathematically model, we use <span class="math notranslate nohighlight">\(1\)</span> as the zero length difference of two chains and <span class="math notranslate nohighlight">\(0\)</span> means the attack’s chain leads 1 block ahead. Simularly, <span class="math notranslate nohighlight">\(2\)</span> means the honest chain leads 1 block ahead.</p>
+<p>We further simply the Markov chain by cutting the states on the right to a maximum value of <span class="math notranslate nohighlight">\(N\)</span>. Once the difference enters <span class="math notranslate nohighlight">\(N\)</span>, it will never be able to reach <span class="math notranslate nohighlight">\(0\)</span>, that is the attacker will never be able to lead. To find the probability of our original model, we just have to find the limiting probabilities when <span class="math notranslate nohighlight">\(N \rightarrow \infty\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(p\)</span> be the proportion of the honest node’s hashing power of the total bitcoin network, then <span class="math notranslate nohighlight">\(1-p\)</span> is proportion of attacker node’s hashing power in the entire bitcoin network. The length difference moves one step to the right with probability <span class="math notranslate nohighlight">\(p\)</span> and moves one step to the left with probability <span class="math notranslate nohighlight">\(1-p\)</span> or we simply use <span class="math notranslate nohighlight">\(q\)</span>.</p>
+<p>State <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(N\)</span> are absorbing states. If it’s in state <span class="math notranslate nohighlight">\(0\)</span>, the attacker has already succeeded. If it enters <span class="math notranslate nohighlight">\(N\)</span>, the process will never reach <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\alpha_k\)</span> denote the probability that starting at <span class="math notranslate nohighlight">\(k\)</span>, the difference will eventually reach <span class="math notranslate nohighlight">\(0\)</span>. Therefore we have: <span class="math notranslate nohighlight">\(\alpha_0 = 1\)</span> and <span class="math notranslate nohighlight">\(\alpha_N = 0\)</span>.</p>
+<p>Starting at difference <span class="math notranslate nohighlight">\(k\)</span>, the probability of ever reaching <span class="math notranslate nohighlight">\(0\)</span> is <span class="math notranslate nohighlight">\(\alpha_k\)</span>, which equals to the probability of moving one step right to <span class="math notranslate nohighlight">\(k+1\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span> times the probability of ever reaching <span class="math notranslate nohighlight">\(0\)</span> from <span class="math notranslate nohighlight">\(k+1\)</span>, plus the probability of moving one step to <span class="math notranslate nohighlight">\(k-1\)</span> with probability <span class="math notranslate nohighlight">\(q\)</span> times the probability of ever reaching <span class="math notranslate nohighlight">\(0\)</span> from <span class="math notranslate nohighlight">\(k-1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_k = p\alpha_{k+1} + q\alpha_{k-1}, \qquad k=1,2,...,N-1
+\]</div>
+<p>since <span class="math notranslate nohighlight">\(p+q = 1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+p\alpha_k+q\alpha_k = p\alpha_{k+1} + q\alpha_{k-1}
+\]</div>
+<p>or:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_{k+1}-\alpha_{k} = \frac{q}{p}(\alpha_k-\alpha_{k-1})
+\]</div>
+<p>Expand it we found:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  &amp; \alpha_{2}-\alpha_{1} = \frac{q}{p}(\alpha_1-1) \\
+  &amp; \alpha_{3}-\alpha_{2} = \frac{q}{p}(\alpha_2-\alpha_{1}) = \bigg(\frac{q}{p}\bigg)^2(\alpha_1-1) \\
+  &amp; \alpha_{4}-\alpha_{3} = \frac{q}{p}(\alpha_3-\alpha_{2}) = \bigg(\frac{q}{p}\bigg)^3(\alpha_1-1) \\
+  &amp; ... ... ... ...  \\
+  &amp; \alpha_{N}-\alpha_{N-1} = \frac{q}{p}(\alpha_{N-1}-\alpha_{N-2}) = \bigg(\frac{q}{p}\bigg)^{N-1}(\alpha_1-1) \\
+\end{aligned}
+\end{split}\]</div>
+<p>Add them up and let <span class="math notranslate nohighlight">\(r=\frac{q}{p}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_{k} - \alpha_1 = (\alpha_1 - 1)\bigg[ r + r^2 + r^3 + ... + r^{k-1} \bigg]
+\]</div>
+<p>Or:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\alpha_k = \begin{cases}
+  \alpha_1 \frac{1-r^k}{1-r} - \frac{r-r^k}{1-r} &amp;\text{if } \frac{q}{p} \ne 1 \\
+  \alpha_1{k} - (k-1) &amp;\text{if } \frac{q}{p} = 1
+\end{cases}
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\alpha_N=0\)</span>, thus <span class="math notranslate nohighlight">\(0 = \alpha_1 \frac{1-r^N}{1-r} - \frac{r-r^N}{1-r}\)</span>. We got <span class="math notranslate nohighlight">\(\alpha_1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\alpha_1 = \begin{cases}
+  \frac{r-r^N}{1-r^N} &amp;\text{if } \frac{q}{p} \ne 1 \\
+  \frac{N-1}{N} &amp;\text{if } \frac{q}{p} = 1
+\end{cases}
+\end{split}\]</div>
+<p>Further we get <span class="math notranslate nohighlight">\(\alpha_k\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\alpha_k = \begin{cases}
+  \frac{r-r^N}{1-r^N} \frac{1-r^k}{1-r} - \frac{r-r^k}{1-r} &amp;\text{if }   \frac{q}{p} \ne 1 \\
+  \frac{N-1}{N} k - (k-1) &amp;\text{if } \frac{q}{p} = 1
+\end{cases}
+\end{split}\]</div>
+<p>If we let <span class="math notranslate nohighlight">\(N \rightarrow \infty\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\alpha_1 = \begin{cases}
+  \frac{q}{p} &amp;\text{if } q \lt p \\
+  1 &amp;\text{if } q \ge p
+\end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\alpha_k = \begin{cases}
+  (\frac{q}{p})^k &amp;\text{if } q \lt p \\
+  1 &amp;\text{if } q \ge p
+\end{cases}
+\end{split}\]</div>
+<p>Therefore, if the attacker is one block behind of the honest chain, the probability for the attacker to catch up then lead one block ahead of the honest chain, will be <span class="math notranslate nohighlight">\((\frac{q}{p})^2\)</span>. If the attacker has 40% of the hashing power versus the honest nodes having 60% of the hashing power. That probability will be around 44%. And I think it’s a pretty high probability.</p>
+<p>Some people may say, yeh yeh, but such probability will decline exponential when the difference of the two chains are large. That’s true. however, the problem is, Once the attacker succeeded, his alternative chain becomes the main chain and thus accepted by the rest of the miners on the bitcoin network, and they will start mining new blocks on top of this new chain, further enhancing the attacker’s chain. And the bitcoin he sent you 10 minutes ago now becomes invalid.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

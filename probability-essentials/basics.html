@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics &#8212; Probability Essentials</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multivariate Normal" href="multivariate-normal.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability Essentials</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="multivariate-normal.html">
+   Multivariate Normal
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/basics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties">
+   Properties
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unqiueness-of-moment-generating-function">
+     Unqiueness of Moment Generating Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independence-by-mgf">
+     Independence By MGF
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pearson-correlation-coefficient-between-1-and-1">
+     Pearson correlation coefficient between -1 and 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commonly-used-properties-and-formulas">
+     Commonly used Properties and Formulas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uniform-u-a-b">
+   Uniform
+   <span class="math notranslate nohighlight">
+    \(u(a,b)\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binomial-b-n-p">
+   Binomial
+   <span class="math notranslate nohighlight">
+    \(b(n,p)\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geometric-g-p">
+   Geometric
+   <span class="math notranslate nohighlight">
+    \(g(p)\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#poisson-rho-lambda">
+   Poisson
+   <span class="math notranslate nohighlight">
+    \(\rho(\lambda)\)
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem">
+     Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gamma-gamma-alpha-beta">
+   Gamma
+   <span class="math notranslate nohighlight">
+    \(\Gamma(\alpha, \beta)\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponential-e-lambda">
+   Exponential
+   <span class="math notranslate nohighlight">
+    \(e(\lambda)\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chi-square-chi-2-r">
+   Chi-square
+   <span class="math notranslate nohighlight">
+    \(\chi^2(r)\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beta-beta-theta-zeta">
+   Beta
+   <span class="math notranslate nohighlight">
+    \(\beta(\theta, \zeta)\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#univariate-normal">
+   Univariate normal
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#density-function">
+     Density function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#student-theorem">
+   Student Theorem
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="basics">
+<h1>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/kpXg2PDRPO4">https://youtu.be/kpXg2PDRPO4</a></strong></p>
+<div class="section" id="unqiueness-of-moment-generating-function">
+<h3>Unqiueness of Moment Generating Function<a class="headerlink" href="#unqiueness-of-moment-generating-function" title="Permalink to this headline">¶</a></h3>
+<p>Let the CDF of <span class="math notranslate nohighlight">\(\boldsymbol{X}, \boldsymbol{Y}\)</span> are <span class="math notranslate nohighlight">\(F_{\boldsymbol{X}}(x)\)</span> and <span class="math notranslate nohighlight">\(F_{\boldsymbol{Y}}(y)\)</span>, MGF are <span class="math notranslate nohighlight">\(M_{\boldsymbol{X}}(t)=E[e^{t{\boldsymbol{X}}}]\)</span> and <span class="math notranslate nohighlight">\(M_{\boldsymbol{Y}}(t)=E[e^{t{\boldsymbol{Y}}}]\)</span>. Then <span class="math notranslate nohighlight">\(F_{\boldsymbol{X}}(z)=F_{\boldsymbol{Y}(z)}\)</span> for all <span class="math notranslate nohighlight">\(z\in R\)</span> iff <span class="math notranslate nohighlight">\(M_{\boldsymbol{X}}(t)=M_{\boldsymbol{Y}}(t)\)</span> for all <span class="math notranslate nohighlight">\(t\in (-h,h)\)</span> for some <span class="math notranslate nohighlight">\(h \gt 0\)</span>.</p>
+</div>
+<div class="section" id="independence-by-mgf">
+<h3>Independence By MGF<a class="headerlink" href="#independence-by-mgf" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X = [X_1, X_2]'\)</span> are independent iff <span class="math notranslate nohighlight">\(M(\boldsymbol{t}) = E[e^{\boldsymbol{t}'\boldsymbol{X}}] = M_{X_1}(t_1)M_{X_2}(t_2)\)</span></p>
+<p><em>Proof:</em></p>
+<p><span class="math notranslate nohighlight">\(X = [X_1, X_2]'\)</span> independent, then <span class="math notranslate nohighlight">\(M(\boldsymbol{t}) \implies E[e^{\boldsymbol{t}'\boldsymbol{X}}] = M_{X_1}(t_1)M_{X_2}(t_2)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(M(\boldsymbol{t}) \impliedby E[e^{\boldsymbol{t}'\boldsymbol{X}}] = M_{X_1}(t_1)M_{X_2}(t_2)\)</span>, by uniqueness of MGF, <span class="math notranslate nohighlight">\(f(x,y)\)</span> of <span class="math notranslate nohighlight">\(M(\boldsymbol{t})\)</span> equals <span class="math notranslate nohighlight">\(f_xf_y\)</span> of <span class="math notranslate nohighlight">\(M_{X_1}(t_1)M_{X_2}(t_2)\)</span></p>
+</div>
+<div class="section" id="pearson-correlation-coefficient-between-1-and-1">
+<h3>Pearson correlation coefficient between -1 and 1<a class="headerlink" href="#pearson-correlation-coefficient-between-1-and-1" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\rho = \frac{Cov(X,Y)}{\sigma_{\boldsymbol{X}}\sigma_{\boldsymbol{Y}}} \in [-1, 1]\)</span></p>
+<p><em>Proof:</em></p>
+<p>By Holder’s inequality (Generalization of Cauch Schwarz inequality) in <span class="math notranslate nohighlight">\(L^2\)</span> space: <span class="math notranslate nohighlight">\(|Cov(X,Y)| \le \sigma_{\boldsymbol{X}}\sigma_{\boldsymbol{Y}}\)</span></p>
+</div>
+<div class="section" id="commonly-used-properties-and-formulas">
+<h3>Commonly used Properties and Formulas<a class="headerlink" href="#commonly-used-properties-and-formulas" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(Cov(cX, Y) = cCov(X,Y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Cov(X+Y, Z) = Cov(X, Z) + Cov(Y, Z) = Cov(X, Y+Z)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle Cov(\sum_{i=1}^n{X_i}, \sum_{j=1}^m{Y_j}) = \sum_{i=1}^n\sum_{j=1}^mCov(X_i, Y_j)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle Var(\sum_{i=1}^nX_i) = Cov(\sum_{i=1}^nX_i, \sum_{j=1}^nX_j) = \sum_{i=1}^{n}Var(X_i) + 2\sum_{i=1}^n\sum_{j\gt{i}} Cov(X_i, Y_j)\)</span>
+If <span class="math notranslate nohighlight">\(X_i\)</span> are has common <span class="math notranslate nohighlight">\(\mu, \sigma^2\)</span>, then <span class="math notranslate nohighlight">\(\displaystyle Var(\sum_{i=1}^nX_i) = n\sigma^2 + n(n-1)\rho \sigma^2\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X_1, X_2, ..., X_n\)</span> are iid, then, <span class="math notranslate nohighlight">\(Cov(\bar{X}, X_i-\bar{X}) = 0\)</span>.
+Proof:
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+  \displaystyle Cov(\bar{X}, X_i-\bar{X}) &amp;= Cov(\bar{X}, X_i) - Cov(\bar{X}, \bar{X}) \\
+   &amp;= \frac{1}{n}Cov(X_i + \sum_{j\ne{i}}X_j, X_i) - Var(\bar{X})
+   &amp;= \frac{\sigma^2}{n} - \frac{\sigma^2}{n} = 0
+\end{aligned}
+\)</span>$</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(Z ~ N(0,1)\)</span>, then <span class="math notranslate nohighlight">\(Z^2 \sim \chi^2(1)\)</span>. Calculate <span class="math notranslate nohighlight">\(P(Z^2 \le z)\)</span>. Same, if <span class="math notranslate nohighlight">\(Z_1, Z_2,..., Z_n\)</span> are iid standard normal, then <span class="math notranslate nohighlight">\(\displaystyle\sum_{i=1}^nZ_i^2 \sim \chi^2(n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E_Y[E_X[X|Y]] = \int\int{xf(x|y)} g_Y(y) dxdy = \int\int{x\frac{f(x,y)}{f_Y(y)}} f_Y(y) dxdy = \int\int{xf(x,y)} dxdy = E_X[X]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle Var[X] = E_Y[Var[X|Y]] + Var[E_X[X|Y]]\)</span>, <span class="math notranslate nohighlight">\(Var[E_X[X|Y]] \le Var[X]\)</span>
+Proof:
+$<span class="math notranslate nohighlight">\(
+ \begin{aligned}
+   E[Var[X|Y]] &amp;= E[E[X^2|Y]] - E[E[X|Y]^2] = E[X^2] - E[E[X|Y]^2] \\
+   Var[E[X|Y]] &amp;= E[E[X|Y]^2] - E[X]^2
+ \end{aligned}
+ \)</span>$</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="uniform-u-a-b">
+<h2>Uniform <span class="math notranslate nohighlight">\(u(a,b)\)</span><a class="headerlink" href="#uniform-u-a-b" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)=\frac{1}{b-a}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(t) = \frac{e^{tb}-e^{ta}}{t(b-a)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu=\frac{a+b}{2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2=\frac{(b-a)^2}{12}\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="binomial-b-n-p">
+<h2>Binomial <span class="math notranslate nohighlight">\(b(n,p)\)</span><a class="headerlink" href="#binomial-b-n-p" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(x)=\binom{n}{x}p^x(1-p)^{n-x}\)</span> where <span class="math notranslate nohighlight">\(x=0,1,2,\dots,n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(t)=(pe^t+(1-p))^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\,u = np\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2=np(1-p)\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="geometric-g-p">
+<h2>Geometric <span class="math notranslate nohighlight">\(g(p)\)</span><a class="headerlink" href="#geometric-g-p" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(k)=p(1-p)^{k-1}\)</span> where <span class="math notranslate nohighlight">\(k=1,2,\dots\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(t) =\frac{pe^t}{1-(1-p)e^t}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu=\frac{1}{p}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2=\frac{1-p}{p^2}\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="poisson-rho-lambda">
+<h2>Poisson <span class="math notranslate nohighlight">\(\rho(\lambda)\)</span><a class="headerlink" href="#poisson-rho-lambda" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(x)=e^{-\lambda}\frac{\lambda^x}{x!}\)</span> where <span class="math notranslate nohighlight">\(x=0,1,2,\dots\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(t)=e^{\lambda(e^t-1)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu=\lambda\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2=\lambda\)</span></p></li>
+</ol>
+<p>Poisson usually used to model probability of <span class="math notranslate nohighlight">\(x\)</span> changes in each interval of of length <span class="math notranslate nohighlight">\(h\)</span> with the following postulates :</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(g(1, h)=\rho h + o(h)\)</span>, <span class="math notranslate nohighlight">\(h \gt 0\)</span>, <span class="math notranslate nohighlight">\(\rho &gt; 0\)</span> constant. <span class="math notranslate nohighlight">\(\rho\)</span> is called poisson constant.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{x=2}^\infty g(x,h)=o(h)\)</span></p></li>
+<li><p>The number of changes in non-overlapping intervals are independent.</p></li>
+<li><p><span class="math notranslate nohighlight">\(g(x, 0) = 0\)</span></p></li>
+</ol>
+<p>It can be proven that <span class="math notranslate nohighlight">\(g(0, h)=e^{-\rho h}\)</span>, <span class="math notranslate nohighlight">\(g(x,h)=\frac{(\rho h)^xe^{-\rho h}}{x!}\)</span> for <span class="math notranslate nohighlight">\(x \gt 0\)</span></p>
+<div class="section" id="theorem">
+<h3>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X_1, X_2,\dots,X_n\)</span> iid <span class="math notranslate nohighlight">\(\sim \rho(\lambda_i)\)</span>, then <span class="math notranslate nohighlight">\(Y=\sum_{i=1}^nX_i \sim \rho(\sum_{i=1}^n\lambda_i)\)</span></p>
+<p>Proof: Use MGF.</p>
+</div>
+</div>
+<div class="section" id="gamma-gamma-alpha-beta">
+<h2>Gamma <span class="math notranslate nohighlight">\(\Gamma(\alpha, \beta)\)</span><a class="headerlink" href="#gamma-gamma-alpha-beta" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) = \frac{x^{\alpha-1}e^{-\frac{x}{\beta}}}{\Gamma(\alpha-1)\beta^{\alpha}}\)</span>, where <span class="math notranslate nohighlight">\(0 \lt x \lt \infty\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(t) = \frac{1}{(1-\beta t)^\alpha}\)</span>, where <span class="math notranslate nohighlight">\(t \lt \frac{1}{\beta}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu = \alpha\beta\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2 = \alpha\beta^2\)</span></p></li>
+</ol>
+<p>Let <span class="math notranslate nohighlight">\(W\)</span> be the time that is needed to observe exactly <span class="math notranslate nohighlight">\(\alpha\)</span> events, assuming the poisson postulates also holds for those events(<span class="math notranslate nohighlight">\(\lim\limits_{h \to 0}\frac{g(1, h)}{h} = \rho\)</span>).</p>
+<p><span class="math notranslate nohighlight">\(P(W \gt w)\)</span> means there are less than <span class="math notranslate nohighlight">\(\alpha\)</span> events occurred in the time interval of <span class="math notranslate nohighlight">\(w\)</span>. That is <span class="math notranslate nohighlight">\(P(W \gt w) = \sum_{k=1}^{\alpha-1}\frac{(\rho w)^ke^{-\rho w}}{k!}\)</span></p>
+<p>Then we derive the Gamma distribution as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+P(W \le w) &amp; = 1 - P(W \gt w) = 1 - \sum_{k=1}^{\alpha-1}\frac{(\rho w)^ke^{-\rho w}}{k!}  \\
+           &amp; = 1 - \int_{\rho w}^\infty \frac{x^{\alpha-1}e^{-x}}{\Gamma(\alpha-1)}dx \\
+           &amp; = \int_{-\infty}^{\rho w}\frac{x^{\alpha-1}e^{-x}}{\Gamma(\alpha-1)}dx \\
+           &amp; = \int_{-\infty}^w \frac{(\rho y)^{\alpha-1}e^{-\rho y}}{\Gamma(\alpha-1)}\rho dy \\
+           &amp; = \int_{-\infty}^w \frac{\rho^{\alpha}y^{\alpha-1}e^{-\rho y}}{\Gamma(\alpha-1)} dy \\
+           &amp; = \int_{-\infty}^w \frac{y^{\alpha-1}e^{-\frac{y}{\beta}}}{\Gamma(\alpha-1)\beta^{\alpha}} dy
+\end{align}
+\end{split}\]</div>
+<p>Note: let <span class="math notranslate nohighlight">\(\beta = \frac{1}{\rho}\)</span></p>
+</div>
+<div class="section" id="exponential-e-lambda">
+<h2>Exponential <span class="math notranslate nohighlight">\(e(\lambda)\)</span><a class="headerlink" href="#exponential-e-lambda" title="Permalink to this headline">¶</a></h2>
+<p>When <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, we derives exponential distribution with <span class="math notranslate nohighlight">\(\lambda = \rho\)</span>, where <span class="math notranslate nohighlight">\(\rho\)</span> is the poisson constant.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)=\lambda e^{- \lambda x}\)</span> where <span class="math notranslate nohighlight">\(x &gt; 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(t) = \frac{\lambda}{\lambda-t}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu=\frac{1}{\lambda}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2=\frac{1}{\lambda^2}\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="chi-square-chi-2-r">
+<h2>Chi-square <span class="math notranslate nohighlight">\(\chi^2(r)\)</span><a class="headerlink" href="#chi-square-chi-2-r" title="Permalink to this headline">¶</a></h2>
+<p>When <span class="math notranslate nohighlight">\(\beta=2\)</span>, <span class="math notranslate nohighlight">\(\alpha=\frac{r}{2}\)</span>, we got <span class="math notranslate nohighlight">\(\chi^2(r)\)</span> distribution.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)=\frac{x^{\frac{r}{2}-1}e^{-\frac{x}{2}}}{\Gamma(\frac{r}{2}-1)2^{\frac{2}{2}}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(t) = \frac{1}{(1-2 t)^\frac{r}{2}}\)</span>, where <span class="math notranslate nohighlight">\(t \lt \frac{1}{2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu = r\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2 = 2r\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="beta-beta-theta-zeta">
+<h2>Beta <span class="math notranslate nohighlight">\(\beta(\theta, \zeta)\)</span><a class="headerlink" href="#beta-beta-theta-zeta" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)=\frac{x^{\theta + \zeta -1}e^{-x}}{\Gamma(\theta + \zeta)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu=\frac{\theta}{\theta+\zeta}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2=\frac{\theta\zeta}{(\theta+\zeta+1)(\theta+\zeta)^2}\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="univariate-normal">
+<h2>Univariate normal<a class="headerlink" href="#univariate-normal" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="density-function">
+<h3>Density function<a class="headerlink" href="#density-function" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
+\]</div>
+</div>
+</div>
+<div class="section" id="student-theorem">
+<h2>Student Theorem<a class="headerlink" href="#student-theorem" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(X_1, X_2, \dots, X_n\)</span> iid <span class="math notranslate nohighlight">\(N(\mu, \sigma^2)\)</span>. Then:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\bar{X} \sim N(\mu, \frac{\sigma^2}{n})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{X}\)</span> and <span class="math notranslate nohighlight">\(S^2\)</span> are independent</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(T=\frac{\frac{(\bar{X}-\mu)}{\frac{\sigma}{\sqrt{n}}}}{\sqrt{\frac{(n-1)S^2}{\sigma^2(n-1)}}} =\frac{\sqrt{n}(\bar{X}-\mu)}{S} \sim t(n-1)\)</span></p></li>
+</ol>
+<p><em>Proof:</em></p>
+<ol class="simple">
+<li><p>Prove by MGF, or by the fact that linear combination of iid normals are also normal with <span class="math notranslate nohighlight">\(E[\sum{\frac{X_i}{n}}] = n\frac{\mu}{n}\)</span> and <span class="math notranslate nohighlight">\(Var(\sum{\frac{X_i}{n}})=n\frac{\sigma^2}{n^2}\)</span></p></li>
+<li><p>Use the fact that <span class="math notranslate nohighlight">\(\bar{X}\)</span> and <span class="math notranslate nohighlight">\({X_1-\bar{X}, X_2-\bar{X},...,X_n-\bar{X}}\)</span> are all normal and the fact that the covoriance of <span class="math notranslate nohighlight">\(\bar{X}\)</span> and the random vector <span class="math notranslate nohighlight">\({X_i-\bar{X}}\)</span> is zero, they are indenpdent, so is the functino of independent variables.</p></li>
+<li><p>Refactor sample variance using <span class="math notranslate nohighlight">\(\sum{(\frac{(X_i-\mu) + (\mu-\bar{X})}{\sigma})^2}\)</span> and use independence of <span class="math notranslate nohighlight">\(S^2, \bar{X}\)</span> and mgf to derive that the final mgf is the mgf of <span class="math notranslate nohighlight">\(\chi^2(n-1)\)</span></p></li>
+<li><p>Is a result of 1-3 and the definition of student distribution.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="multivariate-normal.html" title="next page">Multivariate Normal</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

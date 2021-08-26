@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Probability Measure &#8212; Probability Measure</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Laws of Large Numbers" href="lln.html" />
+    <link rel="prev" title="Probability Measure" href="content.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability Measure</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Probability Measure
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Probability Measure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lln.html">
+     Laws of Large Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="characteristic-function.html">
+     Characteristic Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="probability-convergence.html">
+     Probability Convergence
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/probability-measure.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fprobability-measure.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/probability-measure.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-space">
+   Probability space
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Definition
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration">
+   Integration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-integrability-implies-finite-almost-surely">
+     Theorem: Integrability implies finite almost surely
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sufficient-and-necessary-conditions-for-convergence-almost-surely">
+   Sufficient and necessary conditions for convergence almost surely
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="probability-measure">
+<h1>Probability Measure<a class="headerlink" href="#probability-measure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="probability-space">
+<h2>Probability space<a class="headerlink" href="#probability-space" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\((\Omega,\mathcal{F},P)\)</span> is called probability space. <span class="math notranslate nohighlight">\(\Omega\)</span> is called <strong>sample space</strong>. <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a <strong><span class="math notranslate nohighlight">\(\sigma\)</span>-field</strong>, which is a collection of sets of <span class="math notranslate nohighlight">\(\Omega\)</span> such that:</p>
+<ol class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(A \in \mathcal{F}\)</span>, then <span class="math notranslate nohighlight">\(A^c \in \mathcal{F}\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(A_i \in \mathcal{F}\)</span> is countable sequence of sets then <span class="math notranslate nohighlight">\(\bigcup\limits_{i=1}^{\infty} A_i \in \mathcal{F}\)</span></p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(P\)</span> is a <strong>measure</strong> with <span class="math notranslate nohighlight">\(P(\Omega) = 1\)</span>. where a measure is a non-negative countable additive set function <span class="math notranslate nohighlight">\(\mu: \mathcal{F} \rightarrow \mathbf{R}\)</span> with:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu(A) \ge \mu(\emptyset) = 0\)</span> for all <span class="math notranslate nohighlight">\(A \in \mathcal{F}\)</span> and</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A_i \in \mathcal{F}\)</span> is a sequence of disjoint countable sets then, <span class="math notranslate nohighlight">\(\mu(\bigcup\limits_{i}^{\infty}A_i) = \sum\limits_{i}^{\infty} \mu(A_i)\)</span></p></li>
+</ol>
+<p>Properties of <span class="math notranslate nohighlight">\(P\)</span>:</p>
+<ol class="simple">
+<li><p>Monotonicity: If <span class="math notranslate nohighlight">\(A \subset B\)</span> then <span class="math notranslate nohighlight">\(P(B-A) = P(B)-P(A) \ge 0\)</span></p></li>
+<li><p>Subadditivity: If <span class="math notranslate nohighlight">\(A \subset \bigcup\limits_{n=1}^{\infty}A_n\)</span> then <span class="math notranslate nohighlight">\(P(A) \le \sum\limits_{n=1}^{\infty}P(A_n)\)</span>.</p></li>
+<li><p>Continuity from below: If <span class="math notranslate nohighlight">\(A_i \uparrow A\)</span> then <span class="math notranslate nohighlight">\(P(A_i) \uparrow P(A)\)</span>.</p></li>
+<li><p>Continuity from above: If <span class="math notranslate nohighlight">\(A_i \downarrow A\)</span> then <span class="math notranslate nohighlight">\(P(A_i) \downarrow P(A)\)</span>.</p></li>
+</ol>
+<p><strong><span class="math notranslate nohighlight">\(\sigma(\mathcal{A})\)</span></strong> is called the smallest <span class="math notranslate nohighlight">\(\sigma\)</span>-field generated by <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>. The existence of the smallest <span class="math notranslate nohighlight">\(\sigma\)</span>-field is because if <span class="math notranslate nohighlight">\(\mathcal{F_i}\)</span> are all the <span class="math notranslate nohighlight">\(\sigma\)</span>-fields containing <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> then <span class="math notranslate nohighlight">\(\bigcap\limits_{i}\mathcal{F_i}\)</span> is the smallest <span class="math notranslate nohighlight">\(\sigma\)</span>-field.</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> be the real line, <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> the <strong>Borel sets</strong> which is the smallest <span class="math notranslate nohighlight">\(\sigma\)</span>-field containing the open sets. <span class="math notranslate nohighlight">\(\lambda\)</span>, the only measure on <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> with <span class="math notranslate nohighlight">\(\lambda((a,b])) = b-a\)</span> for <span class="math notranslate nohighlight">\(a \lt b\)</span> is called the <strong>Lebesgue measure</strong>. The existence and uniqueness of Lebesgue measure is proved in the <strong>Caratheodory’s Extension</strong> Theorem.</p>
+<p>Lebesgue measure to Probability measure: <span class="math notranslate nohighlight">\(\Omega = (0,1)\)</span>, <span class="math notranslate nohighlight">\(\mathcal{F} = \{A \cap (0,1): A \in \mathcal{R}\}\)</span> and <span class="math notranslate nohighlight">\(P(A) = \lambda(A)\)</span> for all <span class="math notranslate nohighlight">\(A \in \mathcal{F}\)</span>.</p>
+<div class="section" id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+<p>A functino <span class="math notranslate nohighlight">\(X: \Omega \rightarrow S\)</span> is said to be a <strong>measurable map</strong> from <span class="math notranslate nohighlight">\((\Omega, \mathcal{F})\)</span> to <span class="math notranslate nohighlight">\((S, \mathcal{S})\)</span> for every <span class="math notranslate nohighlight">\(B \in \mathcal{S}\)</span> we have <span class="math notranslate nohighlight">\(X^{-1}(B) = \{\omega: X(\omega) \in B\} \in \mathcal{F}\)</span>. When <span class="math notranslate nohighlight">\((S, \mathcal{S}) = (R^d, \mathcal{B^d})\)</span>, <span class="math notranslate nohighlight">\(X\)</span> is called a <strong>random vector</strong> when <span class="math notranslate nohighlight">\(d \gt 1\)</span> and <strong>random variable</strong> when <span class="math notranslate nohighlight">\(d = 1\)</span>. <span class="math notranslate nohighlight">\(X\)</span> is also called <strong><span class="math notranslate nohighlight">\(\mathcal{F}\)</span>-measurable</strong>.</p>
+</div>
+<div class="section" id="theorem">
+<h3>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> be a collection of subsets from a sample space <span class="math notranslate nohighlight">\(S\)</span> with <span class="math notranslate nohighlight">\(\sigma(\mathcal{A}) = \mathcal{S}\)</span>, and let <span class="math notranslate nohighlight">\(X: \Omega \rightarrow S\)</span> be a function. If <span class="math notranslate nohighlight">\(\{\omega: X(\omega) \in A\} \in \mathcal{F}\)</span> for all <span class="math notranslate nohighlight">\(A \in \mathcal{A}\)</span>, then <span class="math notranslate nohighlight">\(X\)</span> is a measurable map from <span class="math notranslate nohighlight">\((\Omega, \mathcal{F})\)</span> to <span class="math notranslate nohighlight">\((S, \mathcal{S})\)</span>.</p>
+<p>Proof: Let <span class="math notranslate nohighlight">\(\mathcal{S}^\circ = \{A: {X \in A} \in \mathcal{F}\}\)</span>, note that <span class="math notranslate nohighlight">\(\mathcal{S}^\circ \supset \mathcal{A}\)</span>. If <span class="math notranslate nohighlight">\(A_i \in \mathcal{S}^\circ\)</span>, <span class="math notranslate nohighlight">\(\bigcup_i\{X \in A_i\}=\{X \in \bigcup{A_i} \} \in \mathcal{F}\)</span> indicates <span class="math notranslate nohighlight">\(\bigcup{A_i} \in \mathcal{S}^\circ\)</span>. Similarly, if <span class="math notranslate nohighlight">\(A \in \mathcal{S}^\circ\)</span>, <span class="math notranslate nohighlight">\(\{X \in A\}^c = \{X \in A^c\} \in \mathcal{F}\)</span> indicates <span class="math notranslate nohighlight">\(A^c \in \mathcal{S}^\circ\)</span>. Therefore <span class="math notranslate nohighlight">\(\mathcal{S}^\circ\)</span> is a <span class="math notranslate nohighlight">\(\sigma\)</span>-field. <span class="math notranslate nohighlight">\(\mathcal{S}^\circ \supset \sigma(\mathcal{A})\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p>It follows from the prove that, given measurable spaces <span class="math notranslate nohighlight">\((\Omega, \mathcal{F})\)</span>, <span class="math notranslate nohighlight">\((S, \mathcal{S})\)</span> and <span class="math notranslate nohighlight">\(X: \Omega \rightarrow S\)</span>. The collection <span class="math notranslate nohighlight">\(\{ \{X \in B\}: B \in \mathcal{S} \}\)</span> is a <span class="math notranslate nohighlight">\(\sigma\)</span>-field. It’s called the <span class="math notranslate nohighlight">\(\sigma\)</span>-field generated by <span class="math notranslate nohighlight">\(X\)</span>.
+<br /></p>
+</div>
+<div class="section" id="id1">
+<h3>Definition<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The probability measure <span class="math notranslate nohighlight">\(\mu\)</span> induced by a random variable <span class="math notranslate nohighlight">\(X\)</span> as <span class="math notranslate nohighlight">\(\mu(A) = P(X \in A)\)</span> for Borel sets <span class="math notranslate nohighlight">\(A\)</span> is called the <strong>distribution</strong> of <span class="math notranslate nohighlight">\(X\)</span>. <span class="math notranslate nohighlight">\(F(x) = P(X \le x)\)</span> is called the <strong>distribution function</strong>.</p>
+<br />
+<p>Properties of distribution function:</p>
+<ol class="simple">
+<li><p>Nondecreasing.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lim_{x \rightarrow\infty}F(x) = 1\)</span>, <span class="math notranslate nohighlight">\(\lim_{x \rightarrow -\infty}F(x) = 0\)</span></p></li>
+<li><p>Right continuous: <span class="math notranslate nohighlight">\(\lim_{y \downarrow x}F(y) = F(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F(x-) = \lim_{y \uparrow x} F(y) = P(X \lt x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(X = x) = F(x) - F(x-)\)</span></p></li>
+</ol>
+<p>Example of random variables:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(X: (\Omega, \mathcal{F}) \rightarrow (S, \mathcal{S})\)</span>, <span class="math notranslate nohighlight">\(f: (S, \mathcal{S}) \rightarrow (T, \mathcal{T})\)</span> are measruable maps, then <span class="math notranslate nohighlight">\(f(X)\)</span> is a measurable map from <span class="math notranslate nohighlight">\((\Omega, \mathcal{F})\)</span> to <span class="math notranslate nohighlight">\((T, \mathcal{T})\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X_1, X_2...X_n\)</span> are r.v and <span class="math notranslate nohighlight">\(f: (\mathbf{R}^n, \mathcal{R}^n) \rightarrow (\mathbf{R}, \mathcal{R})\)</span> is a measurable map, then <span class="math notranslate nohighlight">\(f(X_1,...,X_n)\)</span> is a random variable.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X_1, X_2...X_n\)</span> are r.v, then <span class="math notranslate nohighlight">\(\inf\limits_{n}X_n\)</span>, <span class="math notranslate nohighlight">\(\sup\limits_{n}X_n\)</span>, <span class="math notranslate nohighlight">\(\limsup\limits_{n}X_n\)</span> and <span class="math notranslate nohighlight">\(\liminf\limits_{n}X_n\)</span> are all random variables.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\{ \inf\limits_{n}X_n \lt a\} = \bigcup_n\{ X_n \lt a\} \in \mathcal{F} \\
+\{ \sup\limits_{n}X_n \lt a\} = \bigcap_n\{ X_n \lt a\} \in \mathcal{F}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lim_{n \rightarrow \infty}X_n\)</span> exist iff the set <span class="math notranslate nohighlight">\(\{\limsup X_n \neq \liminf X_n\}\)</span> has probabilty 0. Equivalently, we say <span class="math notranslate nohighlight">\(\limsup X_n = \liminf X_n\)</span> almost surely/almost everywhere or in brief, a.s.</p></li>
+</ul>
+<p>Limits on random variables may output infinity values, therefore, we need to extend our previous probability space to accomondate infinty values.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{R}^{*} \equiv [-\infty, +\infty]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{R}^{*}\)</span> Borel sets generated by intervals of the form <span class="math notranslate nohighlight">\([-\infty, a), (a, b), (b, \infty]\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\((\mathbf{R}^{*}, \mathcal{R}^{*})\)</span> forms a measurable space.</p>
+</div>
+</div>
+<div class="section" id="integration">
+<h2>Integration<a class="headerlink" href="#integration" title="Permalink to this headline">¶</a></h2>
+<p><strong>Jensen’s Inequality</strong> Suppose <span class="math notranslate nohighlight">\(\psi\)</span> is convex, i.e. for <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>, <span class="math notranslate nohighlight">\(x,y \in \mathbf{R}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\lambda\psi(x) + (1-\lambda)\psi(y) \ge \psi({\lambda}x+(1-\lambda)y) (\#eq:convex-ineq)
+\end{equation}
+\]</div>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+E(\psi(X)) \ge \psi(EX) (\#eq:jensen-ineq)
+\end{equation}
+\]</div>
+<p>provided that both expectations exists. i.e. <span class="math notranslate nohighlight">\(E|X| \lt \infty\)</span> and <span class="math notranslate nohighlight">\(E|\psi(X)| \lt \infty\)</span>.</p>
+<p><strong>Holder’s Inequality</strong> Let <span class="math notranslate nohighlight">\(p,q \in [1,\infty]\)</span> with <span class="math notranslate nohighlight">\(\frac{1}{p} + \frac{1}{q} = 1\)</span> then:</p>
+<div class="math notranslate nohighlight">
+\[
+E|XY| \le \|X\|_p\|Y\|_q
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(|X\|_r=(E|X|^r)^{(1/r)}\)</span> for <span class="math notranslate nohighlight">\(r \in [1,\infty)\)</span>; and <span class="math notranslate nohighlight">\(\|X\|_\infty = \inf\{M: P(|X| \gt M)=0\}\)</span>.</p>
+<p><strong>Chebyshev’s inequality</strong> Suppose <span class="math notranslate nohighlight">\(\psi: \mathbf{R}\to\mathbf{R}\)</span> and <span class="math notranslate nohighlight">\(\psi \ge 0\)</span>, Let <span class="math notranslate nohighlight">\(A \in \mathcal{R}\)</span> and let <span class="math notranslate nohighlight">\(\alpha_A = \inf\{\psi(y): y \in A\}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\alpha_AP(X \in A) \le E(\psi(X)\mathbf{1}_{(X \in A)}) \le E(\psi(X)) (\#eq:chebyshev-ineq)
+\end{equation}
+\]</div>
+<p><em>Proof:</em> Take the integral on <span class="math notranslate nohighlight">\(\alpha_A\mathbf{1}_{(X \in A)} \le \psi(X)\mathbf{1}_{(X \in A)} \le \psi(X)\)</span>.</p>
+<p><strong>Markov inequality:</strong> Make <span class="math notranslate nohighlight">\(\psi(x) = x^2\)</span>, <span class="math notranslate nohighlight">\(A=\{x: |x| \ge a\}\)</span>, we get Markov inequality:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+a^2P(|X| \ge a) \le EX^2 (\#eq:markov-ineq)
+\end{equation}
+\]</div>
+<p><strong>Monotone convergence theorem:</strong> If <span class="math notranslate nohighlight">\(0 \le X_n \uparrow X\)</span> a.s. then <span class="math notranslate nohighlight">\(EX_n \uparrow EX\)</span>.</p>
+<p><strong>Fatou’s lemma:</strong> If <span class="math notranslate nohighlight">\(X_n \ge 0\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\liminf_{n\to\infty}EX_n \ge E(\liminf_{n\to\infty}X_n) (\#eq:fatou-ineq)
+\end{equation}
+\]</div>
+<p><em>Proof:</em> If <span class="math notranslate nohighlight">\(Y_n = \inf_{k \ge n}X_k\)</span>, then <span class="math notranslate nohighlight">\(0 \le Y_n \uparrow Y = \liminf_{n\to\infty}X_n\)</span>, by the Monotone convergence theorem, <span class="math notranslate nohighlight">\({\int}X_n{d\mu} \ge {\int}Y_n{d\mu} \uparrow {\int}Y{d\mu} = {\int}\liminf_{n\to\infty}X_n{d\mu}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p><strong>Dominiated convergence theorem:</strong> If <span class="math notranslate nohighlight">\(X_n \to X\)</span> a.s., <span class="math notranslate nohighlight">\(|X_n| \le Y\)</span> a.s. for all <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(EY \lt \infty\)</span>, then <span class="math notranslate nohighlight">\(EX_n \to EX\)</span>.</p>
+<p><strong>Product Measures:</strong></p>
+<p>Note: If can be proved that if <span class="math notranslate nohighlight">\(\mu_1, \mu_2\)</span> are two measures, then <span class="math notranslate nohighlight">\(\mu_1(A)\mu_2(B)\)</span> is also a measure. We denote such measure as <span class="math notranslate nohighlight">\(\mu(A \times B)=\mu_1\times\mu_2(A \times B) = \mu_1(A)\mu_2(B)\)</span> it’s a unique measure on <span class="math notranslate nohighlight">\(\sigma(\mathcal{F_1}\times\mathcal{F_2})\)</span>(The smallest <span class="math notranslate nohighlight">\(\sigma\)</span>-field generated by <span class="math notranslate nohighlight">\(A\times B\)</span> where <span class="math notranslate nohighlight">\(A\in\mathcal{F_1}, B\in\mathcal{F_2}\)</span>) such that <span class="math notranslate nohighlight">\(\mu(A \times B) = \mu_1(A)\mu_2(B)\)</span></p>
+<p>**Fubini Theorem: ** If <span class="math notranslate nohighlight">\(f \ge 0\)</span> or <span class="math notranslate nohighlight">\(\int{|f|d\mu} \lt \infty\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{X{\times}Y}fd\mu = \int_{X}\int_{Y}f(x,y)\mu_1(dx)\mu_2(dy) = \int_{Y}\int_{X}f(x,y)\mu_2(dy)\mu_1(dx)
+\]</div>
+<p><strong>Corollary:</strong> If <span class="math notranslate nohighlight">\(Y \ge 0\)</span> and <span class="math notranslate nohighlight">\(p \gt 0\)</span> then:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+E(Y^p) = \int_0^\infty{py^{p-1}P(Y \gt y)} dy
+\end{equation}
+\]</div>
+<p><em>Proof:</em> Since <span class="math notranslate nohighlight">\(Y\)</span> is positve, we can use Fubini theorem to exchange the integral:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\int_0^\infty{py^{p-1}P(Y \gt y)} dy &amp;= \int_0^\infty \int_{\Omega}{py^{p-1}\mathbf{1}_{(Y \gt y)}}dP dy \\
+&amp;= \int_{\Omega}\int_0^Y {py^{p-1}}dydP \\
+&amp;= \int_{\Omega}Y^pdP = E(Y^p)
+\end{align}
+\end{split}\]</div>
+<div class="section" id="theorem-integrability-implies-finite-almost-surely">
+<h3>Theorem: Integrability implies finite almost surely<a class="headerlink" href="#theorem-integrability-implies-finite-almost-surely" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((\Omega,\mathcal{F},\mu)\)</span> be a measure space. If <span class="math notranslate nohighlight">\(f\)</span> integrable w.r.t <span class="math notranslate nohighlight">\(\mu\)</span>, then <span class="math notranslate nohighlight">\(f\)</span> is finite almost surely.</p>
+<p><em>Proof:</em></p>
+<p><span class="math notranslate nohighlight">\(f\)</span> is integrable implies: <span class="math notranslate nohighlight">\(\int_{\Omega}|f(x)| \mu(dx) \lt C\)</span> for some constant <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<p>Definie <span class="math notranslate nohighlight">\(E_n=\{x: |f(x)| &gt; n\}\)</span>. Then <span class="math notranslate nohighlight">\(E = \cap_n{E_n}\)</span> is the set where <span class="math notranslate nohighlight">\(f\)</span> goes to infinity. We want to prove <span class="math notranslate nohighlight">\(\mu(E) = 0\)</span>. Note that <span class="math notranslate nohighlight">\(n\mathbf{1}_{E_n} \le |f|\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+n\mu(E_n) \le \int_{E_n}{|f(x)|}\mu(dx) \le \int_{\Omega}{|f(x)|}\mu(dx) \lt C
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(E \subset E_n\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(0 \le \mu(E) \le \mu(E_n) \le \frac{C}{n}\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>. Let <span class="math notranslate nohighlight">\(n \to \infty\)</span>, we have <span class="math notranslate nohighlight">\(\mu(E) = 0\)</span>. i.e. <span class="math notranslate nohighlight">\(f\)</span> is finite almost surely.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+<div class="section" id="sufficient-and-necessary-conditions-for-convergence-almost-surely">
+<h2>Sufficient and necessary conditions for convergence almost surely<a class="headerlink" href="#sufficient-and-necessary-conditions-for-convergence-almost-surely" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Theorem<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty} E[|X_n|^s] \lt \infty\)</span> and <span class="math notranslate nohighlight">\(s \gt 0\)</span>, then <span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s.</p>
+<p><em>Proof:</em></p>
+<p>This is an integration over positive function, by Fubini theorem, we can move expected value out of sumation: <span class="math notranslate nohighlight">\(E[\sum_{n=1}^{\infty} |X_n|^s] \lt \infty\)</span>. This implies <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty} |X_n|^s \lt \infty\)</span> a.s. Further implies <span class="math notranslate nohighlight">\(|X_n|^s \to 0\)</span> a.s., since <span class="math notranslate nohighlight">\(s \gt 0\)</span>, this implies <span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id3">
+<h3>Theorem<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. iff for all <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>, <span class="math notranslate nohighlight">\(P(|X_n| \gt \epsilon \text{ i.o}) = 0\)</span></p>
+</div>
+<div class="section" id="id4">
+<h3>Theorem<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty}P(|X_n| \gt \epsilon) \lt \infty\)</span> for all <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>, then <span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s.</p>
+<p><em>Proof:</em></p>
+<p>Method 1:</p>
+<p>Fix <span class="math notranslate nohighlight">\(\epsilon = 1/k\)</span> for any positive <span class="math notranslate nohighlight">\(k\)</span>, by the Borel-Cantelli lemma <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty}P(|X_n| \gt 1/k) \lt \infty\)</span> implies <span class="math notranslate nohighlight">\([|X_n| \gt 1/k \text{ i.o}]\)</span> has probability 0. Equivalently, <span class="math notranslate nohighlight">\([|X_n| \le 1/k \text{ e.a}]\)</span> with probability one or, another equivalent interpretation is that <span class="math notranslate nohighlight">\(|X_n| \gt 1/k\)</span> occurs finite number of times with probability one. Thus, <span class="math notranslate nohighlight">\(P(\limsup_{n\to\infty} |X_n| \gt 1/k) = 0\)</span> for all positive <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>The set <span class="math notranslate nohighlight">\(\{ \limsup_{n\to\infty}|X_n| \gt 1/k \}\)</span> enlarges as <span class="math notranslate nohighlight">\(k\)</span> increases and converges to <span class="math notranslate nohighlight">\(\{ \limsup_{n\to\infty}|X_n| \gt 0 \}\)</span>. By the continuity from below property of probability measure, we have <span class="math notranslate nohighlight">\(0 = P(\{ \limsup_{n\to\infty}|X_n| \gt 1/k \}) \to P(\{ \limsup_{n\to\infty}|X_n| \gt 0 \})\)</span> as <span class="math notranslate nohighlight">\(k\to\infty\)</span>. Therefore, <span class="math notranslate nohighlight">\(P(\{ \limsup_{n\to\infty}|X_n| \gt 0 \}) = 0\)</span>. And this impies <span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p>Method 2:</p>
+<p>Let <span class="math notranslate nohighlight">\(\epsilon = 1/k\)</span> for some positive <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty}P(|X_n| \gt 1/k) = \sum_{n=1}^{\infty}E(\mathbf{1}_{(|X_n| \gt 1/k)}) \lt \infty\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{1}_{(|X_n| \gt 1/k)}\)</span> is positive, by the Fubini theorem, we could move the expection outside:</p>
+<div class="math notranslate nohighlight">
+\[
+E\Big(\sum_{n=1}^{\infty}\mathbf{1}_{(|X_n| \gt 1/k)}\Big) \lt \infty
+\]</div>
+<p>Which indicates <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty}\mathbf{1}_{(|X_n| \gt 1/k)} \lt \infty\)</span> a.s., which implies <span class="math notranslate nohighlight">\(\mathbf{1}_{(|X_n| \gt 1/k)} \to 0\)</span> a.s. as <span class="math notranslate nohighlight">\(n\to\infty\)</span>, or equivalently, <span class="math notranslate nohighlight">\(\{|X_n| \gt 1/k\}\)</span> occurs finite number of times with probability one. And the rest of the prove will be the same as method 1. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id5">
+<h3>Theorem<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. iff for every <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span> we have <span class="math notranslate nohighlight">\(P(\sup_{m\ge n}|X_m| \gt \epsilon) \to 0\)</span> as <span class="math notranslate nohighlight">\(n\to\infty\)</span></p>
+<p><em>Proof:</em></p>
+<p>If an element <span class="math notranslate nohighlight">\(\omega\)</span> such that <span class="math notranslate nohighlight">\(X_n\not\to 0\)</span>, it’s equivalent to there exist a <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span> such that <span class="math notranslate nohighlight">\(\limsup_{n\to\infty}|X_n|\gt \epsilon\)</span>. To translate it to set language we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\{\omega: X_n \not\to 0\} \equiv \cup_{\epsilon \in \mathcal{Q^+}} \{\omega: \limsup_{n\to\infty} |X_n| \gt \epsilon\} \equiv \cup_{\epsilon \in \mathcal{Q^+}} \cap_{n} \{\omega: \sup_{m \ge n} |X_m| \gt \epsilon \}
+\]</div>
+<p><span class="math notranslate nohighlight">\(A_{\epsilon,n} = \{\omega: \sup_{m \ge n} |X_m| \gt \epsilon \}\)</span> decreases as <span class="math notranslate nohighlight">\(n\to \infty\)</span> and <span class="math notranslate nohighlight">\(A_{\epsilon,n} \downarrow \cap_{n} A_{\epsilon,n}\)</span>. By the probability measure’s the continuity from above property, we have <span class="math notranslate nohighlight">\(P(A_{\epsilon,n})\downarrow P(\cap_{n} A_{\epsilon,n})\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow:\)</span> Given <span class="math notranslate nohighlight">\(P(X_n\not\to 0) = 0\)</span>, since <span class="math notranslate nohighlight">\(\{\omega: X_n \not\to 0\} \supset \cap_{n} A_{\epsilon,n}\)</span> for any <span class="math notranslate nohighlight">\(\epsilon \in \mathcal{Q^+}\)</span>, we get <span class="math notranslate nohighlight">\(P(\cap_{n} A_{\epsilon,n}) = 0\)</span> and <span class="math notranslate nohighlight">\(P(A_{\epsilon,n})\to P(\cap_{n} A_{\epsilon,n}) = 0\)</span> for all <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\Leftarrow:\)</span> Given for every <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>, <span class="math notranslate nohighlight">\(P(A_{\epsilon,n}) \to 0 = P(\cap_{n} A_{\epsilon,n})\)</span> as <span class="math notranslate nohighlight">\(n\to\infty\)</span>. We have: <span class="math notranslate nohighlight">\(P(X_n\not\to 0) \le \sum_{\epsilon\in\mathcal{Q^+}}P(\cap_{n} A_{\epsilon,n}) \to 0\)</span> as <span class="math notranslate nohighlight">\(n\to\infty\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="content.html" title="previous page">Probability Measure</a>
+    <a class='right-next' id="next-link" href="lln.html" title="next page">Laws of Large Numbers</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

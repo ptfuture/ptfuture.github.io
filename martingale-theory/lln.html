@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laws of Large Numbers &#8212; Probability Measure</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Characteristic Function" href="characteristic-function.html" />
+    <link rel="prev" title="Probability Measure" href="probability-measure.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability Measure</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Probability Measure
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="probability-measure.html">
+     Probability Measure
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Laws of Large Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="characteristic-function.html">
+     Characteristic Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="probability-convergence.html">
+     Probability Convergence
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/lln.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flln.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lln.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#borel-cantelli-lemmas">
+   Borel Cantelli Lemmas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-borel-cantelli-lemma">
+     First Borel Cantelli Lemma:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-borel-cantelli-lemma">
+     Second Borel Cantelli Lemma:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strong-law-of-large-numbers">
+   Strong Law of Large numbers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-strong-law-of-large-numbers">
+     Theorem: Strong law of large numbers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lemma">
+     Lemma
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weak-law-of-large-numbers">
+   Weak law of large numbers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-weak-law-of-large-numbers">
+     Theorem: Weak law of large numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tail-sigma-field">
+   Tail sigma field
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definitions">
+     Definitions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-tail-sigma-field">
+     Examples of Tail
+     <span class="math notranslate nohighlight">
+      \(\sigma\)
+     </span>
+     -field
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independence-of-sigma-fields">
+   Independence of Sigma fields
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Definitions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independent-pi-system-theorem">
+     Independent
+     <span class="math notranslate nohighlight">
+      \(\pi\)
+     </span>
+     -system Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#corollary">
+     Corollary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Corollary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Corollary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#laws">
+   0-1 laws
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-kolmogorov-s-0-1-law">
+     Theorem Kolmogorov’s 0-1 law
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="laws-of-large-numbers">
+<h1>Laws of Large Numbers<a class="headerlink" href="#laws-of-large-numbers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="borel-cantelli-lemmas">
+<h2>Borel Cantelli Lemmas<a class="headerlink" href="#borel-cantelli-lemmas" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(A_n \in \mathcal{F}\)</span>, Define:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\limsup{A_n}=\bigcap\limits_{m=1}^\infty\bigcup\limits_{n=m}^\infty{A_n} \\
+\liminf{A_n}=\bigcup\limits_{m=1}^\infty\bigcap\limits_{n=m}^\infty{A_n}
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\epsilon \in \limsup{A_n}\)</span> iff for every <span class="math notranslate nohighlight">\(n\)</span> there exist a <span class="math notranslate nohighlight">\(k \ge n\)</span> such that <span class="math notranslate nohighlight">\(\epsilon \in A_k\)</span>. If <span class="math notranslate nohighlight">\(n\)</span> is time, <span class="math notranslate nohighlight">\(\limsup{A_n}\)</span> is often interpretated as the set of elements that happens infinitely many <span class="math notranslate nohighlight">\(A_n\)</span>, <span class="math notranslate nohighlight">\(\limsup{A_n}\)</span> is usually written as <span class="math notranslate nohighlight">\([A_n\text{ i.o.}]\)</span>. i.o. means infinitly often.</p>
+<p><span class="math notranslate nohighlight">\(\epsilon \in \liminf{A_n}\)</span> iff <span class="math notranslate nohighlight">\(\epsilon\)</span> belongs to all but finitely many of the <span class="math notranslate nohighlight">\(A_n\)</span>. If <span class="math notranslate nohighlight">\(n\)</span> is time, <span class="math notranslate nohighlight">\(\liminf{A_n}\)</span> is intepretated as the set of elements that eventually happened. <span class="math notranslate nohighlight">\(\liminf{A_n}\)</span> is usually written as <span class="math notranslate nohighlight">\([A_n\text{ e.a.}]\)</span>. e.a. means eventually all.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\bigcup\limits_{n=m}^\infty{A_n} \downarrow \limsup{A_n} \quad \text{as } m \rightarrow\infty \\
+&amp;\bigcap\limits_{n=m}^\infty{A_n} \uparrow \liminf{A_n} \quad \text{as } m \rightarrow\infty \\
+&amp;\bigcap\limits_{k=n}^\infty{A_k} \subset \bigcup\limits_{k=m}^\infty{A_k} \quad \forall n,m \\
+&amp;\liminf{A_n} \subset \limsup{A_n} \\
+&amp;(\limsup{A_n})^c = \liminf{A_n^c}
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\((\limsup{A_n})^c = \liminf{A_n^c}\)</span> means, if <span class="math notranslate nohighlight">\(\epsilon \notin \limsup{A_n}\)</span> then we can conclude it belongs to all but finitely many <span class="math notranslate nohighlight">\(A_n^c\)</span></p>
+<div class="section" id="first-borel-cantelli-lemma">
+<h3>First Borel Cantelli Lemma:<a class="headerlink" href="#first-borel-cantelli-lemma" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\sum\limits_{n=1}^{\infty}P(A_n) \lt \infty\)</span> then <span class="math notranslate nohighlight">\(P(A_n\text{ i.o.}) = 0\)</span>.</p>
+<p><em>Proof:</em> <span class="math notranslate nohighlight">\({\limsup}A_n \subset \bigcup_{k=m}^{\infty}A_k\)</span> implies <span class="math notranslate nohighlight">\(P({\limsup}A_n) \le P(\bigcup_{k=m}^{\infty}A_k) \le \sum\limits_{k=m}^{\infty}P(A_k)\)</span>. and the sum goes to <span class="math notranslate nohighlight">\(0\)</span> when <span class="math notranslate nohighlight">\(m\to\infty\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="second-borel-cantelli-lemma">
+<h3>Second Borel Cantelli Lemma:<a class="headerlink" href="#second-borel-cantelli-lemma" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(A_n\)</span> is a sequence of independent events. If <span class="math notranslate nohighlight">\(\sum\limits_{n=1}^{\infty}P(A_n)=\infty\)</span> then <span class="math notranslate nohighlight">\(P(A_n\text{ i.o.})=1\)</span>.</p>
+<p><em>Proof:</em> We prove it by proving <span class="math notranslate nohighlight">\(P(A_n^c\text{ e.a.})=0\)</span>. For <span class="math notranslate nohighlight">\(0 \lt N \lt M \lt \infty\)</span>, since <span class="math notranslate nohighlight">\(1-x \lt e^{-x}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+P(\bigcap_{n=N}^{M}A_n^c) = \prod_{n=M}^{M}(1-P(A_n)) \lt e^{-\sum_{n=N}^{M}P(A_n)} \to 0 \quad\text{ as }M\to\infty
+\end{align}
+\]</div>
+<p>So <span class="math notranslate nohighlight">\(P(\bigcap_{n=N}^{\infty}A_n^c) = 0\)</span> for all <span class="math notranslate nohighlight">\(N\)</span>. Since <span class="math notranslate nohighlight">\(\bigcap_{n=N}^{\infty}A_n^c \uparrow {\liminf}A_n^c\)</span> as <span class="math notranslate nohighlight">\(N\to\infty\)</span>, we get <span class="math notranslate nohighlight">\(\lim\limits_{N\to\infty}{P(\bigcap_{n=N}^{\infty}A_n^c)} = P({\liminf}A_n^c) = 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+<div class="section" id="strong-law-of-large-numbers">
+<h2>Strong Law of Large numbers<a class="headerlink" href="#strong-law-of-large-numbers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theorem-strong-law-of-large-numbers">
+<h3>Theorem: Strong law of large numbers<a class="headerlink" href="#theorem-strong-law-of-large-numbers" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X_1,X_2...\)</span> be pairwise indepedent, identically distributed r.v. with <span class="math notranslate nohighlight">\(E|X_k| \lt \infty\)</span>. Let <span class="math notranslate nohighlight">\(EX_k=\mu\)</span>, <span class="math notranslate nohighlight">\(S_n=\sum_{k=1}^nX_k\)</span>, then <span class="math notranslate nohighlight">\(\frac{S_n}{n} \rightarrow \mu\)</span> a.s. as <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>If the strong law of large numbers is true for non-negative numbers, then it’s true for any random variable because <span class="math notranslate nohighlight">\(X_n=X_n^+-X_n^-\)</span>. i.e. <span class="math notranslate nohighlight">\(S_n/n=\frac{\sum{X_n^+}}{n}-\frac{\sum{X_n^-}}{n} \rightarrow E[X_1^+]-E[X_1^-] = E{X}\)</span> a.s. Therefore without loss of generality, we assume <span class="math notranslate nohighlight">\(X_n \ge 0\)</span>.</p>
+<p>We want to first prove the theorem for a truncated version of itself, That is we want to first prove the following lemma: Let <span class="math notranslate nohighlight">\(Y_k = X_k\mathbf{1}_{|X_k| \le k}\)</span>, <span class="math notranslate nohighlight">\(S_n^*=\sum_{k=1}^nY_k\)</span>, then <span class="math notranslate nohighlight">\(\frac{S_n^*}{n} \rightarrow \mu\)</span> a.s.</p>
+<p>Let first assume such lemma is true, then</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{k=1}^{\infty} P(X_k \neq Y_k) = \sum_{k=1}^{\infty} P(X_1 \gt k) \lt \int_{0}^{\infty} P(X_1 &gt; x) dx = E[X_1] \lt \infty
+\]</div>
+<p><span class="math notranslate nohighlight">\(B = [X_k \neq Y_k\text{ i.o.}]\)</span>, <span class="math notranslate nohighlight">\(B^c=[X_k = Y_k\text{ e.a.}]\)</span>. By Borel Cantelli Lemma, <span class="math notranslate nohighlight">\(P(B) = 0\)</span>,  <span class="math notranslate nohighlight">\(P(B^c) = 1\)</span>. Let <span class="math notranslate nohighlight">\(C=\{\omega: \frac{S_n(w)-S_n^*(w)}{n} \to 0\}\)</span>, <span class="math notranslate nohighlight">\(C^c=\{\omega: \frac{S_n(w)-S_n^*(w)}{n} \not\to 0\}\)</span>. We want to prove <span class="math notranslate nohighlight">\(P(C)=1\)</span>.</p>
+<p>Suppose <span class="math notranslate nohighlight">\(\omega \in C^c \cap B^c\)</span>. <span class="math notranslate nohighlight">\(\omega \in B^c\)</span> indicates <span class="math notranslate nohighlight">\(X_k(w)=Y_k(w)\)</span> for all but finitely many <span class="math notranslate nohighlight">\(k\)</span>. Suppose there are <span class="math notranslate nohighlight">\(M\)</span> such <span class="math notranslate nohighlight">\(k\)</span>’s <span class="math notranslate nohighlight">\(k_1, k_2...k_M\)</span>. <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty}\frac{\sum\limits_{k=1}^{n} (X_k-Y_k)}{n}=\lim\limits_{n\to\infty}\frac{\sum\limits_{i=1}^{M} (X_{k_i}-Y_{k_i})}{n} = 0\)</span>, which contradicts to <span class="math notranslate nohighlight">\(\omega \in C^c\)</span>. We conclude that <span class="math notranslate nohighlight">\(C^c \cap B^c = \emptyset\)</span>, therefore the complement of <span class="math notranslate nohighlight">\(C^c\)</span> which is <span class="math notranslate nohighlight">\(C\)</span> contains <span class="math notranslate nohighlight">\(B^c\)</span>, that is <span class="math notranslate nohighlight">\(B^c \subset C\)</span>. Because <span class="math notranslate nohighlight">\(P(B^c) = 1\)</span>, we have <span class="math notranslate nohighlight">\(P(C) = 1\)</span>, that is <span class="math notranslate nohighlight">\(\frac{S_n(w)-S_n^*(w)}{n} \to 0\)</span> a.s.</p>
+<p>By the lemma below, we have <span class="math notranslate nohighlight">\(\frac{S_n^*}{n} \to \mu\)</span> a.s., therefore, <span class="math notranslate nohighlight">\(\frac{S_n}{n} \to \mu\)</span> a.s.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="lemma">
+<h3>Lemma<a class="headerlink" href="#lemma" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(Y_k = X_k\mathbf{1}_{|X_k| \le k}\)</span>, <span class="math notranslate nohighlight">\(S_n^*=\sum_{k=1}^nY_k\)</span>, then <span class="math notranslate nohighlight">\(\frac{S_n^*}{n} \rightarrow \mu\)</span> a.s.</p>
+<p><em>Proof:</em></p>
+<p>Note that <span class="math notranslate nohighlight">\(Y_k\)</span> are not identical and does not have the same mean.</p>
+<p>Since <span class="math notranslate nohighlight">\(Y_k \rightarrow X_1\)</span>, by the dominated convergence theorem, <span class="math notranslate nohighlight">\(EY_k \rightarrow EX_1=\mu\)</span>.
+If <span class="math notranslate nohighlight">\(a_k \rightarrow a\)</span>, <span class="math notranslate nohighlight">\(\frac{\sum_k^n{a_k}}{n} \rightarrow a\)</span>, therefore, <span class="math notranslate nohighlight">\(\frac{ES_n^*}{n} = \frac{E[Y_1+...+Y_n]}{n} \rightarrow EX_1=\mu\)</span>.</p>
+<p>Pairwise independence of <span class="math notranslate nohighlight">\(X_k\)</span> indicates pairwise indepedence of <span class="math notranslate nohighlight">\(Y_k\)</span>, therefore uncorrelated between <span class="math notranslate nohighlight">\(Y_k\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+var(S_n^*) = \sum_{k=1}^n{var(Y_k)} \le \sum_{k=1}^n{EY_k^2} \\
+\end{equation}
+\end{split}\]</div>
+<p>Directly proving <span class="math notranslate nohighlight">\(S_n^* \rightarrow \mu\)</span> a.s. is difficult. Instead, we first prove that for a subsequence of <span class="math notranslate nohighlight">\(\{S_n^*; n \ge 1\}\)</span>, <span class="math notranslate nohighlight">\(\{S_{k(n)}^*; n \ge 1\}\)</span> converges: <span class="math notranslate nohighlight">\(S_{k(n)}^*/n \rightarrow \mu\)</span> a.s.</p>
+<p>Because <span class="math notranslate nohighlight">\(Y_k \ge 0\)</span> we have <span class="math notranslate nohighlight">\(S_k^*\)</span> is monotone non-decreasing, Then for <span class="math notranslate nohighlight">\(k(n) \le m \lt k(n+1)\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+S_{k(n)}^* \le S_{m}^* \le S_{k(n+1)}^* \\
+\frac{S_{k(n)}^*}{k(n+1)} \le \frac{S_{k(n)}^*}{m} \le \frac{S_{m}^*}{m} \le \frac{S_{k(n+1)}^*}{m} \le \frac{S_{k(n+1)}^*}{k(n)} \\
+\frac{k(n)}{k(n+1)}\frac{S_{k(n)}^*}{k(n)} \le \frac{S_{m}^*}{m} \le \frac{k(n+1)}{k(n)}\frac{S_{k(n+1)}^*}{k(n+1)}
+\end{equation}
+\end{split}\]</div>
+<p>If we can construct the subsequence <span class="math notranslate nohighlight">\(k(n)\)</span> such that <span class="math notranslate nohighlight">\(k(n+1)/k(n)\)</span> converges to a constant <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(k(n+1)/k(n) \rightarrow \alpha\)</span>, when <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>, then the above inequality converges a.s. to:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\alpha}\mu \le \liminf\limits_{n \rightarrow \infty}\frac{S_{m}^*}{m} \le \limsup\limits_{n \rightarrow \infty}\frac{S_{m}^*}{m} \le \alpha\mu
+\]</div>
+<p>If we choose <span class="math notranslate nohighlight">\(\alpha \gt 1\)</span> but arbitrary, then taking intersection of the sets above over <span class="math notranslate nohighlight">\(\alpha\)</span> for all <span class="math notranslate nohighlight">\(\alpha\)</span> that are rational numbers(therefore countable sets) gives us <span class="math notranslate nohighlight">\(\lim\limits_{m \rightarrow \infty}\frac{S_m^*}{m} = \mu\)</span> a.s.</p>
+<p>So if we can find a subsequence <span class="math notranslate nohighlight">\(k(n)\)</span> we are done proving the lemma.</p>
+<p>Now, let’s find such subsequence. let <span class="math notranslate nohighlight">\(\alpha \gt 1\)</span> be any number, let <span class="math notranslate nohighlight">\(k(n) = [a^n]\)</span>, it can be shown that <span class="math notranslate nohighlight">\(\frac{k(n+1)}{k(m)} \rightarrow \alpha\)</span>. For any <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span> if we can prove that the subsequence <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty {P(\big|S_{k(n)}^* - E[S_{k(n)}^*]\big| \gt \epsilon{k(n)})} \lt \infty\)</span> then by the Borel Cantelli lemma, <span class="math notranslate nohighlight">\(\frac{\big|S_{k(n)}^* - E[S_{k(n)}^*]\big|}{k(n)} \rightarrow 0\)</span> almost surely. Because <span class="math notranslate nohighlight">\(\frac{E[S_{k(n)}^*]}{k(n)} \rightarrow \mu\)</span>, we can conclude <span class="math notranslate nohighlight">\(\frac{S_{k(n)}^*}{k(n)} \rightarrow \mu\)</span> a.s. by then, we have found our subsequence.</p>
+<p>Now let’s prove what we need to prove <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty {P(\big|S_{k(n)}^* - E[S_{k(n)}^*]\big| \gt \epsilon{k(n)})} \lt \infty\)</span>. By the Chebyshev’s inequality:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sum_{n=1}^\infty {P(\big|S_{k(n)}^* - E[S_{k(n)}^*]\big| \gt \epsilon{k(n)})} &amp;\le \epsilon^{-2} \sum_{n=1}^\infty{k(n)^{-2} var(S_{k(n)}^*)} \\
+&amp;= \epsilon^{-2} \sum_{n=1}^\infty{k(n)^{-2}} \sum_{m=1}^{k(n)} var(Y_m) \\
+&amp;= \epsilon^{-2} \sum_{m=1}^{\infty} var(Y_m) \sum_{n:k(n) \ge m}^\infty{[a^n]^{-2}}  \quad \text{By Fubini Theorem }
+\end{align}
+\end{split}\]</div>
+<p>Note that for <span class="math notranslate nohighlight">\(n \gt 1\)</span>, <span class="math notranslate nohighlight">\([a^n] \ge \frac{a^n}{2}\)</span> so <span class="math notranslate nohighlight">\([a^n]^{-2} \le 4a^{-2n}\)</span>. Moreover the geometric series is bounded by <span class="math notranslate nohighlight">\(\sum_{n:k(n) \ge m}^\infty{a^{-2n}} \le (1-\alpha^{-2})^{-1}m^{-2}\)</span>. So <span class="math notranslate nohighlight">\(\sum_{n:k(n) \ge m}^\infty{[a^n]^{-2}}\)</span> is bounded: <span class="math notranslate nohighlight">\(\sum_{n:k(n) \ge m}^\infty{[a^n]^{-2}} \le 4\sum_{n:k(n) \ge m}^\infty{a^{-2n}} \le 4 (1-\alpha^{-2})^{-1}m^{-2}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sum_{n=1}^\infty {P(\big|S_{k(n)}^* - E[S_{k(n)}^*]\big| \gt \epsilon{k(n)})} &amp;\le \epsilon^{-2} \sum_{m=1}^{k(n)} var(Y_m) \sum_{n:k(n) \ge m}^\infty{[a^n]^{-2}} \\
+&amp;= \epsilon^{-2} 4 (1-\alpha^{-2})^{-1} \sum_{m=1}^{\infty} \frac{var(Y_m)}{m^2}
+\end{align}
+\end{split}\]</div>
+<p>If we could prove <span class="math notranslate nohighlight">\(\sum_{m=1}^{\infty} \frac{var(Y_m)}{m^2}\)</span> is also bounded, then we are done proving the condition needed for Borel Cantelli lemma and thus the a.s. convergence of the subsequence <span class="math notranslate nohighlight">\(S_{k(n)}^*\)</span>.</p>
+<p>Note that at the beginning we are assuming<span class="math notranslate nohighlight">\(X_m \ge 0\)</span>, <span class="math notranslate nohighlight">\(Y_m \ge 0\)</span>: <span class="math notranslate nohighlight">\(var(Y_m) \le E(Y_m^2) = \int_{0}^{\infty} 2yP(Y_m \gt y) dy \le \int_{0}^m 2yP(X_1 \gt y) dy\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sum_{m=1}^{\infty} \frac{var(Y_m)}{m^2} &amp;\le \sum_{m=1}^{\infty} \frac{E(Y_m^2)}{m^2} \le \sum_{m=1}^{\infty} {m^{-2}} \int_{0}^{\infty} \mathbf{1}_{(y \lt m)} 2yP(X_1 \gt y) dy \\
+&amp;= \int_{0}^{\infty} \Big(2y \sum_{m=1}^{\infty} {m^{-2}}\mathbf{1}_{(y \lt m)}\Big) P(X_1 \gt y) dy \quad \text{By Fubini Theorem}
+\end{align}
+\end{split}\]</div>
+<p>We want to show that <span class="math notranslate nohighlight">\(2y \sum_{m=1}^{\infty} {m^{-2}}\mathbf{1}_{(y \lt m)} = 2y \sum_{m \gt y}^{\infty} {m^{-2}} \lt 4\)</span> bounded.</p>
+<p>First observe that when <span class="math notranslate nohighlight">\(y \ge 2\)</span>, we have <span class="math notranslate nohighlight">\(\sum_{m \gt y}^{\infty} {m^{-2}} \le 2y \int_{y-1} x^{-2} dx = (y-1)^{-1}\)</span>.</p>
+<ul class="simple">
+<li><p>When <span class="math notranslate nohighlight">\(y \ge 1\)</span>, the sum starts with <span class="math notranslate nohighlight">\(m=[y]+1 \ge 2\)</span>,
+and because <span class="math notranslate nohighlight">\(\frac{y}{[y]} \le 2\)</span> for <span class="math notranslate nohighlight">\(y \ge 1\)</span> (maximum happens when <span class="math notranslate nohighlight">\(y\)</span> is close to <span class="math notranslate nohighlight">\(2\)</span>),
+so <span class="math notranslate nohighlight">\(2y \sum_{m \gt y} m^{-2} \le 2y[m]^{-1} \le 4\)</span>.</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(0 \le y \lt 1\)</span>, <span class="math notranslate nohighlight">\(2y \sum_{m \gt y} m^{-2} \le 2 \Big( 1+ \sum_{m=2}^{\infty} m^{-2} \Big) \le 4\)</span>.</p></li>
+</ul>
+<p>Now we concluded <span class="math notranslate nohighlight">\(2y \sum_{m=1}^{\infty} {m^{-2}}\mathbf{1}_{(y \lt m)} = 2y \sum_{m \gt y}^{\infty} {m^{-2}} \lt 4\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sum_{m=1}^{\infty} \frac{var(Y_m)}{m^2} &amp;\le \int_{0}^{\infty} \Big(2y \sum_{m=1}^{\infty} {m^{-2}}\mathbf{1}_{(y \lt m)}\Big) P(X_1 \gt y) \\
+&amp;= \int_{0}^{\infty} \Big(2y \sum_{m \gt y}^{\infty} {m^{-2}}\Big) P(X_1 \gt y) \\
+&amp;\le 4\int_{0}^{\infty} P(X_1 \gt y) \\
+&amp;\le 4E(X_1)
+\end{align}
+\end{split}\]</div>
+<p>Back to our original inequalities:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sum_{n=1}^\infty {P(\big|S_{k(n)}^* - E[S_{k(n)}^*]\big| \gt \epsilon{k(n)})} &amp;\le \epsilon^{-2} 4 (1-\alpha^{-2})^{-1} \sum_{m=1}^{\infty} \frac{var(Y_m)}{m^2} \\
+&amp;\le \epsilon^{-2} 4 (1-\alpha^{-2})^{-1} 4 E[X_1] \lt \infty
+\end{align}
+\end{split}\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+<div class="section" id="weak-law-of-large-numbers">
+<h2>Weak law of large numbers<a class="headerlink" href="#weak-law-of-large-numbers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theorem">
+<h3>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(P(\liminf{A_n}) \le \liminf{P(A_n)} \le \limsup{P(A_n)} \le P(\limsup{A_n})\)</span></p>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(B_n= \bigcap\limits_{k=n}^{\infty}A_k\)</span>. <span class="math notranslate nohighlight">\(B_n \subset A_m\)</span> for all <span class="math notranslate nohighlight">\(n,m\)</span>, <span class="math notranslate nohighlight">\(P(B_n) \le P(A_m)\)</span>. <span class="math notranslate nohighlight">\(B_n \uparrow \liminf{A_m}\)</span> indicates <span class="math notranslate nohighlight">\(P(B_n) \uparrow P(\liminf{A_n}) \le \liminf{P(A_n)}\)</span>. Similarly, Let <span class="math notranslate nohighlight">\(C_n= \bigcup\limits_{k=n}^{\infty}A_k\)</span> we can derive <span class="math notranslate nohighlight">\(\limsup{P(A_n)} \le P(\limsup{A_n})\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="theorem-weak-law-of-large-numbers">
+<h3>Theorem: Weak law of large numbers<a class="headerlink" href="#theorem-weak-law-of-large-numbers" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X_1,X_2...\)</span> be pairwise indepedent, identically distributed r.v. with <span class="math notranslate nohighlight">\(E|X_k| \lt \infty\)</span>. Let <span class="math notranslate nohighlight">\(EX_k=\mu\)</span>, <span class="math notranslate nohighlight">\(S_n=\sum_{k=1}^nX_k\)</span>, then <span class="math notranslate nohighlight">\(\frac{S_n}{n} \rightarrow \mu\)</span> in probability as <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>.</p>
+<p><em>Proof:</em> <span class="math notranslate nohighlight">\(\frac{S_n}{n} \to \mu\)</span> a.s. is equivalent to <span class="math notranslate nohighlight">\(\forall\epsilon \gt 0\)</span>, <span class="math notranslate nohighlight">\(P(\big|\frac{S_n}{n} - \mu\big| \gt \epsilon \text{ i.o}) = P(\limsup\big[\big|\frac{S_n}{n} - \mu\big| \gt \epsilon\big]) = 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(0\le \liminf\limits_{n\to\infty}P(\big| \frac{S_n}{n}-\mu\big| \gt \epsilon) \le \limsup\limits_{n\to\infty}P(\big| \frac{S_n}{n}-\mu\big| \gt \epsilon) \le P(\limsup\big[\big|\frac{S_n}{n} - \mu\big| \gt \epsilon\big]) = 0\)</span>, therefore <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty}P(\big| \frac{S_n}{n}-\mu\big| \gt \epsilon) = 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p>Conclusion: Strong law of large number guarantees weak law of large numbers.</p>
+</div>
+</div>
+<div class="section" id="tail-sigma-field">
+<h2>Tail sigma field<a class="headerlink" href="#tail-sigma-field" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definitions">
+<h3>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Let <span class="math notranslate nohighlight">\(\mathcal{G}_{n}^{\infty} = \sigma(X_n,X_{n+1},...)\)</span> the smallest sigma field to which all <span class="math notranslate nohighlight">\(X_m\)</span>, <span class="math notranslate nohighlight">\(m \le n\)</span> are measurable. <span class="math notranslate nohighlight">\(\sigma(X_n,X_{n+1},...)\)</span> is equivalent to <span class="math notranslate nohighlight">\(\sigma(\sigma(X_n),\sigma(X_{n+1}),...)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{T} = \cap_{n=1}^{\infty}\mathcal{G}_{n}^{\infty}\)</span>. The smallest sigma field that <span class="math notranslate nohighlight">\(X_n,X_{n+1},...\)</span> are measurable for any number <span class="math notranslate nohighlight">\(n\)</span>. <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> is called the <strong>tail <span class="math notranslate nohighlight">\(\sigma\)</span>-field</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="examples-of-tail-sigma-field">
+<h3>Examples of Tail <span class="math notranslate nohighlight">\(\sigma\)</span>-field<a class="headerlink" href="#examples-of-tail-sigma-field" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E=[X_n \lt a \text{ i.o.}] \in \mathcal{T}\)</span>:</p>
+<p>If <span class="math notranslate nohighlight">\(E\)</span> belongs to <span class="math notranslate nohighlight">\(\mathcal{T}\)</span>, then <span class="math notranslate nohighlight">\(E\)</span> must belongs to every <span class="math notranslate nohighlight">\(\sigma(X_n, X_{n+1},...)\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>, which is true because: <span class="math notranslate nohighlight">\(E = \cap_{m=1}^{\infty}\cup_{n=m}^{\infty}\{X_n \lt a\}\)</span>. If we let <span class="math notranslate nohighlight">\(A_m = \cup_{n=m}^{\infty}\{X_n \lt a\}\)</span>. For any fixed <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(A_m \in \sigma(X_k, X_{k+1},...)\)</span> for any <span class="math notranslate nohighlight">\(1 \le k \le m\)</span>. Since <span class="math notranslate nohighlight">\(A_m\)</span> is a decreasing set, and <span class="math notranslate nohighlight">\(E = \lim_{m\to\infty}A_m\)</span>, we have <span class="math notranslate nohighlight">\(E \in \sigma(X_k, X_{k+1},...)\)</span> for all <span class="math notranslate nohighlight">\(k \in \mathbf{N}^{+}\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(E^c=[X_n \ge a \text{ e.a.}] \in \mathcal{T}\)</span>:</p>
+<p>Since its a complement of <span class="math notranslate nohighlight">\(\text[X_n \lt a \text{ i.o}]\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(E = [\lim_{n\to\infty}S_n \text{ converges}] \in \mathcal{T}\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\lim{S_n(\omega)}\)</span> converges iff <span class="math notranslate nohighlight">\(\limsup{S_n(\omega)} = \liminf{S_n(\omega)}\)</span>, or, for every <span class="math notranslate nohighlight">\(\epsilon\)</span> there exist an <span class="math notranslate nohighlight">\(N\)</span> s.t. for all <span class="math notranslate nohighlight">\(n \ge N\)</span>, <span class="math notranslate nohighlight">\(|\sup_{m \ge n}S_m(\omega) - \inf_{m \ge n}{S_m(\omega)}| \lt \epsilon\)</span>.</p>
+<p>If we iterate the <span class="math notranslate nohighlight">\(\epsilon\)</span> using rational numbers, then <span class="math notranslate nohighlight">\(E\)</span> is equivalent to <span class="math notranslate nohighlight">\(E = \bigcap\limits_{\epsilon \in \mathbf{Q}}\bigcup\limits_{N=1}^{\infty}\bigcap\limits_{n=N}^{\infty}\big[\omega: |\sup_{m \ge n}S_m(\omega) - \inf_{m \ge n}S_m(\omega)| \lt \epsilon\big]\)</span> which is a countable intersection of infinitly often events that belongs to the tail <span class="math notranslate nohighlight">\(\sigma\)</span>-field.</p>
+<p>Why <span class="math notranslate nohighlight">\(\bigcup\limits_{N=1}^{\infty}\bigcap\limits_{n=N}^{\infty}\big[\omega: \big|\sup_{m \ge n}S_m(\omega) - \inf_{m \ge n}S_m(\omega)\big| \lt \epsilon\big] \in \mathcal{T}\)</span>? Because <span class="math notranslate nohighlight">\(\big[\omega: \big|\sup_{m \ge n}S_m(\omega) - \inf_{m \ge n}S_m(\omega)\big| \lt \epsilon\big] = \big[\omega: \big|\sup\limits_{m \ge n}\sum_{i=n}^{m}X_{i}(\omega) - \inf\limits_{m \ge n}\sum_{i=n}^{m}X_{i}(\omega)\big| \lt \epsilon\big] \in \sigma(X_n,X_{n+1},...)\)</span>.</p>
+<p>In the mean time, <span class="math notranslate nohighlight">\(E^c = [\lim_{n\to\infty}S_n \text{ diverges}] \in \mathcal{T}\)</span></p>
+</li>
+</ul>
+<p>One rule of thumb to check if <span class="math notranslate nohighlight">\(E\)</span> is in the tail <span class="math notranslate nohighlight">\(\sigma\)</span>-field is to check if removing finte number of <span class="math notranslate nohighlight">\(X_{k_1},...,X_{k_m}\)</span> would change the occurence of the event. For example, for any <span class="math notranslate nohighlight">\(\omega \in E\)</span>, does the event still occurs if <span class="math notranslate nohighlight">\(X_{k_1},...,X_{k_m}\)</span> are removed from the <span class="math notranslate nohighlight">\(S_n\)</span>.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E = [\limsup_{n\to\infty}S_{1}^{n} \gt 0 ] \notin \mathcal{T}\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(S_m^n \equiv \sum_{k=m}^{n} X_k\)</span>. Let <span class="math notranslate nohighlight">\(A,B \in \mathcal{R}\)</span> disjoint and <span class="math notranslate nohighlight">\(A \cup B \neq \Omega\)</span>. Let <span class="math notranslate nohighlight">\(X_1 = \mathbf{1}_{A}\)</span>, <span class="math notranslate nohighlight">\(X_n = \mathbf{1}_{B}\)</span> for <span class="math notranslate nohighlight">\(n \ge 2\)</span>. Therefore <span class="math notranslate nohighlight">\(E = A \cup B\)</span>. For any <span class="math notranslate nohighlight">\(\omega \in A\)</span> we have <span class="math notranslate nohighlight">\(\limsup{S_{1}^{n}} = 1 \gt 0\)</span>, but <span class="math notranslate nohighlight">\(\limsup{S_k^{n}} = 0\)</span> for all <span class="math notranslate nohighlight">\(k \gt 1\)</span>, which indicates <span class="math notranslate nohighlight">\(E \not\in \sigma(X_k, X_{k+1},...) = \sigma(B)\)</span> for all <span class="math notranslate nohighlight">\(k \gt 1\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(E = [\liminf_{n\to\infty}S_{1}^{n} &gt; 0 ] \notin \mathcal{T}\)</span>: Same reasoning.</p></li>
+<li><p><span class="math notranslate nohighlight">\(E = [\limsup_{n\to\infty}S_{1}^{n} = c ] \notin \mathcal{T}\)</span> for some constant <span class="math notranslate nohighlight">\(c\)</span>: Same reasoning.</p></li>
+<li><p><span class="math notranslate nohighlight">\(E = [\liminf_{n\to\infty}S_{1}^{n} = c ] \notin \mathcal{T}\)</span> for some constant <span class="math notranslate nohighlight">\(c\)</span>: Same reasoning.</p></li>
+</ul>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E = [\lim_{n\to\infty}{\frac{S_{1}^{n}}{n}} = c] \in \mathcal{T}\)</span> for some constant <span class="math notranslate nohighlight">\(c\)</span>:</p>
+<p>For any <span class="math notranslate nohighlight">\(\epsilon \in E\)</span>, <span class="math notranslate nohighlight">\(\lim_{n\to\infty}{\frac{S_{1}^{n}}{n}} = c\)</span> is equivalent to <span class="math notranslate nohighlight">\(\lim_{n\to\infty}{\frac{S_{1}^{K-1}}{n}}+\lim_{n\to\infty}{\frac{S_{K}^{n}}{n}} = c\)</span> for any fix <span class="math notranslate nohighlight">\(K\)</span>. Therefore <span class="math notranslate nohighlight">\(E \in \sigma(X_K, X_{K+1},...)\)</span> for any <span class="math notranslate nohighlight">\(K\)</span>. We have <span class="math notranslate nohighlight">\(E \in \mathcal{T}\)</span>.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(E = [\lim_{n\to\infty}{\frac{S_{1}^{n}}{b_n}} = c] \in \mathcal{T}\)</span> for some constant <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(b_n \to \infty\)</span>: Same reasoning as above.</p></li>
+<li><p><span class="math notranslate nohighlight">\(E = [\lim_{n\to\infty}{\frac{S_{1}^{n}}{b_n}} &lt; c] \in \mathcal{T}\)</span> for some constant <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(b_n \to \infty\)</span>: Same reasoning as above.</p></li>
+</ul>
+<p>What tail <span class="math notranslate nohighlight">\(\sigma\)</span>-field event telling us is that, it does not depends on the finite number of sigma-fields. Removing or changing finite number of random variables does not affect the occurence of the event.</p>
+</div>
+</div>
+<div class="section" id="independence-of-sigma-fields">
+<h2>Independence of Sigma fields<a class="headerlink" href="#independence-of-sigma-fields" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Definitions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Sigma fields <span class="math notranslate nohighlight">\(\mathcal{F_1}, \mathcal{F_2},...,\mathcal{F_n}\)</span>  are independent iff for any <span class="math notranslate nohighlight">\(A_i \in \mathcal{F_i}\)</span> we have <span class="math notranslate nohighlight">\(P(\cap_{i=1}^nA_i) = \prod_{i=1}^{n}P(A_i)\)</span>.</p></li>
+<li><p>Random variables <span class="math notranslate nohighlight">\(X_1, ..., X_n\)</span> are independent iff for any <span class="math notranslate nohighlight">\(B_i \in \mathcal{R}\)</span> we have <span class="math notranslate nohighlight">\(P(\cap_{i=1}^n\{X_i \in B_i\}) = \prod_{i=1}^{n}P(X_i \in B_i)\)</span></p></li>
+<li><p>We say <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> is a <strong><span class="math notranslate nohighlight">\(\pi\)</span>-system</strong> if it’s closed under intersection. i.e. If <span class="math notranslate nohighlight">\(A,B \in \mathcal{A}\)</span> then <span class="math notranslate nohighlight">\(A \cap B \in \mathcal{A}\)</span>.</p></li>
+<li><p>We say <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is a <strong><span class="math notranslate nohighlight">\(\lambda\)</span>-system</strong> if</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Omega \in \mathcal{L}\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A,B \in \mathcal{L}\)</span> and <span class="math notranslate nohighlight">\(A \subset B\)</span> then <span class="math notranslate nohighlight">\(B-A \in \mathcal{L}\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A_n \in \mathcal{L}\)</span> and <span class="math notranslate nohighlight">\(A_n \uparrow A\)</span> then <span class="math notranslate nohighlight">\(A \in \mathcal{L}\)</span></p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="independent-pi-system-theorem">
+<h3>Independent <span class="math notranslate nohighlight">\(\pi\)</span>-system Theorem<a class="headerlink" href="#independent-pi-system-theorem" title="Permalink to this headline">¶</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(\mathcal{A_1},...,\mathcal{A_n}\)</span> are indepdent <span class="math notranslate nohighlight">\(\pi\)</span>-systems. Then <span class="math notranslate nohighlight">\(\sigma(\mathcal{A_1}), ..., \sigma(\mathcal{A_n})\)</span> are independent.</p>
+</div>
+<div class="section" id="corollary">
+<h3>Corollary<a class="headerlink" href="#corollary" title="Permalink to this headline">¶</a></h3>
+<p>If for all <span class="math notranslate nohighlight">\(x_1,...,x_n \in (-\infty, \infty]\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+P(X_1\le x_1,...,X_n\le x_n) = \prod_{i=1}^{n}P(X_i\le x_i)
+\]</div>
+<p>Then <span class="math notranslate nohighlight">\(X_1,...,X_n\)</span> are independent.</p>
+<p><em>Proof:</em></p>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{A}_i = \{ X_i \le r_{X_i} : r_{X_i} \in \mathbf{R}\}\)</span>. <span class="math notranslate nohighlight">\(A,B \in \mathcal{A}_i\)</span> indicates <span class="math notranslate nohighlight">\(A\cap B \in \mathcal{A}_i\)</span>, so <span class="math notranslate nohighlight">\(\mathcal{A}_i\)</span> is a <span class="math notranslate nohighlight">\(\pi\)</span>-system. <span class="math notranslate nohighlight">\(\sigma(\mathcal{A}_i) = \sigma(X_i)\)</span>, by the theorem above, we have <span class="math notranslate nohighlight">\(X_1,...,X_n\)</span> are independent.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id2">
+<h3>Corollary<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(\mathcal{F_{ij}}\)</span>, <span class="math notranslate nohighlight">\(1\le i \le n\)</span>, <span class="math notranslate nohighlight">\(1, \le j \le m(i)\)</span> are independent. Let <span class="math notranslate nohighlight">\(\mathcal{G_i} = \sigma(\cup_{j}F_{i,j})\)</span>, then <span class="math notranslate nohighlight">\(\mathcal{G_1},...,\mathcal{G_n}\)</span> are independent.</p>
+<p><em>Proof:</em></p>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{A_i}\)</span> be the collection of the form <span class="math notranslate nohighlight">\(\cap_j A_{ij}\)</span> where <span class="math notranslate nohighlight">\(A_{ij} \in \mathcal{F_{ij}}\)</span>. <span class="math notranslate nohighlight">\(\mathcal{A_i}\)</span> is a <span class="math notranslate nohighlight">\(\pi\)</span>-system that contains <span class="math notranslate nohighlight">\(\Omega\)</span> and contains <span class="math notranslate nohighlight">\(\cup_j\mathcal{F_{ij}}\)</span> (Choose one and only one j that is not <span class="math notranslate nohighlight">\(\Omega\)</span> and let others all be <span class="math notranslate nohighlight">\(\Omega\)</span>, this indicates that every set in <span class="math notranslate nohighlight">\(F_{ij}\)</span> belongs to <span class="math notranslate nohighlight">\(\mathcal{A_i}\)</span> for all <span class="math notranslate nohighlight">\(\mathcal{F_{ij}}\)</span>), so Independent <span class="math notranslate nohighlight">\(\pi\)</span>-system theorem implies <span class="math notranslate nohighlight">\(\sigma(\mathcal{A_i}) = \sigma(\cup_{j}F_{i,j})\)</span> are independent.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id3">
+<h3>Corollary<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(X_{ij}\)</span>, <span class="math notranslate nohighlight">\(1 \le i \le n\)</span>, <span class="math notranslate nohighlight">\(1 \le j \le m(i)\)</span> are independent. Let <span class="math notranslate nohighlight">\(f_i:\mathbf{R}^{m(i)} \to \mathbf{R}\)</span>  are measurable functions, then <span class="math notranslate nohighlight">\(f_i(X_{1,1},...,X_{1,m(i)})\)</span> are independent.</p>
+<p><em>Proof:</em></p>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{F_{ij}} = \sigma(X_{ij})\)</span>, <span class="math notranslate nohighlight">\(\mathcal{G_i} = \sigma(\cup_{j}\mathcal{F_{ij}})\)</span>. Since <span class="math notranslate nohighlight">\(f_i(X_{i,1},...,X_{i,m(i)}) \in \mathcal{G_i}\)</span>, the result follows from corrollary above.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+<div class="section" id="laws">
+<h2>0-1 laws<a class="headerlink" href="#laws" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theorem-kolmogorov-s-0-1-law">
+<h3>Theorem Kolmogorov’s 0-1 law<a class="headerlink" href="#theorem-kolmogorov-s-0-1-law" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X_1, X_2,...\)</span> are indepdent and <span class="math notranslate nohighlight">\(A\in\mathcal{T}\)</span> then <span class="math notranslate nohighlight">\(P(A) = 0\)</span> or <span class="math notranslate nohighlight">\(P(A) = 1\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>The idea is to prove that <span class="math notranslate nohighlight">\(A\)</span> is indepdent of itself. By then, we get <span class="math notranslate nohighlight">\(P(A \cap A) = P(A)^2\)</span>, hence <span class="math notranslate nohighlight">\(P(A) = 0\)</span> or <span class="math notranslate nohighlight">\(P(A) = 1\)</span>.</p>
+<p>Note that <span class="math notranslate nohighlight">\(\sigma(X_1,...,X_k)\)</span> and <span class="math notranslate nohighlight">\(\sigma(X_{k+1},...)\)</span> are indepdent, and <span class="math notranslate nohighlight">\(\mathcal{T} \subset \sigma(X_{k+1},...)\)</span> for all <span class="math notranslate nohighlight">\(k\)</span>. Therefore, <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> and <span class="math notranslate nohighlight">\(\sigma(X_1,...,X_k)\)</span> are indepdent for all <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\sigma(X_1,X_2,...) \subset \sigma(\cup_k\sigma(X_1,...,X_k))\)</span> and <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> are indepdent.</p>
+<p>Since <span class="math notranslate nohighlight">\(\mathcal{T} \subset \sigma(X_1, X_2,...)\)</span>, if <span class="math notranslate nohighlight">\(A \in \mathcal{T}\)</span>, <span class="math notranslate nohighlight">\(A\)</span> also <span class="math notranslate nohighlight">\(A\in \sigma(X_1, X_2,...)\)</span>. So we concluded <span class="math notranslate nohighlight">\(A\)</span> is indepedent of itself.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="probability-measure.html" title="previous page">Probability Measure</a>
+    <a class='right-next' id="next-link" href="characteristic-function.html" title="next page">Characteristic Function</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

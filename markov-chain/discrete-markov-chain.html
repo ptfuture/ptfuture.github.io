@@ -1,0 +1,952 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discrete Time Markov Chain &#8212; Markov Chain</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Markov Chain Monte Carlo" href="mcmc.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Markov Chain</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Discrete Time Markov Chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mcmc.html">
+   Markov Chain Monte Carlo
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/discrete-markov-chain.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chapman-komogorov-equantions">
+   Chapman-Komogorov Equantions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-state">
+   Finite State
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classification-of-states">
+   Classification of States
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recurrent-state-transient-state">
+     Recurrent state/Transient state
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-borel-cantelli-s-result">
+     Theorem (Borel-Cantelli’s result)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stationary-distribution">
+   Stationary Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#existence-of-stationary-distribution">
+     Existence of Stationary Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uniqueness-of-stationary-distribution">
+   Uniqueness of Stationary Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#corollary">
+     Corollary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotic-behavior">
+   Asymptotic Behavior
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proposition">
+     Proposition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lemma">
+     Lemma
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     Lemma
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-reversible-markov-chain">
+   Time-Reversible Markov Chain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hidden-markov-chain-intro">
+   Hidden Markov Chain Intro
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="discrete-time-markov-chain">
+<h1>Discrete Time Markov Chain<a class="headerlink" href="#discrete-time-markov-chain" title="Permalink to this headline">¶</a></h1>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/8WHj9rFvYYU">https://youtu.be/8WHj9rFvYYU</a></strong></p>
+<p>Consider a stochastic process <span class="math notranslate nohighlight">\(\{ X_n, n = 0, 1, 2,...\}\)</span> that takes finite or countable number of possible values.</p>
+<p>If <span class="math notranslate nohighlight">\(X_n=i\)</span> we say the process is in state i at time n. We suppose that when the process is in state i, the probability that the process will enter state <span class="math notranslate nohighlight">\(j\)</span> is <span class="math notranslate nohighlight">\(\boldsymbol{P}_{ij}\)</span>.</p>
+<p>Define the discrete time markov chain as:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X_{n+1} = j | X_n = i, X_{n-1} = i_{n-1}, ..., X_1 = i_1, X_0 = i_0) = P(X_{n+1} = j | X_n = i) = \boldsymbol{P}_{ij}
+\]</div>
+<p>Markov chain is a <strong>Memoryless Process</strong>.</p>
+<div class="section" id="chapman-komogorov-equantions">
+<h2>Chapman-Komogorov Equantions<a class="headerlink" href="#chapman-komogorov-equantions" title="Permalink to this headline">¶</a></h2>
+<p>Chapman-Komogorov Equantions provides a method for computing the n-step transition probabilities <span class="math notranslate nohighlight">\(\boldsymbol{P}_{ij}^n\)</span></p>
+<p>Define <span class="math notranslate nohighlight">\(P_{ij}^n\)</span> be the probability that a process in state <span class="math notranslate nohighlight">\(i\)</span> will be in state <span class="math notranslate nohighlight">\(j\)</span> after n transitions.</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{P}_{ij}^n = P(X_{n+k} = j | X_{k} = i), \qquad n \ge 0
+\]</div>
+<p><strong>Chapman-Komogorov Equantions</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \displaystyle \boldsymbol{P}_{ij}^{n+m} &amp;= P(X_{n+m} = j|X_0=i) \\
+      &amp;= \sum_{k=0}^\infty{P(X_{n+m}=j,X_n=k|X_0=i)} \\
+      &amp;= \sum_{k=0}^\infty{P(X_{n+m}=j|X_n=k,X_0=i)P(X_n=k|X_0=i)} \\
+      &amp;= \sum_{k=0}^{\infty} \boldsymbol{P}_{ik}^n \boldsymbol{P}_{kj}^m
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="section" id="finite-state">
+<h2>Finite State<a class="headerlink" href="#finite-state" title="Permalink to this headline">¶</a></h2>
+<p>Finate state markov chain: <span class="math notranslate nohighlight">\(X_n\)</span> could only be one of the finite number of states.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \boldsymbol{P} = \begin{bmatrix}
+    p_{11} &amp; p_{12} &amp; p_{13} &amp; p_{14} \\
+    p_{21} &amp; p_{22} &amp; p_{23} &amp; p_{24} \\
+    ... ... \\
+    p_{41} &amp; p_{42} &amp; p_{43} &amp; p_{44} \\
+  \end{bmatrix}
+\end{aligned}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\displaystyle \sum_{k=1}^n{p_{ik}} = 1, \forall i \in (1,...,n)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{P^{n+m}} = \boldsymbol{P}^n\boldsymbol{P}^m\)</span>, therefore, <span class="math notranslate nohighlight">\(\boldsymbol{P}_{ij}^{n+m} = (\boldsymbol{P}^n\boldsymbol{P}^m)_{ij}\)</span></p>
+</div>
+<div class="section" id="classification-of-states">
+<h2>Classification of States<a class="headerlink" href="#classification-of-states" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/kZEosBNtXwQ">https://youtu.be/kZEosBNtXwQ</a></strong></p>
+<ul class="simple">
+<li><p>State <span class="math notranslate nohighlight">\(j\)</span> is <strong>accessible</strong> from state <span class="math notranslate nohighlight">\(i\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol{P}_{ij}^n \gt 0\)</span> for some <span class="math notranslate nohighlight">\(n \ge 0\)</span>. We write it as <span class="math notranslate nohighlight">\(i \rightarrow j\)</span>.</p></li>
+<li><p>If state <span class="math notranslate nohighlight">\(i\)</span> and state <span class="math notranslate nohighlight">\(j\)</span> are said to <strong>communicate</strong> if <span class="math notranslate nohighlight">\(\boldsymbol{P}_{ij}^n \gt 0\)</span> for some <span class="math notranslate nohighlight">\(n \ge 0\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{P}_{ji}^m \gt 0\)</span> for some <span class="math notranslate nohighlight">\(m \ge 0\)</span>. We write it as <span class="math notranslate nohighlight">\(i \leftrightarrow j\)</span>.</p></li>
+<li><p>Any state communicates with itself, because <span class="math notranslate nohighlight">\(\boldsymbol{P}_{ii}^0 = P(X_0=i|X_0=i) = 1\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(i \to j\)</span> and <span class="math notranslate nohighlight">\(j \to k\)</span>, then <span class="math notranslate nohighlight">\(i \leftrightarrow k\)</span>, because <span class="math notranslate nohighlight">\(\boldsymbol{P}_{ik}^{n+m} = \sum_{d=0}^{\infty} \boldsymbol{P}_{id}^n \boldsymbol{P}_{dk}^m \ge \boldsymbol{P}_{ij}^n\boldsymbol{P}_{jk}^m \gt 0\)</span> for some <span class="math notranslate nohighlight">\(n \ge 0\)</span> amd <span class="math notranslate nohighlight">\(m \ge0\)</span>.</p></li>
+<li><p>Communicattion divides the state space into separate <strong>classes</strong>.</p></li>
+<li><p>The Markov chain is said to be <strong>irreducible</strong> if all states belongs to one class. That is all states communicates with each other.</p></li>
+<li><p>State <span class="math notranslate nohighlight">\(j\)</span> called <strong>absorbing state</strong> if once entered can never leave.
+$<span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+  1 &amp; 0 &amp; 0 \\
+  1/3 &amp; 1/3 &amp; 1/3 \\
+  1/4 &amp; 1/4 &amp; 1/2
+\end{bmatrix}
+\)</span>$</p></li>
+</ul>
+<div class="section" id="recurrent-state-transient-state">
+<h3>Recurrent state/Transient state<a class="headerlink" href="#recurrent-state-transient-state" title="Permalink to this headline">¶</a></h3>
+<p>Define an identity random variable:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{1}_{(X_n = j)} = \begin{cases}
+  1, &amp; \text{if } X_n = j \\
+  0, &amp; \text{if } X_n \ne j
+\end{cases}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n \ge 0\)</span>.</p>
+<p>Define <span class="math notranslate nohighlight">\(P_i\)</span> as the probability measure given intial state is <span class="math notranslate nohighlight">\(i\)</span>. That is</p>
+<div class="math notranslate nohighlight">
+\[
+P_i(X_n = j) = P(X_n = j | X_0 = i)
+\]</div>
+<p>Define <span class="math notranslate nohighlight">\(T_j^m\)</span> be the number of transition needed for the process to reenter state <span class="math notranslate nohighlight">\(j\)</span> exactly <span class="math notranslate nohighlight">\(m\)</span> times:</p>
+<div class="math notranslate nohighlight">
+\[
+T_{j}^m = \inf\{n \ge 1; \mathbf{1}_{(X_1=j)} + \mathbf{1}_{(X_2=j)} + \mathbf{1}_{(X_3=j)} +,...+ \mathbf{1}_{(X_n=j)} = m\}
+\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\rho_{ij} = P_i(T_j  \lt \infty)\)</span> is the probability that the process firstly visits state <span class="math notranslate nohighlight">\(j\)</span> in finitely many transitions.</p>
+<p>By the bayes chain rule and markov memoryless property, we can derive the probability that the process visits state <span class="math notranslate nohighlight">\(j\)</span> for <span class="math notranslate nohighlight">\(m\)</span> times in finitely many transitions. Which is the probability of transition from state <span class="math notranslate nohighlight">\(i\)</span> to state <span class="math notranslate nohighlight">\(j\)</span> for the first time multiplies the probability of re-visiting state <span class="math notranslate nohighlight">\(j\)</span> for <span class="math notranslate nohighlight">\(m-1\)</span> times.
+$<span class="math notranslate nohighlight">\(
+P_i(T_j^m \lt \infty) = \rho_{ij}\rho_{jj}^{m-1}  \tag{1}
+\)</span>$</p>
+<p>We say <span class="math notranslate nohighlight">\(j\)</span> is <strong>recurrent</strong> if <span class="math notranslate nohighlight">\(\rho_{jj} = 1\)</span>. If state <span class="math notranslate nohighlight">\(j\)</span> is recurrent then, starting in state <span class="math notranslate nohighlight">\(j\)</span>, the process will reenter state <span class="math notranslate nohighlight">\(j\)</span> infinitely often.</p>
+<p>We say <span class="math notranslate nohighlight">\(j\)</span> is <strong>transient</strong> if <span class="math notranslate nohighlight">\(\rho_{jj} \lt 1\)</span>. That is there’s chance <span class="math notranslate nohighlight">\(1-\rho_{jj}\)</span> that the process will never return to state <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>Define <span class="math notranslate nohighlight">\(N_j\)</span> as the number of times the process reenters state <span class="math notranslate nohighlight">\(j\)</span>. <span class="math notranslate nohighlight">\(\displaystyle N_j=\sum_{n=1}^{\infty}{\mathbf{1}_{(X_n=j)}}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \displaystyle E_i[N_j] &amp;= \sum_{n=1}^{\infty} nP_i(N_j = n) = \sum_{n=1}^{\infty} \sum_{m=1}^n P_i(N_j = n) = \sum_{m=1}^{\infty} \sum_{n=m}^{\infty} P_i(N_j = n) \\
+    &amp;= \sum_{m=1}^{\infty} P_i(N_j \ge m) = \sum_{m=1}^{\infty} (1 - P_i(N_j \le m-1)) \\
+    &amp;= \sum_{m=1}^{\infty} (1- P_i(T_j^m = \infty)) = \sum_{m=1}^{\infty} P_i(T_j^m \lt \infty) \\
+    &amp; = \sum_{m=1}^{\infty} \rho_{ij}\rho_{jj}^{m-1} = \frac{\rho_{ij}}{1-\rho_{jj}}
+\end{aligned}
+\end{split}\]</div>
+<p>Alternative approach:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  E_i[N_j] &amp;= E_i[\sum_{n=1}^{\infty}{\mathbf{1}_{(X_n=j)}}] = \sum_{n=1}^{\infty} E_i[\mathbf{1}_{(X_n=j)}] = \sum_{n=1}^{\infty} [1 \times P_i(\mathbf{1}_{n} = 1) + 0 \times P_i(\mathbf{1}_{n} = 0)] \\
+    &amp;= \sum_{n=1}^{\infty} P(X_n=j | X_0=i) \\
+    &amp; = \sum_{n=1}^{\infty} \boldsymbol{P}_{ij}^n
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle E_i[N_j] = \frac{\rho_{ij}}{1-\rho_{jj}} = \sum_{n=1}^{\infty} \boldsymbol{P}_{ij}^n \qquad \tag{2}
+\]</div>
+<p>If we let <span class="math notranslate nohighlight">\(i\)</span> be the same as <span class="math notranslate nohighlight">\(j\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle E_j[N_j] = \frac{\rho_{jj}}{1-\rho_{jj}} = \sum_{n=1}^{\infty} \boldsymbol{P}_{jj}^n \quad \tag{3}
+\]</div>
+<p>If a process is 100% sure to return back to its origin state, then the average of times of returns is infinite. If a process is not 100% sure to return to its origin, then the average of times of returns is finite.</p>
+</div>
+<div class="section" id="theorem">
+<h3>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">¶</a></h3>
+<p>State <span class="math notranslate nohighlight">\(j\)</span> is recurrent iff <span class="math notranslate nohighlight">\(E_j[N_j] = \sum_{n=1}^{\infty} \boldsymbol{P}_{jj}^n = \infty\)</span>
+State <span class="math notranslate nohighlight">\(j\)</span> is transient iff <span class="math notranslate nohighlight">\(E_j[N_j] = \sum_{n=1}^{\infty} \boldsymbol{P}_{jj}^n \lt \infty\)</span>.</p>
+<p>Proof:
+<strong>(First approach)</strong>
+Theorem already proved by equation (2).</p>
+<p><strong>(Second approach)</strong>
+<span class="math notranslate nohighlight">\(N_j\)</span> is actually a geometric random variable with <span class="math notranslate nohighlight">\(\rho_{jj} = P_j(T_j \lt \infty)\)</span> the probability that the process ever reenters state <span class="math notranslate nohighlight">\(j\)</span>. For exactly n times the process reenters state <span class="math notranslate nohighlight">\(i\)</span>, the probability equals to <span class="math notranslate nohighlight">\(\rho_{jj}^{n}(1-\rho_{jj})\)</span>. So the expected value of a geometric random variable is <span class="math notranslate nohighlight">\(E[N_i] = \frac{\rho_{jj}}{1-\rho_{jj}}\)</span>. When <span class="math notranslate nohighlight">\(j\)</span> is reccurent we have <span class="math notranslate nohighlight">\(E_j[N_j] = \infty\)</span> and when <span class="math notranslate nohighlight">\(j\)</span> is transient <span class="math notranslate nohighlight">\(E_j[N_j] \lt \infty\)</span></p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id1">
+<h3>Theorem<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>If state <span class="math notranslate nohighlight">\(i\)</span> is recurrent and <span class="math notranslate nohighlight">\(i\leftrightarrow{j}\)</span>, then state <span class="math notranslate nohighlight">\(j\)</span> is recurrent.
+If state <span class="math notranslate nohighlight">\(i\)</span> is transient and <span class="math notranslate nohighlight">\(i\leftrightarrow{j}\)</span>, then state <span class="math notranslate nohighlight">\(j\)</span> is transient.</p>
+<p>Proof:</p>
+<p><span class="math notranslate nohighlight">\(P_{ii}^{k+n+s} \ge P_{ij}^k P_{jj}^n P_{ji}^s\)</span>, Therefore, <span class="math notranslate nohighlight">\(i\)</span> is transient indicates <span class="math notranslate nohighlight">\(\infty \gt \sum{P_{ii}^{k+n+s}} \ge P_{ij}^k P_{ji}^s \sum{P_{jj}^n}\)</span>. Same logic applies for recurrent.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="theorem-borel-cantelli-s-result">
+<h3>Theorem (Borel-Cantelli’s result)<a class="headerlink" href="#theorem-borel-cantelli-s-result" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(P(X_n = j \quad \text{i.o.}) = 1\)</span> iff <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty} \boldsymbol{P}_{jj}^n = \infty\)</span>
+<span class="math notranslate nohighlight">\(P(X_n = j \quad \text{i.o.}) = 0\)</span> iff <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty} \boldsymbol{P}_{jj}^n \lt \infty\)</span></p>
+</div>
+</div>
+<div class="section" id="stationary-distribution">
+<h2>Stationary Distribution<a class="headerlink" href="#stationary-distribution" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/_F4jk_9tyAA">https://youtu.be/_F4jk_9tyAA</a></strong></p>
+<div class="section" id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+<div class="uk-box-shadow-small uk-padding-small uk-background-muted">
+<p>A discrete time markov chain <span class="math notranslate nohighlight">\(\{ X_n; n \ge 0\}\)</span> is said <strong>stationary</strong> or <strong>stationary in time</strong> if for any time points <span class="math notranslate nohighlight">\(n_1, n_2, ...n_k\)</span> and any <span class="math notranslate nohighlight">\(t \ge 0\)</span>, The join distribution of <span class="math notranslate nohighlight">\((X_{n_1}, X_{n_2},...,X_{n_k})\)</span> is the same as <span class="math notranslate nohighlight">\((X_{n_{1+t}}, X_{n_{2+t}},...,X_{n_{k+t}})\)</span></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Definition<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="uk-box-shadow-small uk-padding-small uk-background-muted">
+<p>A probability distribution <span class="math notranslate nohighlight">\(\pi_i, i\in S\)</span> is called <strong>stationary distribution</strong> if it satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle \sum_{i \in S}{\pi_i}{p_{ij}}=\pi_j, \qquad \sum{\pi_i} = 1
+\]</div>
+<p>let <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = [\pi_1, \pi_2, \pi_3, ...]\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{P}\)</span> be the transitino matrix:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\pi}\boldsymbol{P} = \boldsymbol{\pi}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\pi}\boldsymbol{P}^n = \boldsymbol{\pi}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle \sum_{i \in S}{\pi_i}{p_{ij}^n}=\pi_j, \qquad \sum{\pi_i} = 1
+\]</div>
+</div></div>
+<div class="section" id="existence-of-stationary-distribution">
+<h3>Existence of Stationary Distribution<a class="headerlink" href="#existence-of-stationary-distribution" title="Permalink to this headline">¶</a></h3>
+<p>Under what conditions does a stationary distribution exist?</p>
+<p>Let <span class="math notranslate nohighlight">\(i\)</span> be a recurrent state, and <span class="math notranslate nohighlight">\(T_i=\inf\{n \ge 1: X_n=i\}\)</span>, define <span class="math notranslate nohighlight">\(\mu_i(y)\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \mu_i(j) &amp;= E_i\bigg(\sum_{n=0}^{T_i-1}\boldsymbol{1}_{\{X_n=j\}}\bigg) = E\bigg(E_i \bigg( \sum_{n=0}^{T_i-1}\boldsymbol{1}_{\{X_n=j\}} | T_i \bigg) \bigg) \\
+  &amp;= \sum_{m=1}^{\infty} \sum_{n=0}^{m-1} P_i(X_n=j, T_i=m) = \sum_{n=0}^{\infty} \sum_{m=n+1}^{\infty}  P_i(X_n=j, T_i=m) \\
+  &amp;= \sum_{n=0}^{\infty} P_i(X_n=j, T_i \gt n)
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\mu_i(i) = 1\)</span> because:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \mu_i(i) &amp;= \sum_{n=0}^{\infty} P_i(X_n=i, T_i \gt n) \\
+  &amp;= P_i(X_0=i, T_i \gt 0) + P_i(X_1=i, T_i \gt 1) + \text{ ...} \\
+  &amp;= P_i(X_0=i, T_i \gt 0) = 1
+\end{aligned}
+\end{split}\]</div>
+<p>Summing over all state <span class="math notranslate nohighlight">\(j\)</span> that happens in one return period is the exepcted time of first return:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{j}\mu_i(j) = \sum_{j} \sum_{n=0}^{\infty} P_i(X_n=j, T_i \gt n) = E_i(T_i)
+\]</div>
+<p>Given that <span class="math notranslate nohighlight">\(E_iT_i \lt \infty\)</span>, <span class="math notranslate nohighlight">\(\frac{\mu_i(j)}{E_i(T_i)}\)</span> sounds like a potential candidate of a stationary distribution if it ever exist. We’ll find out.</p>
+</div>
+<div class="section" id="id3">
+<h3>Definition<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>A recurrent state <span class="math notranslate nohighlight">\(i\)</span> is called positive recurrent if it’s recurrent and <span class="math notranslate nohighlight">\(E_iT_i \lt \infty\)</span>.
+A recurrent state <span class="math notranslate nohighlight">\(i\)</span> is called null recurrent if it’s recurrent and <span class="math notranslate nohighlight">\(E_iT_i = \infty\)</span>.</p>
+</div>
+<div class="section" id="id4">
+<h3>Theorem<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(i\)</span> is recurrent, then <span class="math notranslate nohighlight">\(\boldsymbol{\mu_i}\)</span> satifies <span class="math notranslate nohighlight">\(\boldsymbol{\mu_iP}=\boldsymbol{\mu_i}\)</span>, i.e. <span class="math notranslate nohighlight">\(\sum_{j}\mu_i(j)p_{jk} = \mu_i(k)\)</span></p>
+<p>Proof:</p>
+<p>If <span class="math notranslate nohighlight">\(k \ne i\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \sum_{j}\mu_i(j)p_{jk} &amp;= \sum_{j} \sum_{n=0}^{\infty} P_i(X_n=j, T_i \gt n) p_{jk} \\
+  &amp;= \sum_{n=0}^{\infty} \sum_{j} P_i(X_n=j, T_i \gt n, X_{n+1}=k) \\
+  &amp;= \sum_{n=0}^{\infty} P_i(X_{n+1} = k, T_i \gt n) \\
+  &amp;= \sum_{n=0}^{\infty} P_i(X_{n} = k, T_i \gt n) \qquad \text{by } P_i(X_{0} = k, T_i \gt n) = 0 \\
+  &amp;= \mu_i(k)
+\end{aligned}
+\end{split}\]</div>
+<p>If <span class="math notranslate nohighlight">\(k = i\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \sum_{j}\mu_i(j)p_{ji} &amp;= \sum_{j} \sum_{n=0}^{\infty} P_i(X_n=j, T_i \gt n) p_{ji} \\
+  &amp;= \sum_{n=0}^{\infty} \sum_{j} P_i(X_n=j, T_i \gt n, X_{n+1}=i) \\
+  &amp;= \sum_{n=0}^{\infty} P_i(X_{n+1} = i, T_i \gt n) \\
+  &amp;= \sum_{n=0}^{\infty} P_i(T_i = n+1) = P_i(T_i \lt \infty) = 1 \\
+  &amp;= \mu_i(i)
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p>Therefore, if <span class="math notranslate nohighlight">\(i\)</span> is positive recurrent, then <span class="math notranslate nohighlight">\(\pi(j) = \frac{\mu_i(j)}{E_iT_i}\)</span> is a solution that satifies definition of stationary distribtion, because, by the theorem above, it satisfies <span class="math notranslate nohighlight">\(\boldsymbol{\mu_iP} = \boldsymbol{\mu_i}\)</span> (Let <span class="math notranslate nohighlight">\(\pi = \mu_i\)</span>), And <span class="math notranslate nohighlight">\(\sum{\pi(j)} =\sum_j\frac{\mu_i(j)}{E_iT_i} = \frac{E_iT_i}{E_iT_i} = 1\)</span>.</p>
+<p>But that doesn’t gaurantee the uniqueness of the solution.
+Note that if <span class="math notranslate nohighlight">\(j\)</span> is also positive recurrent, is <span class="math notranslate nohighlight">\(\frac{\mu_j(j)}{E_jT_j} = \frac{1}{E_jT_j}\)</span> is another candidate or are they equal?</p>
+<p>It sounds weird for a Markov chain in real life to have two or more different stationary distributions. Although possible, think of a markov chain that have two different recurrent classes, depending on which class the initial state belongs to, it may ends in a different stationary distribution.</p>
+<p>Our interests here is when does the stationary distribution unique?</p>
+</div>
+</div>
+<div class="section" id="uniqueness-of-stationary-distribution">
+<h2>Uniqueness of Stationary Distribution<a class="headerlink" href="#uniqueness-of-stationary-distribution" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/lZrzjxQ3YF8">https://youtu.be/lZrzjxQ3YF8</a></strong></p>
+<div class="section" id="id5">
+<h3>Theorem<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>If Markov chain <span class="math notranslate nohighlight">\(\boldsymbol{P}\)</span> is irreducible and <span class="math notranslate nohighlight">\(i\)</span> recurrent, then the stationary measure <span class="math notranslate nohighlight">\(\mu_i\)</span> is unique up to constant multiples.</p>
+<p><em>Proof:</em></p>
+<p>Suppose <span class="math notranslate nohighlight">\(\nu\)</span> is another stationary measure. <span class="math notranslate nohighlight">\(\nu(k) = \sum_{j} \nu(j)p_{jk}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \nu(k) &amp;= \nu(i)p_{ik} + \sum_{j \ne i} \nu(j)p_{jk} \\
+  &amp;= \nu(i)p_{ik} + \sum_{j \ne i} (\nu(i)p_{ij} + \sum_{h \ne i} \nu(h)p_{hj})p_{jk} \\
+  &amp;= \nu(i)p_{ik} + \sum_{j \ne i} \nu(i)p_{ij}p_{jk} + \sum_{j \ne i} \sum_{h \ne i} \nu(h)p_{hj}p_{jk} \\
+  &amp;= \nu(i) \sum_{m=1}^{n} P_i(X_g \ne i, 1 \le g \lt m, X_m = k) +  ...
+\end{aligned}
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>, therefore, <span class="math notranslate nohighlight">\(\nu(k) \ge \nu(i) \mu_i(k)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+  \nu(i) &amp;= \sum_{k} \nu(k)p_{ki} \ge \nu(i) \sum_{k} \mu_i(k) p_{ki} = \nu(i) \mu_i(i) = \nu(i)
+\end{aligned}
+\]</div>
+<p>Therefore, it must be <span class="math notranslate nohighlight">\(\sum_{k} \nu(k)p_{ki} = \nu(i) \sum_{k} \mu_i(k) p_{ki}\)</span>.
+However <span class="math notranslate nohighlight">\(\nu(k) \ge \nu(i) \mu_i(k)\)</span> so it must be <span class="math notranslate nohighlight">\(\nu(k) = \nu(i) \mu_i(k)\)</span>.
+Since <span class="math notranslate nohighlight">\(\boldsymbol{P}\)</span> is irreducible, so this is true for all state <span class="math notranslate nohighlight">\(k \in S\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="corollary">
+<h3>Corollary<a class="headerlink" href="#corollary" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol{P}\)</span> is irreducible and recurrent, then <span class="math notranslate nohighlight">\(\mu_i(j)\mu_j(k)=\mu_i(k)\)</span>, <span class="math notranslate nohighlight">\(\frac{\mu_i(j)}{E_i(T_i)} = \frac{1}{E_j(T_j)}\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>Since <span class="math notranslate nohighlight">\(\boldsymbol{P}\)</span> is irreducible, all states are recurrent. Theorem above indicates <span class="math notranslate nohighlight">\(\mu_i(j)\mu_j(k)=\mu_i(k)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \sum_{k}\mu_i(j)\mu_j(k) &amp;= \sum_{k}\mu_i(k) \\
+  \mu_i(j)E_j(T_j) &amp;= E_i(T_i) \\
+  \frac{\mu_i(j)}{E_i(T_i)} &amp;= \frac{1}{E_j(T_j)}
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id6">
+<h3>Theorem<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>If there’s a stationary distribution then all states <span class="math notranslate nohighlight">\(j\)</span> that have <span class="math notranslate nohighlight">\(\pi_j \gt 0\)</span> are recurrent.</p>
+<p><em>Proof:</em></p>
+<p>Since <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\boldsymbol{P}^n=\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\pi_j \gt 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle \sum_{i}{\pi_i}\sum_{n=1}^{\infty}{p_{ij}^n} = \sum_{n=1}^{\infty} \sum_{i}{\pi_i}{p_{ij}^n} = \sum_{n=1}^{\infty} \pi_j = \infty
+\]</div>
+<p>But:</p>
+<div class="math notranslate nohighlight">
+\[
+\infty = \sum_{i}{\pi_i}\sum_{n=1}^{\infty}{p_{ij}^n} = \sum_{i} \pi_i \frac{\rho_{ij}}{1-\rho_{jj}} \le \sum_{i} \pi_i \frac{1}{1-\rho_{jj}} \le \frac{1}{1-\rho_{jj}}
+\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(\rho_{jj} = 1\)</span></p>
+</div>
+<div class="section" id="id7">
+<h3>Theorem<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol{P}\)</span> is irreducible, following are equivalent:</p>
+<ol class="simple">
+<li><p>There exist a stationary distribution</p></li>
+<li><p>The stationary distribution is unique</p></li>
+<li><p>Some <span class="math notranslate nohighlight">\(x\)</span> is positive recurrent</p></li>
+<li><p>All states are positive recurrent</p></li>
+</ol>
+<p>Existence of stationary distribution implies <span class="math notranslate nohighlight">\(\pi(i) \gt 0\)</span> for some <span class="math notranslate nohighlight">\(i\)</span>. therefore <span class="math notranslate nohighlight">\(i\)</span> is recurrent, irreducibility tells us all states are recurrent, therefore, there must be some state <span class="math notranslate nohighlight">\(j\)</span> such that <span class="math notranslate nohighlight">\(0 \lt \pi(j) \lt \infty\)</span>, to satisfy the condition <span class="math notranslate nohighlight">\(\sum\pi(s) = 1\)</span>. therefore, <span class="math notranslate nohighlight">\(j\)</span> is positive recurrent. But <span class="math notranslate nohighlight">\(\frac{\mu_i(j)}{E_iT_i} = \frac{1}{E_jT_j} = \pi(j)\)</span>, <span class="math notranslate nohighlight">\(0 \lt \frac{\mu_i(j)}{E_iT_i} \lt \infty\)</span> implies <span class="math notranslate nohighlight">\(E_iT_i \lt \infty\)</span>, for all states <span class="math notranslate nohighlight">\(i\)</span>. Therefore all states are positive recurrent. “Unique upto constant multiples of stationary measure <span class="math notranslate nohighlight">\(\mu_i\)</span>” implies uniqueness of stationary distribution.</p>
+</div>
+</div>
+<div class="section" id="asymptotic-behavior">
+<h2>Asymptotic Behavior<a class="headerlink" href="#asymptotic-behavior" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/TDyHLfbccq4">https://youtu.be/TDyHLfbccq4</a></strong></p>
+<p>If <span class="math notranslate nohighlight">\(j\)</span> is transient <span class="math notranslate nohighlight">\(\sum{p^n(i,j)} \lt \infty\)</span> then <span class="math notranslate nohighlight">\(p^n(i,j) \rightarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>. What if <span class="math notranslate nohighlight">\(j\)</span> is recurrent, will <span class="math notranslate nohighlight">\(p^n(x,y)\)</span> converge?</p>
+<p>Let <span class="math notranslate nohighlight">\(N_n(j)\)</span> be the number of visits to <span class="math notranslate nohighlight">\(j\)</span> by time n.</p>
+<div class="math notranslate nohighlight">
+\[
+N_n(j) = \sum_{m=1}^{n}{\mathbf{1}_{\{X_m=j\}}}
+\]</div>
+<div class="section" id="id8">
+<h3>Theorem<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(j\)</span> be a recurrent state. For any <span class="math notranslate nohighlight">\(i \in S\)</span>, as <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\frac{N_n(j)}{n} \rightarrow \frac{1}{E_j(T_j)} \quad P_i\text{-a.s.}
+\]</div>
+</div>
+<div class="section" id="proposition">
+<h3>Proposition<a class="headerlink" href="#proposition" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\{X_m, n \ge 1\}\)</span> be an irreducible Markov chain with stationary probability <span class="math notranslate nohighlight">\(\pi_j, j\ge 1\)</span>, let <span class="math notranslate nohighlight">\(g\)</span> be a bounded function on the state space, Then as <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\sum_{m=1}^n{g(X_m)}}{n} \rightarrow \sum_{j=1}^{\infty} g(j)\pi_j = \sum_{j=1}^{\infty} \frac{g(j)}{E_j(T_j)} \quad \text{a.s.}
+\]</div>
+<p>Proof:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\sum_{m=1}^n{g(X_m)}}{n} = \frac{\sum_{j=1}^{\infty}{ \sum_{m=1}^n{ g(X_m) \mathbf{1}_{\{X_m=j\}} } }}{n} \xrightarrow{a.s.} \sum_{j=1}^{\infty}\frac{g(j)}{E_j(T_j)}
+\]</div>
+</div>
+<div class="section" id="id9">
+<h3>Definition<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(d_i = gcd(\{ n \ge 1; p_{ii}^n \gt 0\})\)</span> is called the period of <span class="math notranslate nohighlight">\(i\)</span>.</p>
+</div>
+<div class="section" id="lemma">
+<h3>Lemma<a class="headerlink" href="#lemma" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(i\)</span> be recurrent, if <span class="math notranslate nohighlight">\(\rho_{ij} \gt 0\)</span>, then <span class="math notranslate nohighlight">\(d_i=d_j\)</span>.</p>
+</div>
+<div class="section" id="id10">
+<h3>Lemma<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(d_i = 1\)</span> then there exist a <span class="math notranslate nohighlight">\(m_0\)</span> such that <span class="math notranslate nohighlight">\(p^m(i,i) \gt 0\)</span> for all <span class="math notranslate nohighlight">\(m \gt m_0\)</span>.</p>
+</div>
+<div class="section" id="id11">
+<h3>Theorem<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(p\)</span> be an irreducible aperiodic Markov chain with stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>. then as <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span>, <span class="math notranslate nohighlight">\(p^n(i,j) \rightarrow \pi_j\)</span>.</p>
+</div>
+</div>
+<div class="section" id="time-reversible-markov-chain">
+<h2>Time-Reversible Markov Chain<a class="headerlink" href="#time-reversible-markov-chain" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/AIweEzM-Mgo">https://youtu.be/AIweEzM-Mgo</a></strong></p>
+<p>Consider a stationary ergodic Markov chain with transition probability <span class="math notranslate nohighlight">\(p(i,j)\)</span> and stationary distribution <span class="math notranslate nohighlight">\(\pi(i)\)</span>, if we reverse the process, we’ll get a reversed Makrov chain with transition probability <span class="math notranslate nohighlight">\(q(j,i)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+q(j,i) &amp;= P(X_m=i|X_{m+1} = j) \\
+&amp;= \frac{P(X_m=i, X_{m+1}=j)}{P(X_{m+1} = j)} \\
+&amp;= \frac{P(X_{m+1}=j|X_m=i)P(X_m=i)}{P(X_{m+1}=j)} \\
+&amp;= \frac{\pi(i)p(i,j)}{\pi(j)}
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\pi(i)p(i,j)=\pi(j)q(j,i)
+\]</div>
+<p>When <span class="math notranslate nohighlight">\(q(j,i)=p(i,j)\)</span>, it’s called time-reversible Markov chain.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\pi(i)p(i,j)=\pi(j)p(j,i) \tag{4}
+\end{equation}
+\]</div>
+<p>The rate at which it goes from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> equals to the rate at which it goes from <span class="math notranslate nohighlight">\(j\)</span> to <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(p\)</span> is time-reversible, then we could find the stationary distribution using (4), because it’s a necessary condition for time-reversible markov chain. However, you may not find a solution in many cases, because it’s a sufficient condition.</p>
+<p>For example, if <span class="math notranslate nohighlight">\(p\)</span> is time-reversible then the following is true:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\pi(i)p(i,j)=\pi(j)p(j,i) \\
+\pi(k)p(k,j)=\pi(j)p(j,k) \\
+\pi(i)p(i,k)=\pi(k)p(k,i) 
+\end{align}
+\end{split}\]</div>
+<p>The first two equation tells us:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\pi(i)}{\pi(k)} = \frac{p(k,j)p(j,i)}{p(i,j)p(j,k)}
+\]</div>
+<p>The last equation tells us:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\pi(i)}{\pi(k)}=\frac{p(k,i)}{p(i,k)}
+\]</div>
+<p>Combining this two we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{p(k,j)p(j,i)}{p(i,j)p(j,k)} &amp;= \frac{p(k,i)}{p(i,k)} \\
+p(k,j)p(j,i)p(i,k) &amp;= p(k,i)p(i,j)p(j,k)
+\end{align}
+\end{split}\]</div>
+<p>Conversely, if for an irreducible and ergodic markov chain and any state loop <span class="math notranslate nohighlight">\(i, i_1, i_2,...i_k,j, i\)</span> the markov chain satisifes:</p>
+<div class="math notranslate nohighlight">
+\[
+p(i,i_1)p(i_1,i_2)...p(i_k,j)p(j,i) = p(i,j)p(j,i_k)p(i_k,i_{k-1})...p(i_1,i)
+\]</div>
+<p>then the <span class="math notranslate nohighlight">\(p(i,j)^{k+1} = p(i,i_1)p(i_1,i_2)...p(i_k,j)\)</span> has a limiting distribution <span class="math notranslate nohighlight">\(\pi(j)\)</span> such that <span class="math notranslate nohighlight">\(\lim_{k \rightarrow \infty}p(i,j)^{k+1} = \pi(j)\)</span>. Similarly, <span class="math notranslate nohighlight">\(p(j,i)^{k+1} = (j,i_k)p(i_k,i_{k-1})...p(i_1,i)\)</span> has a limiting distribution <span class="math notranslate nohighlight">\(\pi(i)\)</span> such that <span class="math notranslate nohighlight">\(\lim_{k \rightarrow \infty}p(j,i)^{k+1} = \pi(i)\)</span>, and it concluded:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi(j)p(j,i)=\pi(i)p(i,j)
+\]</div>
+<p>Therefore <span class="math notranslate nohighlight">\(p\)</span> is time-reversible.</p>
+<div class="section" id="id12">
+<h3>Theorem<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>The irreducible ergodic Markov chain with transition probability <span class="math notranslate nohighlight">\(p(.,.)\)</span> is time reversible if and only if</p>
+<div class="math notranslate nohighlight">
+\[
+p(i,i_1)p(i_1,i_2)...p(i_k,j)p(j,i) = p(i,j)p(j,i_k)p(i_k,i_{k-1})...p(i_1,i)
+\]</div>
+<p>for any states <span class="math notranslate nohighlight">\(i, i_1,i_2,...j\)</span></p>
+</div>
+</div>
+<div class="section" id="hidden-markov-chain-intro">
+<h2>Hidden Markov Chain Intro<a class="headerlink" href="#hidden-markov-chain-intro" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/2UOnWQHaxD0">https://youtu.be/2UOnWQHaxD0</a></strong></p>
+<p>Let <span class="math notranslate nohighlight">\(\{X_n, n=1,2,...\}\)</span> be a Markov chain with transition matrix <span class="math notranslate nohighlight">\(p(.|.)\)</span>. Suppose a signal <span class="math notranslate nohighlight">\(S_n\)</span> is issued each time the Markov chain enters a state at time <span class="math notranslate nohighlight">\(n\)</span> and only depends on current state of the Markov chain at time <span class="math notranslate nohighlight">\(n\)</span>. i.e.
+$<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp;P(S_n=s | X_n=j, X_{n-1}=j_{n-1}, S_{n-1}=s_{n-1}, X_{n-2}=j_{n-2}, S_{n-2}=s_{n-2},...X_1=j_1, S_1=s_1) \\
+&amp;= P(S_n=s|X_n=j) = q(s|j)
+\end{align}
+\)</span><span class="math notranslate nohighlight">\(
+At the end we use \)</span>q(s|j)$ to denote such probability.</p>
+<p>In a hidden Markov chain experiment, an observer is only able to observe the signals <span class="math notranslate nohighlight">\(\mathbf{S^n} = \{S_n, S_{n-1}...S_1\}\)</span>. The Markov states <span class="math notranslate nohighlight">\(\mathbf{X^n}=\{X_n, X_{n-1},...X_1\}\)</span> are unobserved(hidden).
+We are interested in finding the probablity of <span class="math notranslate nohighlight">\(P(X_k=j|\mathbf{S^n}=\mathbf{s_n})\)</span> where <span class="math notranslate nohighlight">\(k \le n\)</span> and <span class="math notranslate nohighlight">\(\mathbf{s_n}=[s_1,s_2,...s_n]'\)</span>, <span class="math notranslate nohighlight">\(P(X_{n+1}=j|\mathbf{S^n}=\mathbf{s_n})\)</span>, <span class="math notranslate nohighlight">\(P(S_{n+1}=s_{n+1}|\mathbf{S^n} = \mathbf{s_n})\)</span> and <span class="math notranslate nohighlight">\(P(\mathbf{S^n}=\mathbf{s_n})\)</span>.</p>
+<p>Let’s define <span class="math notranslate nohighlight">\(F_n(j)=P(\mathbf{S^n}=\mathbf{s_n}, X_n=j)\)</span>, if we could find the values of <span class="math notranslate nohighlight">\(F_n(j)\)</span>, then <span class="math notranslate nohighlight">\(P(\mathbf{S^n}=\mathbf{s_n}) = \sum_{j}F_n(j)\)</span>, and <span class="math notranslate nohighlight">\(P(X_n=j|\mathbf{S^n}=\mathbf{s_n}) = \frac{P(X_n=j, \mathbf{S^n}=\mathbf{s_n})}{P(\mathbf{S^n}=\mathbf{s_n})} = \frac{F_n(j)}{\sum_{j}F_n(j)}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+F_n(j) &amp;= P(\mathbf{S^{n-1}}=\mathbf{s_{n-1}}, S_n=s_n, X_n=j) \\
+&amp;= \sum_{i} P(\mathbf{S^{n-1}}=\mathbf{s_{n-1}}, X_{n-1} = i, S_n=s_n, X_n=j) \\
+&amp;= \sum_{i} P(X_n=j, S_n=s_n | X_{n-1}=i \mathbf{S^{n-1}}=\mathbf{s_{n-1}}) F_{n-1}(i) \\
+&amp;= \sum_{i} P(X_n=j, S_n=s_n | X_{n-1}=i) F_{n-1}(i) \\
+&amp;= \sum_{i} P(S_n=s_n | X_n=j, X_{n-1}=i) P(X_n=j | X_{n-1}=i) F_{n-1}(i) \\
+&amp;= \sum_{i} P(S_n=s_n | X_n=j) P(X_n=j | X_{n-1}=i) F_{n-1}(i) \\
+&amp;= q(s_n|j)\sum_{i} p(j|i)F_{n-1}(i) \\
+\end{align}
+\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(F_1(i) = P(X_1=i, S_1=s_1) = q(s_1|i)P(X_1=i)\)</span>. <span class="math notranslate nohighlight">\(F_n\)</span> is an iterative approach moving forward from <span class="math notranslate nohighlight">\(F_1\)</span> to <span class="math notranslate nohighlight">\(F_n\)</span> therefore it’s called <strong>Forward Approach</strong>.</p>
+<p>Another way of solving <span class="math notranslate nohighlight">\(P(\mathbf{S^n}=\mathbf{s_n})\)</span> is to iterative backwards (<strong>Backward Approach</strong>):</p>
+<p>Define <span class="math notranslate nohighlight">\(B_k(i) = P(S_{k+1}=s_{k+1},...,S_n=s_n | X_k=i)\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+P(\mathbf{S^n}=\mathbf{s_n}) &amp;= \sum_{i}P(\mathbf{S^n}=\mathbf{s_n}|X_1=i) P(X_1=i) \\
+&amp;= \sum_{i}P(S_2=s_2, S_3=s_3,...,S_n=s_n|S_1=s_1, X_1=i) P(S_1=s_1|X_1=i) P(X_1=i) \\
+&amp;= \sum_{i}B_1(i)q(s_1|i)P(X_1=i)
+\end{align}
+\end{split}\]</div>
+<p>Let’s find <span class="math notranslate nohighlight">\(B_k(i)\)</span> recursively:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+B_k(i) &amp;= \sum_{j} P(S_{k+1}=s_{k+1},...,S_n=s_n | X_{k+1} = j, X_k=i) P(X_{k+1} = j | X_i = i) \\
+&amp;= \sum_{j} P(S_{k+1}=s_{k+1},...,S_n=s_n | X_{k+1} = j) P(X_{k+1} = j | X_i = i) \\
+&amp;= \sum_{j} P(S_{k+2}=s_{k+2},...,S_n=s_n | S_{k+1} = s_{k+1},X_{k+1} = j)P(S_{k+1} = s_{k+1}|X_{k+1} = j) P(X_{k+1} = j | X_i = i) \\
+&amp;= \sum_{j} P(S_{k+2}=s_{k+2},...,S_n=s_n | X_{k+1} = j)P(S_{k+1} = s_{k+1}|X_{k+1} = j) P(X_{k+1} = j | X_i = i) \\
+&amp;= \sum_{j} B_{k+1}(j)q(s_{k+1}|j) p(j |i) \\
+\end{align}
+\end{split}\]</div>
+<p>Starting with <span class="math notranslate nohighlight">\(B_{n-1}(i) = P(S_n=s_n|X_{n-1}=i) = \sum_{j}P(S_n=s_n|X_n=j, X_{n-1}=i) p(j|i) = \sum_{j}q(s_n|j) p(j|i)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(P(\mathbf{S^n} = \mathbf{s_n})\)</span> can also be calculated from both forward and backward iterations as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+P(\mathbf{S^n} &amp;= \mathbf{s_n}) = \sum_{j} P(\mathbf{S^n} = \mathbf{s_n}, X_k=j) \\
+&amp;= \sum_{j} P(S_{k+1}=s_{k+1},...,S_n=s_n|\mathbf{S^k}=\mathbf{s_k}, X_k=j)P(\mathbf{S^k}=\mathbf{s_k}, X_k=j) \\
+&amp;= \sum_{j} B_k(j)F_k(j) \\
+\end{align}
+\end{split}\]</div>
+<p>Now let’s come back to the unsolved questions:</p>
+<p>For <span class="math notranslate nohighlight">\(k \le n\)</span>, find:
+$<span class="math notranslate nohighlight">\(
+\begin{align}
+P(X_k=j|\mathbf{S^n}=\mathbf{s_n}) &amp;= \frac{P(\mathbf{S^n} = \mathbf{s_n}, X_k=j)}{P(\mathbf{S^n} = \mathbf{s_n})} \\
+&amp;= \frac{F_k(j)B_k(j)}{\sum_{j}F_k(j)B_k(j)}
+\end{align}
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+P(X_{n+1}=j|\mathbf{S^n}=\mathbf{s_n}) = \sum_{i} P(X_{n+1}=j|X_n=i, \mathbf{S^n}=\mathbf{s_n}) P(X_n=i | \mathbf{S^n}=\mathbf{s_n})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(S_{n+1}=s_{n+1}|\mathbf{S^n} = \mathbf{s_n}) \sum_{i} P(S_{n+1}=s_{n+1}|X_{n+1}=i, \mathbf{S^n} = \mathbf{s_n}) P(X_{n+1}=i| \mathbf{S^n} = \mathbf{s_n})
+\]</div>
+<p>We could also predict the entire hidden states <span class="math notranslate nohighlight">\(\mathbf{X^n}\)</span>. We are interested in finding the states <span class="math notranslate nohighlight">\(\mathbf{i_n} = \{i_1,...,i_n\}\)</span> that maximizes <span class="math notranslate nohighlight">\(P(\mathbf{X^n} = \mathbf{i_n}|\mathbf{S^n}=\mathbf{s_n})\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\underset{\mathbf{i^n}}{\mathrm{argmax}}P(\mathbf{X^n} = \mathbf{i_n}|\mathbf{S^n}=\mathbf{s_n})  = \underset{\mathbf{i^n}}{\mathrm{argmax}}\frac{P(\mathbf{X^n} = \mathbf{i_n}, \mathbf{S^n}=\mathbf{s_n})}{P(\mathbf{S^n}=\mathbf{s_n})}
+\]</div>
+<p>We are looking for <span class="math notranslate nohighlight">\(\mathbf{i_n}\)</span> that maximizes the above probability which is equivalent to find <span class="math notranslate nohighlight">\(\mathbf{i_n}\)</span> that maximize <span class="math notranslate nohighlight">\(\underset{\mathbf{i_n}}{\mathrm{argmax}} P(\mathbf{X^n} = \mathbf{i_n}, \mathbf{S^n}=\mathbf{s_n})\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{X^k} = \{X_1,X_2,...,X_k\}\)</span> be the first <span class="math notranslate nohighlight">\(k\)</span> states, <span class="math notranslate nohighlight">\(\mathbf{i_k} = \{i_1,...,i_k\}\)</span>. And let <span class="math notranslate nohighlight">\(V_k\)</span> be:</p>
+<div class="math notranslate nohighlight">
+\[
+V_k(j) = \underset{\mathbf{i_{k-1}}}{\mathrm{max}} {P(\mathbf{X^{k-1}}=\mathbf{i_{k-1}}, X_k=j, \mathbf{S^k}=\mathbf{s_k})}
+\]</div>
+<p>The values of <span class="math notranslate nohighlight">\(V_k(j)\)</span> for all <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(j\)</span> can be find recursively as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+V_k(j) &amp;= \underset{\mathbf{i_{k-1}}}{\mathrm{max}} {P(\mathbf{X^{k-1}}=\mathbf{i_{k-1}}, X_k=j, \mathbf{S^k}=\mathbf{s_k})} \\
+&amp;= \underset{i_{k-1}}{\mathrm{max\:}} \underset{\mathbf{i_{k-2}}}{\mathrm{max\;}} {P(\mathbf{X^{k-2}}=\mathbf{i_{k-2}}, X_{k-1}=i_{k-1}, X_k=j, \mathbf{S^{k-1}}=\mathbf{s_{k-1}},S_k=s_k)} \\
+&amp;= \underset{i_{k-1}}{\mathrm{max\:}}  {P(X_k=j,S_k=s_k|\mathbf{X^{k-2}}=\mathbf{i_{k-2}}, X_{k-1}=i_{k-1},  \mathbf{S^{k-1}}=\mathbf{s_{k-1}})} \times \underset{\mathbf{i_{k-2}}}{\mathrm{max\;}} P(\mathbf{X^{k-2}}=\mathbf{i_{k-2}}, X_{k-1}=i_{k-1},  \mathbf{S^{k-1}}=\mathbf{s_{k-1}}) \\
+&amp;= \underset{i_{k-1}}{\mathrm{max\:}} \{P(X_k=j,S_k=s_k|X_{k-1}=i_{k-1}) \times V_{k-1}(i_{k-1}) \}  \\
+&amp;= q(s_k|j) \underset{i_{k-1}}{\mathrm{max\:}} \{V_{k-1}(i_{k-1}) p(j|i_{k-1})\}
+\end{align}
+\end{split}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(V_1\)</span> equals:</p>
+<div class="math notranslate nohighlight">
+\[
+V_1(j) = P(X_1=j, S_1=s_1) = P(X_1=j) q(s_1|j)
+\]</div>
+<p>Our maximization problem comes down to finding the sequence in a reversed direction by first finding <span class="math notranslate nohighlight">\(i_n\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\underset{\{i_1,...i_n\}}{\mathrm{max}} P(\mathbf{X^n} = \mathbf{i_n}, \mathbf{S^n}=\mathbf{s_n}) \\
+&amp;=  \underset{i_n}{\mathrm{max}} V_n(i_n)
+\end{align}
+\end{split}\]</div>
+<p>Suppose <span class="math notranslate nohighlight">\(j_n\)</span> is the value of <span class="math notranslate nohighlight">\(i_n\)</span> that maximizes <span class="math notranslate nohighlight">\(V_n(.)\)</span>. i.e. <span class="math notranslate nohighlight">\(j_n=\underset{i_n}{argmax}V_n(i_n)\)</span>. But now how do we find <span class="math notranslate nohighlight">\(j_{n-1}\)</span> that maximizes <span class="math notranslate nohighlight">\(i_{n-1}\)</span>?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+V_n(j_n) &amp;= \underset{\mathbf{i_{n-1}}}{max\:} \{ P(\mathbf{X^{n-1}}=\mathbf{i_{n-1}}, X_n=j_n, \mathbf{S^n}=\mathbf{s_n}) \} \\
+&amp;= q(s_n|j_n) \underset{i_{n-1}}{\mathrm{max\:}} \{V_{n-1}(i_{n-1}) p(j_n|i_{n-1})\}
+\end{align}
+\end{split}\]</div>
+<p>The <span class="math notranslate nohighlight">\(j_{n-1}\)</span> we are looking for is the value of <span class="math notranslate nohighlight">\(i_{n-1}\)</span> such that <span class="math notranslate nohighlight">\(V_{n-1}(i_{n-1}) p(j_n|i_{n-1})\)</span> is maximized. i.e. <span class="math notranslate nohighlight">\(j_{n-1} = \underset{i_{n-1}}{\mathrm{argmax\:}} \{V_{n-1}(i_{n-1}) p(j_n|i_{n-1})\}\)</span>.</p>
+<p>We could iterate likewise to find <span class="math notranslate nohighlight">\(j_{n-2}\)</span>, the value of <span class="math notranslate nohighlight">\(i_{n-2}\)</span> such that <span class="math notranslate nohighlight">\(V_{n-2}(i_{n-2}) p(j_{n-1}|i_{n-2})\)</span> is maximized. i.e. <span class="math notranslate nohighlight">\(j_{n-2} = \underset{i_{n-2}}{\mathrm{argmax\:}} \{V_{n-2}(i_{n-2}) p(j_{n-1}|i_{n-2})\}\)</span>.</p>
+<p>Such algorithm of find the hiddens that maximizes <span class="math notranslate nohighlight">\(P(\mathbf{X^n}=\mathbf{i_n}|\mathbf{S^n}=s_n)\)</span> is called <strong>Viterbi Algorithm</strong>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="mcmc.html" title="next page">Markov Chain Monte Carlo</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

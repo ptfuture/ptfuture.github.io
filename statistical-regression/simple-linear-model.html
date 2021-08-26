@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Linear Model &#8212; Statistical Regression</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Prerequisites" href="prerequisites.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Statistical Regression</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="prerequisites.html">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Simple Linear Model
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/simple-linear-model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-predictor-variable">
+   One predictor variable
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#likelihood-function">
+     Likelihood function:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expected-value-of-hat-b-0-hat-b-1">
+     Expected value of
+     <span class="math notranslate nohighlight">
+      \(\hat{b}_0, \hat{b}_1\)
+     </span>
+     :
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance-of-hat-b-0">
+     Variance of
+     <span class="math notranslate nohighlight">
+      \(\hat{b}_0\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quadratic-decomposition">
+     Quadratic decomposition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expected-value-of-hat-sigma-2">
+     Expected value of
+     <span class="math notranslate nohighlight">
+      \(\hat{\sigma}^2\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confidence-intervals">
+     Confidence Intervals
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-1-alpha-percent-confidence-interval-of-b-1">
+       The
+       <span class="math notranslate nohighlight">
+        \(1-\alpha\)
+       </span>
+       percent confidence interval of
+       <span class="math notranslate nohighlight">
+        \(b_1\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-1-alpha-percent-confidence-interval-of-b-0-is">
+       The
+       <span class="math notranslate nohighlight">
+        \(1-\alpha\)
+       </span>
+       percent confidence interval of
+       <span class="math notranslate nohighlight">
+        \(b_0\)
+       </span>
+       is
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-1-alpha-percent-confidence-interval-of-mu-y-h-of-any-given-y-h-when-x-x-h">
+       The
+       <span class="math notranslate nohighlight">
+        \(1-\alpha\)
+       </span>
+       percent confidence interval of
+       <span class="math notranslate nohighlight">
+        \(\mu[Y_h]\)
+       </span>
+       of any given
+       <span class="math notranslate nohighlight">
+        \(Y_h\)
+       </span>
+       when
+       <span class="math notranslate nohighlight">
+        \(x = x_h\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-1-alpha-percent-confidence-interval-of-y-h-when-x-x-h">
+       The
+       <span class="math notranslate nohighlight">
+        \(1-\alpha\)
+       </span>
+       percent confidence interval of
+       <span class="math notranslate nohighlight">
+        \(Y_h\)
+       </span>
+       when
+       <span class="math notranslate nohighlight">
+        \(x = x_h\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-1-alpha-percent-confidence-interval-of-bar-y-h-of-m-new-observations-when-x-x-h">
+       The
+       <span class="math notranslate nohighlight">
+        \(1-\alpha\)
+       </span>
+       percent confidence interval of
+       <span class="math notranslate nohighlight">
+        \(\bar{Y}_h\)
+       </span>
+       of
+       <span class="math notranslate nohighlight">
+        \(m\)
+       </span>
+       new observations when
+       <span class="math notranslate nohighlight">
+        \(x = x_h\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-working-hotelling-1-alpha-percent-confidence-band-of-regression-line-mu-y-h-b-0-b-1x-h-for-any-y-h">
+       The Working-Hotelling
+       <span class="math notranslate nohighlight">
+        \(1-\alpha\)
+       </span>
+       percent confidence band of regression line
+       <span class="math notranslate nohighlight">
+        \(\mu[Y_h] = b_0 + b_1x_h\)
+       </span>
+       for any
+       <span class="math notranslate nohighlight">
+        \(Y_h\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-making">
+     Decision making
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#testing-h-0-b-1-0-vs-h-1-b-1-ne-0">
+       Testing
+       <span class="math notranslate nohighlight">
+        \(H_0: b_1 = 0\)
+       </span>
+       vs
+       <span class="math notranslate nohighlight">
+        \(H_1: b_1 \ne 0\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#expected-values-of-text-msr">
+       Expected values of
+       <span class="math notranslate nohighlight">
+        \(\text{MSR}\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="simple-linear-model">
+<h1>Simple Linear Model<a class="headerlink" href="#simple-linear-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="one-predictor-variable">
+<h2>One predictor variable<a class="headerlink" href="#one-predictor-variable" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/rOA5YXfCP1w">https://youtu.be/rOA5YXfCP1w</a></strong></p>
+<p>Let <span class="math notranslate nohighlight">\({(x_i, y_i)}\)</span> be a set of observed values. We want to fit the data in a linear function.</p>
+<p>Let <span class="math notranslate nohighlight">\(Y_i = b_0 + b_1x_i + \epsilon_i\)</span> where <span class="math notranslate nohighlight">\(\epsilon_i\)</span> are iid <span class="math notranslate nohighlight">\(N(0, \sigma^2)\)</span>, <span class="math notranslate nohighlight">\(x_i\)</span> are known predcitor variables, <span class="math notranslate nohighlight">\(Y_i\)</span> are known response variables. An alternative model <span class="math notranslate nohighlight">\(Y_i = b_0^{*} + b_1(x_i - \bar{x}) + \epsilon_i\)</span> where <span class="math notranslate nohighlight">\(b_0^{*} = b_0 + b_1\bar{x}\)</span>.</p>
+<div class="section" id="likelihood-function">
+<h3>Likelihood function:<a class="headerlink" href="#likelihood-function" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+L(b_0, b_1, \sigma^2) = \prod_{i=1}^n\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{\sum[Y_i-b_0-b_1x_i]^2}{2\sigma^2}}
+\]</div>
+<p>To maximum the Likelihood function is equivalent to minimize:
+$<span class="math notranslate nohighlight">\(
+-\log{L(b_0, b_1, \sigma^2)} = \frac{n}{2}\log{(2\pi\sigma^2)} + {\frac{\sum[Y_i-b_0-b_1x_i]^2}{2\sigma^2}}
+\)</span>$</p>
+<p>And is equivalent to minimize:</p>
+<div class="math notranslate nohighlight">
+\[
+H(b_0, b_1) = \sum[Y_i-b_0-b_1x_i]^2
+\]</div>
+<p>Maximum likelihood method is equavilent to least squared method when finding the estimated parameters <span class="math notranslate nohighlight">\(b_0, b_1\)</span>.</p>
+<p>Take the derivative on <span class="math notranslate nohighlight">\(\log{L(b_0, b_1, \sigma^2)}\)</span> w.r.t <span class="math notranslate nohighlight">\(b_0, b_1, \sigma^2\)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{b}_1 &amp;= \frac{\sum(Y_i-\bar{Y})(x_i-\bar{x})}{\sum(x_i-\bar{x})^2} = \frac{\sum{Y_i(x_i-\bar{x})}}{\sum(x_i-\bar{x})^2} = \sum{k_iY_i} \\
+\hat{b}_0 &amp;= \bar{Y}-\hat{b}_1\bar{x}  \\
+\hat{b}_0^{*} &amp;= \hat{b}_0 + \hat{b}_1\bar{x} = \bar{Y} \\
+\hat{\sigma}^{2} &amp;= \frac{1}{n}\sum{(Y_i- \hat{Y}_i)^2} = \frac{1}{n}\sum{\hat{e}_i^2} = \frac{\text{SSE}}{n} 
+\end{align}
+\end{split}\]</div>
+<p>Where <strong>SSE</strong> is called <strong>Sum of Squared Errors</strong>, and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+k_i &amp;= \frac{x_i-\bar{x}}{\sum(x_i-\bar{x})^2} \\
+\sum{k_i} &amp;= 0 \\
+\sum{k_ix_i} &amp;= 1 \\
+\sum{k_i^2} &amp;= \frac{1}{\sum(x_i-\bar{x})^2}
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{Y_i} &amp;= \hat{b}_0 + \hat{b}_1x_i \\
+\hat{e}_i &amp;= Y_i- \hat{Y}_i \\
+e_i &amp;= Y_i- \mu[Y_i] = Y_i - b_0 - b_1x_i
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="section" id="expected-value-of-hat-b-0-hat-b-1">
+<h3>Expected value of <span class="math notranslate nohighlight">\(\hat{b}_0, \hat{b}_1\)</span>:<a class="headerlink" href="#expected-value-of-hat-b-0-hat-b-1" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mu[\hat{b}_1] &amp;= \sum{\mu[k_iY_i]} = \sum{k_i(b_0+b_1x_i)} = {b_1\sum{k_ix_i}} = b_1 \\
+\mu[\hat{b}_0] &amp;= \mu[\bar{Y}-\hat{b}_1\bar{x}] = \frac{1}{n}\sum{\mu[Y_i]} - \mu[\hat{b}_1]\bar{x} = b_0 + b_1\bar{x_i} - b_1\bar{x} = b_0
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="section" id="theorem">
+<h3>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+[\hat{b}_0^{*}, \hat{b}_1]^{\intercal} \sim N\bigg([b_0^{*}, b_1]^{\intercal}, \sigma^2\begin{bmatrix}\frac{1}{n} &amp; 0 \\ 
+0 &amp; \frac{1}{\sum(x_i - \bar{x})^2} \end{bmatrix}\bigg)
+\end{split}\]</div>
+<p>Proof:</p>
+<p>Since <span class="math notranslate nohighlight">\(\hat{b}_0^{*}, \hat{b}_1\)</span> are both linear combination of normal r.vs, its sufficient to prove that the covariance is <span class="math notranslate nohighlight">\(0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+Cov(\hat{b}_0^{*}, \hat{b}_1) = Cov(\bar{Y}, \sum{k_iY_i}) = \frac{1}{n}\sum{k_iCov(\sum_{j \neq i}^{n} + Y_i, Y_i)} = \frac{1}{n}\sigma^2\sum{k_i} = 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mu[\hat{b}_0^{*}] &amp;= \mu[\bar{Y}] = \frac{1}{n}\sum{b_0^{*} + b_1(x_i-\bar{x})} = b_0^{*} \\
+\sigma^2[\hat{b}_0^{*}] &amp;= \frac{\sigma^2}{n}  \\
+\mu[\hat{b}_1] &amp;= \sum{k_i \mu[Y_i]} = \sum{k_i(b_0^{*} + b_1(x_i-\bar{x}))} = \frac{b_1\sum{(x_i-\bar{x})^2}}{\sum(x_i-\bar{x})^2} = b_1 \\
+\sigma^2[\hat{b}_1] &amp;= \sum{k_i^2 \sigma^2[Y_i]} = \frac{\sigma^2}{\sum(x_i-\bar{x})^2} \tag{1}
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="variance-of-hat-b-0">
+<h3>Variance of <span class="math notranslate nohighlight">\(\hat{b}_0\)</span><a class="headerlink" href="#variance-of-hat-b-0" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\sigma^2[\hat{b}_0] = \sigma^2[\hat{b}_0^{*} - \bar{x}\hat{b_1}] = \frac{1}{n^2} \sum{\sigma^2[Y_i]} + \bar{x}^2\sigma^2[\hat{b_1}] = \sigma^2\bigg[\frac{1}{n} + \frac{\bar{x}^2}{\sum{(x_i-\bar{x})^2}} \bigg]
+\end{equation}
+\]</div>
+</div>
+<div class="section" id="quadratic-decomposition">
+<h3>Quadratic decomposition<a class="headerlink" href="#quadratic-decomposition" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sum(Y_i - b_0^{*} - b_1(x_i - \bar{x}))^2 &amp;= \sum\big[ (\hat{b}_0^{*} -b_0^{*}) + (\hat{b}_1 - b_1)(x_i - \bar{x}) + (Y_i - \hat{b}_0^{*} - \hat{b}_1(x_i-\bar{x}) \big]^2 \\
+&amp;= n(\hat{b}_0^{*} -b_0^{*})^2 + (\hat{b}_1 - b_1)^2\sum(x_i-\bar{x})^2 + n\hat{\sigma}^2 \\
+Q &amp;= Q_1 + Q_2 + Q_3
+\end{align}
+\end{split}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(Q = \sum(Y_i - b_0^{*} - b_1(x_i - \bar{x}))^2\)</span>, <span class="math notranslate nohighlight">\(Q_1 = n(\hat{b}_0^{*} -b_0^{*})^2\)</span>, <span class="math notranslate nohighlight">\(Q_2 = (\hat{b}_1 - b_1)^2\sum(x_i-\bar{x})^2\)</span>, <span class="math notranslate nohighlight">\(Q_3 = n\hat{\sigma}^2 = \sum{\hat{e}_i^2} = \text{SSE}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(Q, Q_1, Q_2, Q_3\)</span> are quadratic forms in terms of r.v.s <span class="math notranslate nohighlight">\(Z_i = Y_i - b_0^{*} - b_1(x_i-\bar{x})\)</span>, <span class="math notranslate nohighlight">\(i = 1, 2, ..., n\)</span>. Because <span class="math notranslate nohighlight">\(Q_1 = n\bar{Z}^2\)</span>, <span class="math notranslate nohighlight">\(Q_2 = \big( \sum{k_iZ_i} \big)^2\sum(x_i-\bar{x})^2\)</span>, <span class="math notranslate nohighlight">\(Q_3 = \sum_{i=1}^n\big( Z_i - \bar{Z} - (\sum_{j=1}^nk_jZ_j)(x_i-\bar{x})  \big)^2\)</span>.</p>
+</div>
+<div class="section" id="id1">
+<h3>Theorem<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\frac{Q_3}{\sigma^2} = \frac{\sum_{i=1}^n(Y_i - \hat{b}_0^{*} - \hat{b}_1(x_i - \bar{x}))^2}{\sigma^2} = \frac{\sum_{i=1}^n{\hat{e}_i^2}}{\sigma^2} \sim \chi^2(n-2)
+\]</div>
+<p>Proof:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{(Y_i - b_0^{*} - b_1(x_i - \bar{x}))}{\sigma} \sim N(0, 1)\)</span>, therefore, Q is a sum of squares of indepdent standard normal r.vs, therefore <span class="math notranslate nohighlight">\(\frac{Q}{\sigma^2} \sim \chi^2(n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\sqrt{n}(\hat{b}_0^{*} -b_0^{*})}{\sigma} \sim N(0, 1)\)</span>, therefore, <span class="math notranslate nohighlight">\(\frac{Q_1}{\sigma^2} \sim \chi^2(1)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\sqrt{\sum(x_i-\bar{x})^2}(\hat{b}_1 - b_1)}{\sigma} \sim N(0, 1)\)</span>, therefore <span class="math notranslate nohighlight">\(\frac{Q_2}{\sigma^2} \sim \chi^2(1)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q_3\)</span> is positive, therefore, by the <strong>Quadratic Form theorem</strong>, <span class="math notranslate nohighlight">\(\frac{Q_3}{\sigma^2} \sim \chi^2(n-2)\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="expected-value-of-hat-sigma-2">
+<h3>Expected value of <span class="math notranslate nohighlight">\(\hat{\sigma}^2\)</span><a class="headerlink" href="#expected-value-of-hat-sigma-2" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\mu[\hat{\sigma}^2] = \frac{1}{n}\mu[\sum_{i=1}^n{\hat{e}_i^2}] = \frac{1}{n}\mu[Q_3] = \frac{\sigma^2}{n}\mu[\frac{Q_3}{\sigma^2}] = \frac{n-2}{n}\sigma^2
+\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{\sigma}^2\)</span> is an unbiased estimator.</p>
+<p>However, if we define the <strong>Mean Squared Error(MSE)</strong> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\text{MSE} = \frac{n\hat{\sigma}^2}{n-2} = \frac{Q_3}{n-2} = \frac{\text{SSE}}{n-2}  = \frac{\sum_{i=1}^n{\hat{e}_i^2}}{n-2} = \frac{\sum_{i=1}^n{(Y_i-\hat{Y_i})^2}}{n-2}
+\end{equation}
+\]</div>
+<p>We get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mu[MSE] &amp;=  \mu[\frac{\text{SSE}}{\sigma^2} \frac{\sigma^2}{(n-2)}] = \frac{\sigma^2}{n-2}(n-2) = \sigma^2 \\
+\sigma^2[MSE] &amp;= \sigma^2[\frac{\text{SSE}}{\sigma^2} \frac{\sigma^2}{(n-2)}] = \frac{2(n-2)\sigma^4}{(n-2)^2} = \frac{2\sigma^4}{n-2}
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="section" id="confidence-intervals">
+<h3>Confidence Intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-1-alpha-percent-confidence-interval-of-b-1">
+<h4>The <span class="math notranslate nohighlight">\(1-\alpha\)</span> percent confidence interval of <span class="math notranslate nohighlight">\(b_1\)</span><a class="headerlink" href="#the-1-alpha-percent-confidence-interval-of-b-1" title="Permalink to this headline">¶</a></h4>
+<p>We estimate the variance of <span class="math notranslate nohighlight">\(\hat{b}_1\)</span> by replacing the unknown <span class="math notranslate nohighlight">\(\sigma^2\)</span> with its unbiased <strong>MSE</strong> estimator: <span class="math notranslate nohighlight">\(s^2[{\hat{b}_1}] = \frac{MSE}{\sum(x_i-\bar{x})^2}\)</span>. <span class="math notranslate nohighlight">\(s^2[{\hat{b}_1}]\)</span> is called the sample variance of <span class="math notranslate nohighlight">\(\hat{b}_1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle\frac{\hat{b}_1-b_1}{s[\hat{b}_1]} =  \frac{(\hat{b}_1-b_1)/\sigma[\hat{b}_1]}{s[\hat{b}_1]/\sigma[\hat{b}_1]}
+\]</div>
+<p>The numerator is a standard normal rv. The demoninator is:
+$<span class="math notranslate nohighlight">\(
+\frac{s[\hat{b}_1]}{\sigma[\hat{b}_1]} = \sqrt{\frac{\frac{\text{MSE}}{\sum(x_i-\bar{x})^2}}{\frac{\sigma^2}{\sum(x_i-\bar{x})^2}}} = \sqrt{\frac{\frac{\text{SSE}}{\sigma^2}}{n-2}} \sim \sqrt{\frac{\chi^2(n-2)}{n-2}}
+\)</span>$</p>
+<p>So <span class="math notranslate nohighlight">\(\frac{\hat{b}_1-b_1}{s[\hat{b}_1]} = \frac{z}{\sqrt{\frac{\chi^2(n-2)}{n-2}}} \sim t(n-2)\)</span> is exactly a student distribution with <span class="math notranslate nohighlight">\(n-2\)</span> degree of freedom.</p>
+<p>Therefore the <span class="math notranslate nohighlight">\(1-\alpha\)</span> confidence interval is:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\hat{b}_1 \pm t(1-\alpha/2; n-2)s[\hat{b}_1]
+\end{equation}
+\]</div>
+</div>
+<div class="section" id="the-1-alpha-percent-confidence-interval-of-b-0-is">
+<h4>The <span class="math notranslate nohighlight">\(1-\alpha\)</span> percent confidence interval of <span class="math notranslate nohighlight">\(b_0\)</span> is<a class="headerlink" href="#the-1-alpha-percent-confidence-interval-of-b-0-is" title="Permalink to this headline">¶</a></h4>
+<p><span class="math notranslate nohighlight">\(\hat{b}_0\)</span> is a linear function of normal r.vs <span class="math notranslate nohighlight">\(\hat{b}_0^{*}, \hat{b}_1\)</span>, therefore is normal. Similar to <span class="math notranslate nohighlight">\(\hat{b}_1\)</span>, we also replace the variance of <span class="math notranslate nohighlight">\(b_0\)</span> with its sample variance <span class="math notranslate nohighlight">\(s^2[\hat{b}_0] = MSE \bigg[ \frac{1}{n} + \frac{\bar{x}^2}{\sum(x_i-\bar{x})^2} \bigg]\)</span> and we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\hat{b}_0 \pm t(1-\alpha/2; n-2)s[\hat{b}_0]
+\end{equation}
+\]</div>
+</div>
+<div class="section" id="the-1-alpha-percent-confidence-interval-of-mu-y-h-of-any-given-y-h-when-x-x-h">
+<h4>The <span class="math notranslate nohighlight">\(1-\alpha\)</span> percent confidence interval of <span class="math notranslate nohighlight">\(\mu[Y_h]\)</span> of any given <span class="math notranslate nohighlight">\(Y_h\)</span> when <span class="math notranslate nohighlight">\(x = x_h\)</span><a class="headerlink" href="#the-1-alpha-percent-confidence-interval-of-mu-y-h-of-any-given-y-h-when-x-x-h" title="Permalink to this headline">¶</a></h4>
+<p><span class="math notranslate nohighlight">\(\hat{Y}_h = \hat{b}_0 + \hat{b}_1x_i\)</span> is normal because its a linear function of normal rvs <span class="math notranslate nohighlight">\((\hat{b}_0, \hat{b}_1)\)</span>. Moreover, <span class="math notranslate nohighlight">\(\hat{Y}_h\)</span> is an unbiased point estimator of <span class="math notranslate nohighlight">\(\mu[Y_h] = b_0 + b_1x_i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mu[\hat{Y}_h] &amp;= \mu[\hat{b}_0] + \mu[\hat{b}_1]x_i = b_0 + b_1x_h = \mu[Y_h] \\
+\sigma^2[\hat{Y}_h] &amp;= \sigma^2[\hat{b}_0^{*} + \hat{b}_1(x_i-\bar{x})] = \sigma^2[\hat{b}_0^{*}] + \sigma^2[\hat{b}_1](x_h-\bar{x})^2 = \sigma^2 \times \bigg[\frac{1}{n} + \frac{(x_h-\bar{x})^2}{\sum(x_i-\bar{x})^2}\bigg]
+\end{align}
+\end{split}\]</div>
+<p>Replace <span class="math notranslate nohighlight">\(\sigma^2\)</span> with its MSE estimator we get an unbiased estimated variance:</p>
+<div class="math notranslate nohighlight">
+\[
+s^2[\hat{Y}_h] = \text{MSE} \times \bigg[\frac{1}{n} + \frac{(x_h-\bar{x})^2}{\sum(x_i-\bar{x})^2}\bigg]
+\]</div>
+<p>Similarly, the <span class="math notranslate nohighlight">\(1-\alpha\)</span> confidence interval of <span class="math notranslate nohighlight">\(\mu[Y_h]\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\hat{Y}_h \pm t(1-\alpha/2; n-2)s[\hat{Y}_h]
+\end{equation}
+\]</div>
+</div>
+<div class="section" id="the-1-alpha-percent-confidence-interval-of-y-h-when-x-x-h">
+<h4>The <span class="math notranslate nohighlight">\(1-\alpha\)</span> percent confidence interval of <span class="math notranslate nohighlight">\(Y_h\)</span> when <span class="math notranslate nohighlight">\(x = x_h\)</span><a class="headerlink" href="#the-1-alpha-percent-confidence-interval-of-y-h-when-x-x-h" title="Permalink to this headline">¶</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(Y_h\)</span> be a new observation. Let <span class="math notranslate nohighlight">\(\hat{e}_h = Y_h-\hat{Y}_h\)</span>. Because <span class="math notranslate nohighlight">\(\hat{Y}_h = \hat{b}_0 + \hat{b}_1x_h\)</span> is a linear function of <span class="math notranslate nohighlight">\(Y_1, Y_2,...,Y_n\)</span> which are independent from <span class="math notranslate nohighlight">\(Y_h = b_0+b_1x_h + \epsilon_h\)</span>, they are independent from each other.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sigma^2[\hat{e}_h] &amp;= \sigma^2[Y_h] + \sigma^2[\hat{Y}_h] = \sigma^2 + \sigma^2\times\bigg[ \frac{1}{n} + \frac{(x_h-\bar{x})^2}{\sum{(x_i-\bar{x})^2}} \bigg] = \sigma^2\times\bigg[ 1 + \frac{1}{n} + \frac{(x_h-\bar{x})^2}{\sum{(x_i-\bar{x})^2}} \bigg] \\
+s^2[\hat{e}_h] &amp;= \text{MSE}\times\bigg[ 1 + \frac{1}{n} + \frac{(x_h-\bar{x})^2}{\sum{(x_i-\bar{x})^2}} \bigg]
+\end{align}
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(Y_h, \hat{Y}_h\)</span> are normal, <span class="math notranslate nohighlight">\(\hat{e}_h\)</span> is normal, and it can proved similarly as previous ones, <span class="math notranslate nohighlight">\(\frac{\hat{e}_h}{s[\hat{e}_h]} \sim t(n-2)\)</span>. The <span class="math notranslate nohighlight">\(1-\alpha\)</span> confidence interval of <span class="math notranslate nohighlight">\(Y_h\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\hat{Y}_h\pm t(1-\alpha/2; n-2)s[\hat{e}_h]
+\end{equation}
+\]</div>
+</div>
+<div class="section" id="the-1-alpha-percent-confidence-interval-of-bar-y-h-of-m-new-observations-when-x-x-h">
+<h4>The <span class="math notranslate nohighlight">\(1-\alpha\)</span> percent confidence interval of <span class="math notranslate nohighlight">\(\bar{Y}_h\)</span> of <span class="math notranslate nohighlight">\(m\)</span> new observations when <span class="math notranslate nohighlight">\(x = x_h\)</span><a class="headerlink" href="#the-1-alpha-percent-confidence-interval-of-bar-y-h-of-m-new-observations-when-x-x-h" title="Permalink to this headline">¶</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(Y_{h_1}, Y_{h_2},..., Y_{h_1}\)</span> be <span class="math notranslate nohighlight">\(m\)</span> new observations unknown, we want to find its unknown mean <span class="math notranslate nohighlight">\(\bar{Y}_h = \frac{\sum_{i=1}^m{Y_{h_i}}}{m}\)</span>. Note, <span class="math notranslate nohighlight">\(Y_{h_i}\)</span> are independent from each other, they are also independent from <span class="math notranslate nohighlight">\(\hat{Y}_h = \hat{b}_0 + \hat{b}_1x_h\)</span> which is linear function of <span class="math notranslate nohighlight">\(Y_1, Y_2, ..., Y_n\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\hat{r}_h = \hat{Y}_h - \bar{Y}_h\)</span>, <span class="math notranslate nohighlight">\(\hat{r}_h\)</span> is normal with mean and variance:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mu[\hat{r}_h] &amp;= \mu[\hat{Y}_h] - \mu[\bar{Y}_h] = b_0 + b_1x_h -\frac{m(b_0+b_1x_h)}{m} = 0 \\
+\sigma^2[\hat{r}_h] &amp;= \sigma^2[\hat{Y}_h] + \sigma^2[\bar{Y}_h] = \sigma^2 \times \bigg[ \frac{1}{n} + \frac{(x_h-\bar{x})^2}{\sum(x_i-\bar{x})^2} \bigg] + \frac{\sigma^2}{m} = \sigma^2 \times \bigg[ \frac{1}{m} + \frac{1}{n} + \frac{(x_h-\bar{x})^2}{\sum(x_i-\bar{x})^2} \bigg] \\
+s^2[\hat{r}_h] &amp;= \text{MSE} \times \bigg[ \frac{1}{m} + \frac{1}{n} + \frac{(x_h-\bar{x})^2}{\sum(x_i-\bar{x})^2} \bigg]
+\end{align}
+\end{split}\]</div>
+<p>Therefore <span class="math notranslate nohighlight">\(\frac{\hat{r}_h}{s[\hat{r}_h]} \sim t(n-2)\)</span>. And the <span class="math notranslate nohighlight">\(1-\alpha\)</span> confidence interval of <span class="math notranslate nohighlight">\(\bar{Y}_h\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\hat{Y}_h \pm t(1-\alpha/2; n-2)s[\hat{r}_h] 
+\end{equation}
+\]</div>
+</div>
+<div class="section" id="the-working-hotelling-1-alpha-percent-confidence-band-of-regression-line-mu-y-h-b-0-b-1x-h-for-any-y-h">
+<h4>The Working-Hotelling <span class="math notranslate nohighlight">\(1-\alpha\)</span> percent confidence band of regression line <span class="math notranslate nohighlight">\(\mu[Y_h] = b_0 + b_1x_h\)</span> for any <span class="math notranslate nohighlight">\(Y_h\)</span><a class="headerlink" href="#the-working-hotelling-1-alpha-percent-confidence-band-of-regression-line-mu-y-h-b-0-b-1x-h-for-any-y-h" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\hat{Y}_h \pm Ws[\hat{Y}_h]
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(W^2 = 2F(1-\alpha; 2, n-2)\)</span>.</p>
+</div>
+</div>
+<div class="section" id="decision-making">
+<h3>Decision making<a class="headerlink" href="#decision-making" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="testing-h-0-b-1-0-vs-h-1-b-1-ne-0">
+<h4>Testing <span class="math notranslate nohighlight">\(H_0: b_1 = 0\)</span> vs <span class="math notranslate nohighlight">\(H_1: b_1 \ne 0\)</span><a class="headerlink" href="#testing-h-0-b-1-0-vs-h-1-b-1-ne-0" title="Permalink to this headline">¶</a></h4>
+<p>It can be shown that,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\sum(Y_i-\bar{Y})^2 &amp;= \sum(\hat{Y}_i-\bar{Y})^2 + \sum(Y_i-\hat{Y}_i)^2\\
+\text{SSTO} &amp;= \text{SSR} + \text{SSE}
+\end{align}
+\end{split}\]</div>
+<p>Under the null hypothesis, <span class="math notranslate nohighlight">\(\frac{\text{SSTO}}{\sigma^2} \sim \chi^2(n-1)\)</span>, <span class="math notranslate nohighlight">\(\frac{SSE}{\sigma^2} \sim \chi^2(n-2)\)</span>, by the quadratic form theorem, <span class="math notranslate nohighlight">\(\frac{\text{SSR}}{\sigma^2} \sim \chi^2(1)\)</span>.</p>
+<p>Besides being able to decompose <span class="math notranslate nohighlight">\(\text{SSTO}\)</span> into sum of squares of <span class="math notranslate nohighlight">\(\text{SSR}\)</span> and <span class="math notranslate nohighlight">\(\text{SSE}\)</span>, we want to also associate the concept called <strong>degree of freedom(df)</strong> to those sum of squares regardless of whether we are under null or alternative hypothesis as follows:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{SSTO}\)</span> has <span class="math notranslate nohighlight">\(n-1\)</span> df.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{SSR}\)</span> has <span class="math notranslate nohighlight">\(1\)</span> df.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{SSE}\)</span> has <span class="math notranslate nohighlight">\(n-2\)</span> df. Note that <span class="math notranslate nohighlight">\(\text{SSE}\)</span> always has the true chi-squared <span class="math notranslate nohighlight">\(n-2\)</span> df in both null and alternative hypothesis, this is proved in the previous theorem.</p></li>
+</ul>
+<p>Just like <span class="math notranslate nohighlight">\(\text{MSE} = \frac{\text{SSE}}{df(SSE)} = \frac{\text{SSE}}{n-2}\)</span>, we could also define other mean sum of squares as follows:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{MSR} = \frac{\text{SSR}}{1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{MSTO} = \frac{\text{SSTO}}{n-1}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="expected-values-of-text-msr">
+<h4>Expected values of <span class="math notranslate nohighlight">\(\text{MSR}\)</span><a class="headerlink" href="#expected-values-of-text-msr" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\text{MSR} = \sum(\hat{Y}_i - \bar{Y})^2 = \sum(\hat{b}_0^{*} + \hat{b}_1(x_i-\bar{x}))^2 = \hat{b}_1^2\sum(x_i-\bar{x})^2
+\]</div>
+<p>By using equation (1),</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mu[MSR] &amp;= \mu[\hat{b}_1^2]\times\sum(x_i-\bar{x})^2 \\
+&amp;= (\sigma^2[\hat{b}_1] + \mu[\hat{b}_1]^2)\Big(\sum(x_i-\bar{x})^2\Big) \\
+&amp;= \Big(\frac{\sigma^2}{ \sum(x_i-\bar{x})^2 } + b_1^2\Big)\sum(x_i-\bar{x})^2 \\
+&amp;= \sigma^2 + b_1^2\sum(x_i-\bar{x})^2 
+\end{align}
+\end{split}\]</div>
+<p>Comparing to <span class="math notranslate nohighlight">\(\mu[\text{MSE}] = \sigma^2\)</span>, <span class="math notranslate nohighlight">\(\mu[\text{MSR}] \ge \mu[\text{MSE}]\)</span>. If <span class="math notranslate nohighlight">\(H_\alpha\)</span> is true, <span class="math notranslate nohighlight">\(\frac{MSR}{MSE}\)</span> should be greater than 1 and close to 1 if <span class="math notranslate nohighlight">\(H_0\)</span> is true, and that inspires our test statistics for testing <span class="math notranslate nohighlight">\(H_0: b_1 = 0\)</span> vs <span class="math notranslate nohighlight">\(H_\alpha: b_1 \ne 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+F^{*} = \frac{MSR}{MSE} \sim F(1, n-2)
+\end{equation}
+\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(F^{*} \le F(1-\alpha; 1, n-2)\)</span> concludes <span class="math notranslate nohighlight">\(H_0\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(F^{*} \gt F(1-\alpha; 1, n-2)\)</span> concludes <span class="math notranslate nohighlight">\(H_\alpha\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(F^{*}\)</span> is equivalent to a <span class="math notranslate nohighlight">\(t^{*} = \frac{\hat{b}_1}{s[\hat{b}_1]}\)</span> statistics test:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+F^{*} &amp;= \frac{\text{SSR}\div1}{\text{MSE}\div(n-2)}  \\
+&amp;= \frac{\hat{b}_1^2\sum(x_i-\bar{x})^2}{\text{MSE}} \\
+&amp;= \frac{\hat{b}_1^2}{\frac{\text{MSE}}{\sum(x_i-\bar{x})^2}} \\
+&amp;= \bigg( \frac{\hat{b}_1}{s[\hat{b}_1]} \bigg)^2 = (t^{*})^2
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|t^{*}| \le t(1-\alpha/2; n-2)\)</span> concludes <span class="math notranslate nohighlight">\(H_0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(|t^{*}| \gt t(1-\alpha/2; n-2)\)</span> concludes <span class="math notranslate nohighlight">\(H_\alpha\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="prerequisites.html" title="previous page">Prerequisites</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

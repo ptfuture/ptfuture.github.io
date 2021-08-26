@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple random walk &#8212; Random walk</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Random walk</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Simple random walk
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/simple-random-walk.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-dimensional">
+   One dimensional
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-homogeneity-property">
+     Time Homogeneity Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spatial-homogeneity-property">
+     Spatial Homogeneity Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-average-moving-speed">
+     Theorem: Average moving speed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#irreducible">
+     Irreducible
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#method-1-binomial">
+       Method 1: Binomial
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#method-2-generating-function">
+       Method 2: Generating function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#method-3-absorbing-state">
+       Method 3: Absorbing state
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="simple-random-walk">
+<h1>Simple random walk<a class="headerlink" href="#simple-random-walk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="one-dimensional">
+<h2>One dimensional<a class="headerlink" href="#one-dimensional" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/ere9BtMLoTc">https://youtu.be/ere9BtMLoTc</a></strong></p>
+<p>Think of a drunk man, standing out side a bar, walk one step at a time, either left or right, with certain probability. Will he eventually return to the origin state 0? Or there’s a chance that he will never returns?</p>
+<p>What’s the average time he returns back to the bar? On average, will be be back in 10 steps, 100 steps? 1000 steps?</p>
+<div class="section" id="time-homogeneity-property">
+<h3>Time Homogeneity Property<a class="headerlink" href="#time-homogeneity-property" title="Permalink to this headline">¶</a></h3>
+<p>Give any <span class="math notranslate nohighlight">\(i, j \in S\)</span>, <span class="math notranslate nohighlight">\(P(X_{n+1}=j | X_n=i) = P(X_1=j | X_0=i)\)</span> for any <span class="math notranslate nohighlight">\(n\)</span>. That is no matter how much time parsed, the probability of moving from state <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> never changed.</p>
+</div>
+<div class="section" id="spatial-homogeneity-property">
+<h3>Spatial Homogeneity Property<a class="headerlink" href="#spatial-homogeneity-property" title="Permalink to this headline">¶</a></h3>
+<p>It’s not only time homogeneous but also state homogeneous. i.e. <span class="math notranslate nohighlight">\(P(X_{n+1}=j+k | X_n=i+k) = P(X_1=j | X_0=i)\)</span></p>
+</div>
+<div class="section" id="theorem-average-moving-speed">
+<h3>Theorem: Average moving speed<a class="headerlink" href="#theorem-average-moving-speed" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\{ X_n, X_n \in 	\mathbb{Z}, n \in \mathbb{Z^+} \}\)</span>, Let <span class="math notranslate nohighlight">\(Z_i\)</span> be iid bernoulli taking value <span class="math notranslate nohighlight">\(1\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> with <span class="math notranslate nohighlight">\(1-p\)</span>, therefore, <span class="math notranslate nohighlight">\(\displaystyle{X_n = \sum_{i=0}^n{Z_i}}\)</span>, by strong law of large numbers,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{X_n}{n} \rightarrow E[Z_0] \qquad \text{a.s}
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(E[Z_0] = (1)p+(-1)(1-p) = 2p-1\)</span>. <span class="math notranslate nohighlight">\(E[Z_0]\)</span> defines the average speed it moves. If <span class="math notranslate nohighlight">\(E[Z_0] = 0\)</span>, it doesn’t move away from 0 on average, otherwise, it moves away from 0 in average speed <span class="math notranslate nohighlight">\(E[Z_0]\)</span>.</p>
+</div>
+<div class="section" id="irreducible">
+<h3>Irreducible<a class="headerlink" href="#irreducible" title="Permalink to this headline">¶</a></h3>
+<p>Since all states are communicate, it’s a irreducible markov chain. It can be proved that if state <span class="math notranslate nohighlight">\(0\)</span> is recurrent, then all states are recurrent. If <span class="math notranslate nohighlight">\(0\)</span> is transient then all states are transient.</p>
+<p>Our goal is to determine whether state <span class="math notranslate nohighlight">\(0\)</span> is transient or recurrent. We are also interested to if expected time of first return is finite or infinite.</p>
+<div class="section" id="method-1-binomial">
+<h4>Method 1: Binomial<a class="headerlink" href="#method-1-binomial" title="Permalink to this headline">¶</a></h4>
+<p>Since it needs even number of steps to return back to zero, therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{P}_{00}^{2n-1} = 0
+\]</div>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{P}_{00}^{2n} = \binom{2n}{n}p^n(1-p)^n\)</span>, using stirling formula <span class="math notranslate nohighlight">\(n! \sim n^{n+1/2}e^{-n}\sqrt{2\pi}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{P}_{00}^{2n} \sim \frac{(4p(1-p))^n}{\sqrt{\pi{n}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle \sum_{n=1}{\boldsymbol{P}_{00}^{2n}} \sim \sum_{n=1}{\frac{(4p(1-p))^n}{\sqrt{\pi{n}}}}
+\]</div>
+<p>if <span class="math notranslate nohighlight">\(p=\frac{1}{2}\)</span>, since <span class="math notranslate nohighlight">\(\sum{\frac{1}{\sqrt{n}}}\)</span> is divergent, <span class="math notranslate nohighlight">\(\displaystyle \sum_{n=1}{\boldsymbol{P}_{00}^{2n}}=\infty\)</span>, therefore <span class="math notranslate nohighlight">\(\rho_{00} = P_0(T_0 \lt \infty) = 1\)</span>.
+Otherwise, <span class="math notranslate nohighlight">\((4p(1-p))^n \lt 1\)</span>, therefore <span class="math notranslate nohighlight">\(\displaystyle \sum_{n=1}{\boldsymbol{P}_{00}^{2n}} \lt \infty\)</span>, therefore <span class="math notranslate nohighlight">\(\rho_{00} = P_0(T_0 \lt \infty) \lt 1\)</span></p>
+</div>
+<div class="section" id="method-2-generating-function">
+<h4>Method 2: Generating function<a class="headerlink" href="#method-2-generating-function" title="Permalink to this headline">¶</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(\rho_{0r}(n) = P(T_r = n| X_0 = 0)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  P_0(T_0 \lt \infty) &amp;= \sum_{n = 0}^{\infty}{P_0(T_0 = n)} = \sum_{n = 0}^{\infty}{\rho_{00}(n)} \\
+  E_0[T_0] &amp;= \sum_{n=0}^{\infty}{nP_0(T_0 = n)} = \sum_{n=0}^{\infty}{n\rho_{00}(n)}
+\end{aligned}
+\end{split}\]</div>
+<p><strong>Definition:</strong> Probability generating function of discrete random variable <span class="math notranslate nohighlight">\(X\)</span>: <span class="math notranslate nohighlight">\(G_{X}(s) = E[s^X] = \sum_{n=0}^{\infty}{s^nP(X=n)}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  G_{T_0}(1) &amp;= P_0(T_0 \lt \infty)\\
+  G_{T_0}'(1) &amp;= E_0[T_0] \\
+  P(T_0 = n) &amp;= \frac{1}{n!} G_{T_0}^{(n)}(0)
+\end{aligned}
+\end{split}\]</div>
+<p>Therefore, the generating function determines the probability distribution.</p>
+<p>We want to know <span class="math notranslate nohighlight">\(G_{T_0}(1)=\sum_{n=0}^{\infty}\rho_{00}(n) = \rho_{00}\)</span> is equal to <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(\lt 1\)</span>. We’ll find in three steps:</p>
+<ul class="simple">
+<li><p>First find <span class="math notranslate nohighlight">\(G_{T_r}(s)\)</span> for <span class="math notranslate nohighlight">\(r \gt 1\)</span>.</p></li>
+<li><p>Then use <span class="math notranslate nohighlight">\(G_{T_r}(s)\)</span> to find <span class="math notranslate nohighlight">\(G_{T_1}(s)\)</span>.</p></li>
+<li><p>Last find <span class="math notranslate nohighlight">\(G_{T_0}(s)\)</span> using <span class="math notranslate nohighlight">\(G_{T_1}(s)\)</span>.</p></li>
+</ul>
+<p><strong>First find <span class="math notranslate nohighlight">\(G_{T_r}(s)\)</span> for <span class="math notranslate nohighlight">\(r \gt 1\)</span>:</strong></p>
+<p>When <span class="math notranslate nohighlight">\(r \gt 1\)</span>, by conditioning on <span class="math notranslate nohighlight">\(T_1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \displaystyle
+  \rho_{0r}(n) &amp;= \sum_{k=0}^{\infty}{P(T_r = n | T_1 = k)\rho_{01}(k)} \\
+               &amp;= \sum_{k=0}^{n}{P(T_r = n | T_1 = k)\rho_{01}(k)} \\
+               &amp; = \sum_{k=0}^{n}{\rho_{1r}(n-k)\rho_{01}(k)} \\
+               &amp; = \sum_{k=0}^{n}{\rho_{0,r-1}(n-k)\rho_{01}(k)} \qquad \text{Spatial homogeneity}
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  G_{T_r}(s) &amp;= \sum_{n=0}^{\infty} s^n \rho_{0r}(n) = \sum_{n=0}^{\infty} \sum_{k=0}^{n}  {s^n\rho_{0,r-1}(n-k)\rho_{01}(k)} \\
+  &amp;= \sum_{k=0}^{\infty} \sum_{n=k}^{\infty} {s^k s^{n-k} \rho_{0,r-1}(n-k)\rho_{01}(k)} \\
+  &amp;= \sum_{k=0}^{\infty} {s^k\rho_{01}(k)} \sum_{n=k}^{\infty}  {s^{n-k}\rho_{0,r-1}(n-k)} \\
+  &amp;= G_{T_1}(s)G_{T_{r-1}}(s)
+\end{aligned}
+\end{split}\]</div>
+<p>By induction:</p>
+<div class="math notranslate nohighlight">
+\[
+G_{T_r}(s)=G_{T_1}^r(s) \tag{1}
+\]</div>
+<p><strong>Use <span class="math notranslate nohighlight">\(G_{T_r}(s)\)</span> to find <span class="math notranslate nohighlight">\(G_{T_1}(s)\)</span>:</strong></p>
+<p>Find <span class="math notranslate nohighlight">\(G_{T_1}(s)=\sum_{n=0}^{\infty}s^n\rho_{01}(n)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_{01}(n) = P_0(T_1 = n | X_1 = 1)p + P_0(T_1 = n | X_1 = -1)q
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_0(T_1 = n | X_1 = 1)\)</span> is 0 if <span class="math notranslate nohighlight">\(n=0\)</span> or <span class="math notranslate nohighlight">\(n \ge 2\)</span>, and is equal to <span class="math notranslate nohighlight">\(1\)</span> when <span class="math notranslate nohighlight">\(n=1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_0(T_1 = n | X_1 = -1)\)</span>, has the same probbility that the random walk first reaches state <span class="math notranslate nohighlight">\(2\)</span> in <span class="math notranslate nohighlight">\(n-1\)</span> times given the initial state is <span class="math notranslate nohighlight">\(0\)</span>, i.e. <span class="math notranslate nohighlight">\(P_0(T_1 = n | X_1 = -1) = P(T_2 = n-1 | X_0 = 0) = \rho_{02}(n-1)\)</span> for <span class="math notranslate nohighlight">\(n \ge 2\)</span> and <span class="math notranslate nohighlight">\(0\)</span> otherwise.</p></li>
+</ul>
+<p>Therefore,</p>
+<ul class="simple">
+<li><p>when <span class="math notranslate nohighlight">\(n=0\)</span>, <span class="math notranslate nohighlight">\(\rho_{01}(n) = 0\)</span>,</p></li>
+<li><p>when <span class="math notranslate nohighlight">\(n=1\)</span>, <span class="math notranslate nohighlight">\(\rho_{01}(n)= p\)</span>,</p></li>
+<li><p>when <span class="math notranslate nohighlight">\(n \ge 2\)</span>, <span class="math notranslate nohighlight">\(\rho_{01}(n)=q\rho_{02}(n-1)\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  G_{T_1}(s) &amp;= \sum_{n=0}^{\infty}s^n \rho_{01}(n) \\
+  &amp;= ps + qs\sum_{n=2}^{\infty} s^{n-1}\rho_{02}(n-1) \\
+  &amp;= ps + qs\sum_{n=1}^{\infty} s^n\rho_{02}(n) \qquad \text{Change } n-1 \rightarrow n \\
+  &amp;= ps + qs\sum_{n=0}^{\infty} s^n\rho_{02}(n) \qquad \text{using } \rho_{02}(0) = 0  \\
+  &amp;= ps + qsG_{T_2}(s) \\
+  &amp;= ps + qsG_{T_1}^2(s) \qquad \text{using } G_{T_2} = G_{T_1}^2
+\end{aligned}
+\end{split}\]</div>
+<p>Solving <span class="math notranslate nohighlight">\(qsG_{T_1}^2 - G_{T_1} + ps = 0\)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\displaystyle { 
+  G_{T_1} = \begin{cases}
+    \frac{1 + \sqrt{1-4qps^2}}{2qs} \\
+    \frac{1 - \sqrt{1-4qps^2}}{2qs}
+  \end{cases}
+ }
+\end{split}\]</div>
+<p>Only one of these two is valid. Note that this solution must also satisfy <span class="math notranslate nohighlight">\(G_{T_1}(0) =\rho_{01}(0) = 0\)</span>. The limit <span class="math notranslate nohighlight">\(\lim_{s \rightarrow 0} \frac{1 + \sqrt{1-4qps^2}}{2qs} = \infty\)</span>, therefore the solution should be:</p>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle{ G_{T_1}(s) = \frac{1 - \sqrt{1-4qps^2}}{2qs} }
+\]</div>
+<p>Therefore the probability of the first time reaching state <span class="math notranslate nohighlight">\(1\)</span> given initial state <span class="math notranslate nohighlight">\(0\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \rho_{01} = G_{T_1}(1) &amp;= \sum_{n=0}^\infty\rho_{01}(n) \\
+  &amp;= \frac{1 - \sqrt{1-4qp}}{2q} \\
+  &amp;= \frac{1 - \sqrt{1-4q+4q^2}}{2q} \\
+  &amp;= \frac{1 - \sqrt{(1-2q)^2}}{2q} \\
+  &amp;= \frac{1 - |1-2q|}{2q} \\
+  &amp;= \begin{cases}
+    1 \qquad \text{if } q \le \frac{1}{2} \\
+    \frac{p}{q} \qquad \text{if } q \gt \frac{1}{2}
+  \end{cases}
+\end{aligned}
+\end{split}\]</div>
+<p><strong>Find <span class="math notranslate nohighlight">\(G_{T_0}(s)\)</span> using <span class="math notranslate nohighlight">\(G_{T_1}(s)\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \displaystyle
+    G_{T_0}(s) &amp;= \sum_{n=0}^{\infty} s^n \rho_{00}(n) \\
+    &amp;= \sum_{n=0}^{\infty} s^nP(T_0=n|X_0=0) \\
+    &amp;= \sum_{n=0}^{\infty} s^n(P(T_0=n|X_1=1)p+P(T_0=n|X_1=-1)q) \\
+    &amp;= \sum_{n=0}^{\infty} s^n(P(T_{-1}=n-1|X_0=0)p+P(T_1=n-1|X_0=0)q) \qquad \text{By time and spatial property} \\
+    &amp;= \sum_{n=0}^{\infty} s^n\rho_{0,-1}(n-1)p + \sum_{n=0}^{\infty} s^n\rho_{0,1}(n-1)q \\
+    &amp;= spG_{T_{-1}}(s) + sqG_{T_{1}}(s)
+\end{aligned}
+\end{split}\]</div>
+<p>But moving from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(-1\)</span> and moving from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(1\)</span> is symmetric in distribution with <span class="math notranslate nohighlight">\(p, q\)</span> swaped. By swaping the <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> in <span class="math notranslate nohighlight">\(G_{T_1}(s) = \frac{1 - \sqrt{1-4qps^2}}{2qs}\)</span> we get the value of <span class="math notranslate nohighlight">\(G_{T_{-1}}(s)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+G_{T_{-1}}(s) = \frac{1 - \sqrt{1-4qps^2}}{2ps}
+\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+  \displaystyle
+    G_{T_0}(s) &amp;= sp\frac{1 - \sqrt{1-4qps^2}}{2ps} + sq\frac{1 - \sqrt{1-4qps^2}}{2qs} \\
+    &amp;= 1 - \sqrt{1-4qps^2} \\
+    \rho_{00} = G_{T_0}(1) &amp;= 1 - | 1-2q |
+\end{aligned}
+\end{split}\]</div>
+<p>When <span class="math notranslate nohighlight">\(q=\frac{1}{2}\)</span>, state <span class="math notranslate nohighlight">\(0\)</span> is recurrent because:</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_{00} = 1 \qquad \text{if } q=\frac{1}{2}
+\]</div>
+<p>When <span class="math notranslate nohighlight">\(q \ne \frac{1}{2}\)</span>, state <span class="math notranslate nohighlight">\(0\)</span> is transient because:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho_{00} = \sum_{n=0}^\infty P(T_0 = n | X_0 = 0) =  \begin{cases}
+    2q \lt 1 &amp; \text{if } q \lt \frac{1}{2} \\
+    2p \lt 1 &amp; \text{if } q \gt \frac{1}{2}
+  \end{cases}
+\end{split}\]</div>
+<p>What about the expected value of <span class="math notranslate nohighlight">\(T_0\)</span>?</p>
+<p>Find the derivative of <span class="math notranslate nohighlight">\(G_{T_0}(s) = 1 - \sqrt{1-4pqs^2}\)</span> we get <span class="math notranslate nohighlight">\(G'_{T_0}(s) = \frac{4qps}{\sqrt{1-4qps^2}}\)</span>, hence:</p>
+<p>When <span class="math notranslate nohighlight">\(q=\frac{1}{2}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+E_0(T_0) = G'_{T_0}(1) = \infty \qquad \text{if } q=\frac{1}{2}
+\]</div>
+<p>When <span class="math notranslate nohighlight">\(q \ne \frac{1}{2}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+E_0(T_0) = G'_{T_0}(1) = \frac{4qp}{\sqrt{1-4qp}} \lt \infty \qquad \text{if } q \ne \frac{1}{2}
+\]</div>
+</div>
+<div class="section" id="method-3-absorbing-state">
+<h4>Method 3: Absorbing state<a class="headerlink" href="#method-3-absorbing-state" title="Permalink to this headline">¶</a></h4>
+<p>Check out the <a href="/crypto/blockchain-failure.html">Bitcoin mining modelling content</a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

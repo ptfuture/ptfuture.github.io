@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forward and Future contracts &#8212; Machine Earning</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Machine Earning" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Machine Earning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Machine Earning
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Forward and Future contracts
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/forward-future-contracts.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pricing-forward-contract">
+   Pricing Forward contract
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="forward-and-future-contracts">
+<h1>Forward and Future contracts<a class="headerlink" href="#forward-and-future-contracts" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Forwards are OTC traded contracts between two financial institutions</p></li>
+<li><p>Futures are like forward, but with daily settlements, margin calls and traded in exchanges.</p></li>
+</ul>
+<div class="section" id="pricing-forward-contract">
+<h2>Pricing Forward contract<a class="headerlink" href="#pricing-forward-contract" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/cJtS0ULSmhs">https://youtu.be/cJtS0ULSmhs</a></strong></p>
+<p><span class="math notranslate nohighlight">\(T\)</span> is the time to maturity. <span class="math notranslate nohighlight">\(r\)</span> is the risk-free rate, <span class="math notranslate nohighlight">\(F_0\)</span> is the forward price.</p>
+<div class="math notranslate nohighlight">
+\[
+F_0=S_0e^{rT} \tag{1}
+\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(F_0 \gt S_0e^{rT}\)</span>, arbitrageurs can buy the asset from the spot market and short the forward contract.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(F_0 \lt S_0e^{rT}\)</span>, arbitrageurs can short the asset from realize at the spot price <span class="math notranslate nohighlight">\(S_0\)</span>, invest the earnings to at risk-free interest rate <span class="math notranslate nohighlight">\(r\)</span> for <span class="math notranslate nohighlight">\(T\)</span> period of time, and long the forward contract. after <span class="math notranslate nohighlight">\(T\)</span> period of time, use the asset realized from the forward contract and return to the borrower.</p></li>
+</ul>
+<p><strong>Asset with lump-sum Income:</strong></p>
+<p>An asset could produce known income, for example stocks paying dividends and coupon-bearing bonds, the forward contract’s price will have to adjusted.</p>
+<p>Supose an investment asset will provide income of <span class="math notranslate nohighlight">\(C_{1}\)</span> at maturity <span class="math notranslate nohighlight">\(T_1\)</span> where <span class="math notranslate nohighlight">\(T_1 \lt T\)</span>, given the risk-free interest rate is <span class="math notranslate nohighlight">\(r_c\)</span> for <span class="math notranslate nohighlight">\(T_1\)</span> period of time, the present value of income is <span class="math notranslate nohighlight">\(I_1=C_1e^{-rT_1}\)</span>. After <span class="math notranslate nohighlight">\(T_1\)</span>, the <span class="math notranslate nohighlight">\(T_1\)</span> amount of money can be repay back to the borrower. Only the rest of the money <span class="math notranslate nohighlight">\(S_0 - C_1\)</span> is borrowed at interest rate <span class="math notranslate nohighlight">\(r\)</span>. Which gives us the pricing formula for the forward contract:</p>
+<div class="math notranslate nohighlight">
+\[
+F_0 = (S_0-I_1)e^{rT} \tag{2}
+\]</div>
+<p>When there are <span class="math notranslate nohighlight">\(n\)</span> lump-sum incomes during the forward contract period <span class="math notranslate nohighlight">\(T\)</span>, say <span class="math notranslate nohighlight">\(C_1\)</span> at <span class="math notranslate nohighlight">\(T_1\)</span>, <span class="math notranslate nohighlight">\(C_2\)</span> at <span class="math notranslate nohighlight">\(T_2\)</span> to <span class="math notranslate nohighlight">\(C_n\)</span> at <span class="math notranslate nohighlight">\(T_n\)</span> where <span class="math notranslate nohighlight">\(T_1 \lt T_2 \lt...\lt T_n\le T\)</span>. And assuming the risk-free interest rates for each of the <span class="math notranslate nohighlight">\(T_k\)</span> periods are <span class="math notranslate nohighlight">\(r_{c_1},...,r_{c_n}\)</span>. The present values of these <span class="math notranslate nohighlight">\(n\)</span> lump-sum incomes are <span class="math notranslate nohighlight">\(I_k=C_ke^{-r_{c_k}T_k}\)</span>. The price of the forward contract should be:</p>
+<div class="math notranslate nohighlight">
+\[
+F_0 = (S_0-\sum_{k=1}^{n}I_k)e^{rT} \tag{3}
+\]</div>
+<p><strong>Asset with yield:</strong></p>
+<p>If the underlying asset of a forward contract provides a known yield <span class="math notranslate nohighlight">\(q\)</span> continuously compounded of the asset price <span class="math notranslate nohighlight">\(S_0\)</span>. If the risk-free interest rate to borrow money from is <span class="math notranslate nohighlight">\(r\)</span>, then the actual interest rate applies is <span class="math notranslate nohighlight">\(r-q\)</span>. So the Forward price should be:</p>
+<div class="math notranslate nohighlight">
+\[
+F_0=S_0e^{(r-q)T} \tag{4}
+\]</div>
+<p><strong>Valuating Forward contracts:</strong></p>
+<p>Suppose we bought a forward contract at <span class="math notranslate nohighlight">\(F_0\)</span> sometime ago. And today, after <span class="math notranslate nohighlight">\(t\)</span> time passed, if we negotiate the same contract but opposite position which will mature same as the previously bought contract <span class="math notranslate nohighlight">\(T\)</span> period of time from now, with price <span class="math notranslate nohighlight">\(F_t\)</span>, then the value of the contract is the payoff if we short a forward contract today at <span class="math notranslate nohighlight">\(F_t\)</span> discounted at the risk-free interest rate <span class="math notranslate nohighlight">\(r\)</span> for <span class="math notranslate nohighlight">\(T\)</span> period of time. So financial institutions defines the value of a forward contract by taking the discounted value of <span class="math notranslate nohighlight">\(F_t-F_0\)</span>, that is:</p>
+<div class="math notranslate nohighlight">
+\[
+V_t=(F_t-F_0)e^{-rT} \tag{5}
+\]</div>
+<p>Combining (1) and (5):</p>
+<div class="math notranslate nohighlight">
+\[
+V_t = S_t - F_0e^{-rT} \tag{6}
+\]</div>
+<p>Combining (3) and (5):</p>
+<div class="math notranslate nohighlight">
+\[
+V_t = S_0-\sum_{k=1}^{n}I_k - F_0e^{-rT} \tag{7}
+\]</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Machine Earning</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

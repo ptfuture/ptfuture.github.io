@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditional Expectation &#8212; Martingale Theory</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Martingale Theory</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Conditional Expectation
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/conditional-expectation-probability.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#radon-nikodyn-rn-theorem">
+   Radon-Nikodyn(RN) Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorem-sigma-field-generated-by-partitions">
+   Theorem:
+   <span class="math notranslate nohighlight">
+    \(\sigma\)
+   </span>
+   -field generated by partitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-probability">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorem-bayes-formula">
+   Theorem: Bayes’ Formula
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorem-conditional-expectation-with-pdf">
+   Theorem: Conditional expectation with PDF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-conditional-expectation">
+   Properties of conditional expectation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorem">
+   Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorem-mean-square-error-and-orthogonality">
+   Theorem: Mean square error and Orthogonality
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="conditional-expectation">
+<h1>Conditional Expectation<a class="headerlink" href="#conditional-expectation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/RKtSO9hmb1A">https://youtu.be/RKtSO9hmb1A</a></strong></p>
+<p>Given a probability space <span class="math notranslate nohighlight">\((\Omega, \mathcal{F_o}, P)\)</span>, a sigma field <span class="math notranslate nohighlight">\(\mathcal{F} \subset \mathcal{F_o}\)</span> and a random variable <span class="math notranslate nohighlight">\(X \in \mathcal{F_o}\)</span> with <span class="math notranslate nohighlight">\(E|X| \lt\infty\)</span>, we define the <strong>condition expectation</strong> of<span class="math notranslate nohighlight">\(X\)</span> given <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, <span class="math notranslate nohighlight">\(E[X|\mathcal{F}]\)</span>, to be any random variable <span class="math notranslate nohighlight">\(Y\)</span> that has:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y \in \mathcal{F}\)</span></p></li>
+<li><p>for all <span class="math notranslate nohighlight">\(E \in \mathcal{F}\)</span>, <span class="math notranslate nohighlight">\(\int_{E}XdP = \int_{E}YdP\)</span></p></li>
+</ol>
+<p>If there’s another random variable also satisfies thise two conditions, they are equal a.s. We denote any random variable that satisfies these two conditions as <span class="math notranslate nohighlight">\(E[X|\mathcal{F}]\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(Y'\)</span> also satisfies 1 and 2 of the conditional expectation definition then <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(Y'\)</span> are equal almost surely.</p>
+<p><em>Proof:</em></p>
+<p>Let <span class="math notranslate nohighlight">\(A = \{ Y - Y' \ge \epsilon \gt 0\}\)</span>, Since both <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(Y'\)</span> are <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> measurable, the <span class="math notranslate nohighlight">\(Y-Y' \ge \epsilon\)</span> is also <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> measurable. By the 2 condition we have:</p>
+<div class="math notranslate nohighlight">
+\[
+0=\int_{A}X - X dP = \int_{A}Y - Y' dP \ge \epsilon P(A)
+\]</div>
+<p>which indicates <span class="math notranslate nohighlight">\(P(A) = 0\)</span>. Conversely, we could also conclude that <span class="math notranslate nohighlight">\(A' = \{Y' - Y \ge \epsilon \gt 0\}\)</span> also has measure zero.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span>.</p>
+<div class="section" id="radon-nikodyn-rn-theorem">
+<h2>Radon-Nikodyn(RN) Theorem<a class="headerlink" href="#radon-nikodyn-rn-theorem" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\nu\)</span> be <span class="math notranslate nohighlight">\(\sigma\)</span>-finite measures on <span class="math notranslate nohighlight">\((\Omega, \mathcal{F})\)</span>. If <span class="math notranslate nohighlight">\(\nu \ll \mu\)</span>, then there’s a <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> measurable function <span class="math notranslate nohighlight">\(f\)</span> so that for all <span class="math notranslate nohighlight">\(A \in \mathcal{F}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{A}f d\mu = \nu(A)
+\]</div>
+<p><span class="math notranslate nohighlight">\(f\)</span> is usually denoted <span class="math notranslate nohighlight">\(d\nu/d\mu\)</span> and called the <strong>Radon-Nikodym derivative</strong>.</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(\sigma\)</span>-finite</strong>: <span class="math notranslate nohighlight">\(\mu\)</span> is said to be <span class="math notranslate nohighlight">\(\sigma\)</span>-finite if there’s a increasing sequence of sets <span class="math notranslate nohighlight">\(A_n \in \mathcal{F}\)</span> that satisfies <span class="math notranslate nohighlight">\(A_n \uparrow \Omega\)</span> and <span class="math notranslate nohighlight">\(\mu(A_n) \lt \infty\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\nu\)</span> absolute continuous with respect to <span class="math notranslate nohighlight">\(\mu\)</span> (<span class="math notranslate nohighlight">\(\nu \ll \mu\)</span>)</strong>: If <span class="math notranslate nohighlight">\(\mu(A) = 0\)</span> indicates <span class="math notranslate nohighlight">\(\nu(A) = 0\)</span>.</p></li>
+</ul>
+<p><strong>Existence of probability density function:</strong> Let <span class="math notranslate nohighlight">\(\mu\)</span> be lebesgue measure, then for any probability measure <span class="math notranslate nohighlight">\(\nu\)</span> that is absolute continuous w.r.t <span class="math notranslate nohighlight">\(\mu\)</span> then <span class="math notranslate nohighlight">\(\nu\)</span> has a probability densitiy function which is the Radon-Nikodym derivative.</p>
+<p><strong>Existence of conditional expectation:</strong></p>
+<p>First assume <span class="math notranslate nohighlight">\(X \ge 0\)</span>, and <span class="math notranslate nohighlight">\(\mu=P\)</span> and <span class="math notranslate nohighlight">\(\nu(A) = \int_{A}XdP\)</span> for all <span class="math notranslate nohighlight">\(A \in \mathcal{F}\)</span>. <span class="math notranslate nohighlight">\(\nu\)</span> is a measure (verify disjoin additivity property) and <span class="math notranslate nohighlight">\(\nu\ll\mu\)</span> (cause whenevever <span class="math notranslate nohighlight">\(P(A) = 0\)</span>, we must have <span class="math notranslate nohighlight">\(\nu(A) = 0\)</span>). By RN theorem,</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{A}XdP = \nu(A) = \int_{A} \frac{d\nu}{d\mu} dP
+\]</div>
+<p>the RN derivative is a version of conditional expectation <span class="math notranslate nohighlight">\(E[X|\mathcal{F}]\)</span>.</p>
+<p>For any <span class="math notranslate nohighlight">\(X\)</span>, use <span class="math notranslate nohighlight">\(X = X^+ - X^-\)</span> we can conclude the existence of conditional expectation for both positive and negative part of <span class="math notranslate nohighlight">\(X\)</span> hence the conditional expection of <span class="math notranslate nohighlight">\(X\)</span> itself.</p>
+</div>
+<div class="section" id="theorem-sigma-field-generated-by-partitions">
+<h2>Theorem: <span class="math notranslate nohighlight">\(\sigma\)</span>-field generated by partitions<a class="headerlink" href="#theorem-sigma-field-generated-by-partitions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/YdDtsZ5OT2w">https://youtu.be/YdDtsZ5OT2w</a></strong></p>
+<p>Suppose <span class="math notranslate nohighlight">\(\Omega_1,\Omega_2,...\)</span> is finite or infinite partition of <span class="math notranslate nohighlight">\(\Omega\)</span> into disjoin sets, <span class="math notranslate nohighlight">\(P(\Omega_i) \gt 0\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. Let <span class="math notranslate nohighlight">\(\mathcal{F} = \sigma(\Omega_1, \Omega_2,...)\)</span>, then a version of <span class="math notranslate nohighlight">\(E[X|\mathcal{F}]\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+E[X|\mathcal{F}]_\omega = \sum_{i=1}^{\infty}c_i\mathbf{1}_{\omega \in \Omega_i}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_i = \frac{E[X; \Omega_i]}{P(\Omega_i)} = \frac{\int_{\Omega_i}XdP}{P(\Omega_i)}\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>Because each <span class="math notranslate nohighlight">\(\mathbf{1}_{\Omega}\)</span> is <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> measurable, obviously <span class="math notranslate nohighlight">\(E[X|\mathcal{F}]\)</span> is <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> measurable because of it’s a summation of simple measurable step functions. To verify the second condition (<span class="math notranslate nohighlight">\(\int_{A}{\sum_{i=1}^{\infty}c_i\mathbf{1}_{\omega \in \Omega_i}}dP = \int_{A}{X}dP\)</span> for all <span class="math notranslate nohighlight">\(A \in \mathcal{F}\)</span>), note that any event <span class="math notranslate nohighlight">\(A \in \mathcal{F}\)</span> is a countable union of disjoint <span class="math notranslate nohighlight">\(\Omega_i\)</span>. Therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\int_{A}{\sum_{i=1}^{\infty}c_i\mathbf{1}_{\omega \in \Omega_i}}dP \\
+&amp;= \int{\mathbf{1}_{\Omega_{i(1)}}(\sum_{j=1}^{\infty}c_j\mathbf{1}_{\Omega_j}})dP + \int{\mathbf{1}_{\Omega_{i(2)}}(\sum_{j=1}^{\infty}c_j\mathbf{1}_{\Omega_j}})dP + ... \\
+&amp;= \int{c_{i(1)}\mathbf{1}_{\Omega_{i(1)}}}dP + \int{c_{i(2)}\mathbf{1}_{\Omega_{i(2)}}}dP ... 
+\end{align}
+\end{split}\]</div>
+<p>And we are reduced to prove:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\int_{\Omega_i}c_i dP &amp;= \int_{\Omega_i}X dP \\
+c_i \int_{\Omega_i} dP &amp;= \frac{E[X; \Omega_i]}{P(\Omega_i)} P(\Omega_i) = \int_{\Omega_i}X dP = E[X;\Omega_i]
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="conditional-probability">
+<h2>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+P(A|\mathcal{F}) = E[\mathbf{1}_{A}|\mathcal{F}]
+\]</div>
+<p>If we let <span class="math notranslate nohighlight">\(\mathcal{F} = \sigma(B, B^c)\)</span>, then by the theorem above, the following is a version of <span class="math notranslate nohighlight">\(P(A|\mathcal{F})\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A|\mathcal{F}) = \frac{P(A\cap B)}{P(B)}\mathbf{1}_{B} + \frac{P(A\cap B^c)}{P(B^c)}\mathbf{1}_{B^c}
+\]</div>
+<p>Given that experiment <span class="math notranslate nohighlight">\(\omega\)</span> falls in <span class="math notranslate nohighlight">\(B\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+P(A|\mathcal{F})_{\omega} = \frac{P(A\cap B)}{P(B)}
+\]</div>
+<p>And this is exactly how the elementary conditional probability comes from, and mathematicians gives this a definition (<span class="math notranslate nohighlight">\(P(A|B)\)</span>) that you see in elementary probability books:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A|B) = \frac{P(A\cap B)}{P(B)}
+\]</div>
+</div>
+<div class="section" id="theorem-bayes-formula">
+<h2>Theorem: Bayes’ Formula<a class="headerlink" href="#theorem-bayes-formula" title="Permalink to this headline">¶</a></h2>
+<p>For any <span class="math notranslate nohighlight">\(B \in \mathcal{F}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+P(B|A) = \frac{\int_{B}{P(A|\mathcal{F})}dP}{\int_{\Omega}{P(A|\mathcal{F})}dP}
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a <span class="math notranslate nohighlight">\(\sigma\)</span>-field generated by a partition, then this formula reduces to the usual Bayes’ formula:</p>
+<div class="math notranslate nohighlight">
+\[
+P(B_i|A) = \frac{P(A|B_i)P(B_i)}{\sum_{i=1}^{\infty}P(A|B_i)P(B_i)}
+\]</div>
+<p><em>Proof:</em></p>
+<div class="math notranslate nohighlight">
+\[
+\int_{B}P(A|\mathcal{F})dP = \int_{B}E(\mathbf{1}_{A}|\mathcal{F})dP = P(A\cap B)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(B|A)\int_{\Omega}{P(A|\mathcal{F})}dP = \frac{P(B\cap A)}{P(A)}P(A) = P(A\cap B)
+\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="theorem-conditional-expectation-with-pdf">
+<h2>Theorem: Conditional expectation with PDF<a class="headerlink" href="#theorem-conditional-expectation-with-pdf" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://www.youtube.com/watch?v=IJoNHV_Mpbw">https://www.youtube.com/watch?v=IJoNHV_Mpbw</a></strong></p>
+<p>Suppose <span class="math notranslate nohighlight">\(X,Y\)</span> have joint pdf <span class="math notranslate nohighlight">\(f(x,y)\)</span>, and <span class="math notranslate nohighlight">\(\int{f(x,y)}dx \not= 0\)</span>, and if <span class="math notranslate nohighlight">\(E|g(X)| \lt \infty\)</span> then <span class="math notranslate nohighlight">\(E[g(X)|Y] = h(Y)\)</span> where:</p>
+<div class="math notranslate nohighlight">
+\[
+h(y) = \frac{\int{g(x)f(x,y)}dx}{\int{f(x,y)}dx}
+\]</div>
+<p><strong>Lemma</strong></p>
+<p>If <span class="math notranslate nohighlight">\(f\)</span> is measurable, <span class="math notranslate nohighlight">\(f_x(y): y \mapsto f(x, y)\)</span> is measurable.</p>
+<p><em>Proof of lemma:</em></p>
+<p>First we claim that function <span class="math notranslate nohighlight">\(T_x: y \mapsto (x,y) \)</span> is measurable. This implies <span class="math notranslate nohighlight">\(f_x = f \circ T_x\)</span> is measurable.</p>
+<p>To prove that <span class="math notranslate nohighlight">\(T_x\)</span> is measurable, note that <span class="math notranslate nohighlight">\(T_x^{-1}\)</span> is an operator that cross cut the two dimension Borel set on <span class="math notranslate nohighlight">\(x\)</span>. Define <span class="math notranslate nohighlight">\(B_x = \{y: (x,y) \in B\}\)</span> where <span class="math notranslate nohighlight">\(B \in \mathcal{B}^2\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp; T_x^{-1}(B^c) = \mathbf{R} - T_x^{-1}(B)  \quad \text{ implies } \quad  (B^c)_x = (B_x)^c \\
+&amp; T_x^{-1}(\cup_i{B_i}) = \cup_i{T_x^{-1}(B_i)}  \quad  \text{ implies }  \quad   (\cup B_i)_x = \cup (B_i)_x
+\end{align}
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\mathbb{B} = \{B: B \in \mathcal{B}^2 \text{ such that } B_x \in \mathcal{B} \}\)</span>.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(B \in \mathbb{B}\)</span>, then <span class="math notranslate nohighlight">\((B^c)_x = (B_x)^c \in \mathcal{B}\)</span> implies <span class="math notranslate nohighlight">\(B^c \in \mathbb{B}\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(B_i \in \mathbb{B}\)</span>, then <span class="math notranslate nohighlight">\((\cup_i{B_i})_x = \cup_i(B_i)_x \in\mathcal{B}\)</span> implies <span class="math notranslate nohighlight">\(\cup_i{B_i} \in \mathbb{B}\)</span>.</p></li>
+</ul>
+<p>Therefore <span class="math notranslate nohighlight">\(\mathbb{B}\)</span> is a <span class="math notranslate nohighlight">\(\sigma\)</span>-field, and since rectangle borel sets are also included in <span class="math notranslate nohighlight">\(\mathbb{B}\)</span>, we have <span class="math notranslate nohighlight">\(\mathcal{B}^2 \subset \mathbb{B}\)</span>, which concludes <span class="math notranslate nohighlight">\(T_x^{-1}(B) = B_x \in \mathcal{B}\)</span> for all <span class="math notranslate nohighlight">\(B \in \mathcal{B}^2\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p><strong>Lemma</strong></p>
+<p><span class="math notranslate nohighlight">\(y \mapsto \int{f(x,y)}dx\)</span> is measurable.</p>
+<p><em>Proof of lemma:</em></p>
+<p>First assume <span class="math notranslate nohighlight">\(f \ge 0\)</span>, <span class="math notranslate nohighlight">\(f\)</span> measurable implies <span class="math notranslate nohighlight">\(y \mapsto f(x,y)\)</span> is measurable by the lemma above. Define <span class="math notranslate nohighlight">\(f_x^{n}(y) = \frac{[2^nf(x,y)]}{2^n}\wedge{n}\)</span>. <span class="math notranslate nohighlight">\(f_x^{n}(y)\)</span> are simple functions that converges upwards to <span class="math notranslate nohighlight">\(f(x,y)\)</span>.</p>
+<p>Measurability of simple function <span class="math notranslate nohighlight">\(f_x^{n}(y)\)</span> indicates <span class="math notranslate nohighlight">\(y \mapsto \int{f_x^{n}(y)}dx\)</span> is measurable. The limit of <span class="math notranslate nohighlight">\(y \mapsto \int{f_x^{n}(y)}dx\)</span> converges to <span class="math notranslate nohighlight">\(y \mapsto \int{f(x, y)}dx\)</span> by the monotone convergence theorem. limits of measurable function is measurable, therefore <span class="math notranslate nohighlight">\(y \mapsto \int{f(x,y)}dx\)</span> is measurable.</p>
+<p>For arbitrary <span class="math notranslate nohighlight">\(f\)</span>, simply write <span class="math notranslate nohighlight">\(f = f^{+} - f^{-}\)</span> to finish our prove.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p><em>Proof:</em></p>
+<p>First, by the lemma above, <span class="math notranslate nohighlight">\(h(y)\)</span> is measurable, so condition 1 of the definition of conditional expectation is met. To prove the second condition, suppose <span class="math notranslate nohighlight">\(A \in \sigma(Y)\)</span>, <span class="math notranslate nohighlight">\(A = \{\omega: Y(\omega) \in B\}\)</span> for some <span class="math notranslate nohighlight">\(B \in \mathcal{B}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\int_{B}\int{h(y)f(x,y)}dxdy &amp;= \int_{B}{h(y)\int{f(x,y)}dx}dy \\
+&amp;= \int_{B}{\int{g(x)f(x,y)}dx}dy \\
+&amp;= E[g(X)\mathbf{1}_{Y(\omega) \in B}] = E[g(X);A]
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="properties-of-conditional-expectation">
+<h2>Properties of conditional expectation<a class="headerlink" href="#properties-of-conditional-expectation" title="Permalink to this headline">¶</a></h2>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/Uk-HBqB7HnA">https://youtu.be/Uk-HBqB7HnA</a></strong></p>
+<ol class="simple">
+<li><p>Linearity: <span class="math notranslate nohighlight">\(E[aX+bY|\mathcal{F}] = aE[X|\mathcal{F}] + bE[Y|\mathcal{F}]\)</span></p></li>
+<li><p>Monotonicty: <span class="math notranslate nohighlight">\(X \le Y\)</span> implies <span class="math notranslate nohighlight">\(E[X|\mathcal{F}] \le E[Y|\mathcal{F}]\)</span></p></li>
+<li><p>Chebyshev’s inequality: Suppose <span class="math notranslate nohighlight">\(\phi: \mathbf{R} \mapsto \mathbf{R}\)</span>, and <span class="math notranslate nohighlight">\(\phi \ge 0\)</span>, Let <span class="math notranslate nohighlight">\(A\in\mathcal{B}\)</span> and <span class="math notranslate nohighlight">\(i_a = \inf\{\phi(x): x \in A\}\)</span>, then <span class="math notranslate nohighlight">\(i_AP(X\in A | \mathcal{F}) \le E[\phi(X)|\mathcal{F}]\)</span></p></li>
+<li><p>Markov inequality: For any <span class="math notranslate nohighlight">\(a \in \mathbf{R}\)</span>, <span class="math notranslate nohighlight">\(a^2P(|X| \ge a | \mathcal{F}) \le E[X^2|\mathcal{F}]\)</span></p></li>
+<li><p>Monotone convergence: If <span class="math notranslate nohighlight">\(X_n \ge 0\)</span> and <span class="math notranslate nohighlight">\(X_n\uparrow X\)</span> with <span class="math notranslate nohighlight">\(E|X| \lt \infty\)</span>, then <span class="math notranslate nohighlight">\(E[X_n|\mathcal{F}]\)</span></p></li>
+<li><p>Jenson inequality: If <span class="math notranslate nohighlight">\(\phi\)</span> is convex and <span class="math notranslate nohighlight">\(E|X| \lt \infty\)</span> and <span class="math notranslate nohighlight">\(E|\phi(X)| \lt \infty\)</span> then <span class="math notranslate nohighlight">\(\phi(E[X|\mathcal{F}]) \le E[\phi(X)|\mathcal{F}]\)</span></p></li>
+<li><p>Cauchy-Schwarz inequality: <span class="math notranslate nohighlight">\(E[XY|\mathcal{F}]^2 \le E[X^2|\mathcal{F}]E[Y^2|\mathcal{F}]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E[E[X|\mathcal{F}]] = E[X]\)</span></p></li>
+<li><p>Given <span class="math notranslate nohighlight">\(\mathcal{F_1} \subset \mathcal{F_2}\)</span> then: <span class="math notranslate nohighlight">\(E[E[X|\mathcal{F_1}]|\mathcal{F_2}] = E[X|\mathcal{F_1}]\)</span></p></li>
+<li><p>Given <span class="math notranslate nohighlight">\(\mathcal{F_1} \subset \mathcal{F_2}\)</span> then: <span class="math notranslate nohighlight">\(E[E[X|\mathcal{F_2}]|\mathcal{F_1}] = E[X|\mathcal{F_1}]\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="theorem">
+<h2>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math notranslate nohighlight">\(X\in \mathcal{F}\)</span>, <span class="math notranslate nohighlight">\(E|Y| \lt \infty\)</span> and <span class="math notranslate nohighlight">\(E|XY| \lt \infty\)</span> then <span class="math notranslate nohighlight">\(E[XY|\mathcal{F}] = XE[Y|\mathcal{F}]\)</span></p>
+<p><em>Proof:</em></p>
+<p><span class="math notranslate nohighlight">\(XE[Y|\mathcal{F}]\)</span> is obviously <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> measurable. Only need to check the second condition. We first check when <span class="math notranslate nohighlight">\(X = \mathbf{1}_A\)</span> for any <span class="math notranslate nohighlight">\(A\in\mathcal{F}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\int_{E} E[\mathbf{1}_{A}Y|\mathcal{F}]dP &amp;= \int_{E} \mathbf{1}_{A}YdP \\
+&amp;= \int_{E \cap A}YdP \\
+&amp;= \int_{E \cap A}E[Y|\mathcal{F}]dP \\
+&amp;= \int_{E}\mathbf{1}_{A}E[Y|\mathcal{F}]dP
+\end{align}
+\end{split}\]</div>
+<p>Therefore its also true when <span class="math notranslate nohighlight">\(X\)</span> is simple positive random variable. Then further to positive <span class="math notranslate nohighlight">\(X\)</span> where <span class="math notranslate nohighlight">\(X\)</span> is the limit of increasing positive simple random variables <span class="math notranslate nohighlight">\(X_n \uparrow X\)</span>. Last, for any <span class="math notranslate nohighlight">\(X = X^+-X^-\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="theorem-mean-square-error-and-orthogonality">
+<h2>Theorem: Mean square error and Orthogonality<a class="headerlink" href="#theorem-mean-square-error-and-orthogonality" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math notranslate nohighlight">\(X \in L^2(\mathcal{F_o})\)</span>, where <span class="math notranslate nohighlight">\(L^2(\mathcal{F_o}) = \{Y \in \mathcal{F_o}: E[Y^2] \lt \infty\}\)</span>.  <span class="math notranslate nohighlight">\(L^2(\mathcal{F}) \subset L^2(\mathcal{F_o})\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(E[X|\mathcal{F}]\)</span> is the random variable <span class="math notranslate nohighlight">\(Y \in \mathcal{F}\)</span> that minimized <span class="math notranslate nohighlight">\(E[(X-Y)^2]\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>If <span class="math notranslate nohighlight">\(Y \in L^2(\mathcal{F})\)</span>, let <span class="math notranslate nohighlight">\(Z = E[X|\mathcal{F}] - Y\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E[(X-Y)^2] &amp;= E[(X-E[X|\mathcal{F}] + Z)^2] \\
+&amp;= E[(X-E[X|\mathcal{F}])^2] + 2E[Z(X-E[X|\mathcal{F}])] + E[Z^2]
+\end{align}
+\end{split}\]</div>
+<p>The middle term is zero:</p>
+<div class="math notranslate nohighlight">
+\[
+E[Z(X-E[X|\mathcal{F}])] = E[ZX] - E[E[ZX|\mathcal{F}]] = 0
+\]</div>
+<p><span class="math notranslate nohighlight">\(E[(X-Y)^2]\)</span> is minimized when <span class="math notranslate nohighlight">\(Z = 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

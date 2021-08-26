@@ -1,0 +1,1051 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Probability Convergence &#8212; Probability Measure</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Characteristic Function" href="characteristic-function.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability Measure</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Probability Measure
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="probability-measure.html">
+     Probability Measure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lln.html">
+     Laws of Large Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="characteristic-function.html">
+     Characteristic Function
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Probability Convergence
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/probability-convergence.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fprobability-convergence.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/probability-convergence.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converge-almost-surely">
+   Converge Almost surely
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-integrability-implies-finite-almost-surely">
+     Theorem: Integrability implies finite almost surely
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sufficient-and-necessary-conditions">
+     Sufficient and necessary conditions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#theorem">
+       Theorem
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Theorem
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Theorem
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convergence-in-probability">
+   Convergence in Probability
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#property">
+     Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#corollary">
+     Corollary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#thereom">
+     Thereom
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Thereom
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weak-convergence">
+   Weak Convergence
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#portmanteau-lemmas">
+     Portmanteau Lemmas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-mapping-theorem">
+     Continuous mapping theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-join-convergence-in-distribution">
+     Theorem: Join convergence in distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slutsky-s-theorem">
+     Slutsky’s theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     Thereom
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition-tightness-or-bounded-in-probability">
+     Definition: Tightness or Bounded in Probability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#helly-s-selection-theorem">
+     Helly’s selection theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-sufficient-condition-for-tightness">
+     Theorem: Sufficient condition for tightness
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#central-limit-theorem">
+   Central Limit Theorem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lemma">
+     Lemma
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     Theorem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clt-theorem">
+     CLT Theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="probability-convergence">
+<h1>Probability Convergence<a class="headerlink" href="#probability-convergence" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Attaching packages</span> ───────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2</span> 3.3.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr  </span> 0.3.4
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble </span> 3.1.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr  </span> 1.0.6
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr  </span> 1.1.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr</span> 1.4.0
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr  </span> 1.4.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats</span> 0.5.1
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Conflicts</span> ──────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span> masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>    masks <span class=" -Color -Color-Blue">stats</span>::lag()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="converge-almost-surely">
+<h2>Converge Almost surely<a class="headerlink" href="#converge-almost-surely" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theorem-integrability-implies-finite-almost-surely">
+<h3>Theorem: Integrability implies finite almost surely<a class="headerlink" href="#theorem-integrability-implies-finite-almost-surely" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((\Omega,\mathcal{F},\mu)\)</span> be a measure space. If <span class="math notranslate nohighlight">\(f\)</span> integrable w.r.t <span class="math notranslate nohighlight">\(\mu\)</span>, then <span class="math notranslate nohighlight">\(f\)</span> is finite almost surely.</p>
+<p><em>Proof:</em></p>
+<p><span class="math notranslate nohighlight">\(f\)</span> is integrable implies: <span class="math notranslate nohighlight">\(\int_{\Omega}|f(x)| \mu(dx) \lt C\)</span> for some constant <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<p>Definie <span class="math notranslate nohighlight">\(E_n=\{x: |f(x)| &gt; n\}\)</span>. Then <span class="math notranslate nohighlight">\(E = \cap_n{E_n}\)</span> is the set where <span class="math notranslate nohighlight">\(f\)</span> goes to infinity. We want to prove <span class="math notranslate nohighlight">\(\mu(E) = 0\)</span>. Note that <span class="math notranslate nohighlight">\(n\mathbf{1}_{E_n} \le |f|\mathbf{1}_{E_n}\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+n\mu(E_n) \le \int_{E_n}{|f(x)|}\mu(dx) \le \int_{\Omega}{|f(x)|}\mu(dx) \lt C
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(E \subset E_n\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(0 \le \mu(E) \le \mu(E_n) \le \frac{C}{n}\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>. Let <span class="math notranslate nohighlight">\(n \to \infty\)</span>, we have <span class="math notranslate nohighlight">\(\mu(E) = 0\)</span>. i.e. <span class="math notranslate nohighlight">\(f\)</span> is finite almost surely.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="sufficient-and-necessary-conditions">
+<h3>Sufficient and necessary conditions<a class="headerlink" href="#sufficient-and-necessary-conditions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="theorem">
+<h4>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">¶</a></h4>
+<p>If <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty} E[|X_n|^s] \lt \infty\)</span> and <span class="math notranslate nohighlight">\(s \gt 0\)</span>, then <span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s.</p>
+<p><em>Proof:</em></p>
+<p>This is an integration over positive function, by Fubini theorem, we can move expected value out of sumation: <span class="math notranslate nohighlight">\(E[\sum_{n=1}^{\infty} |X_n|^s] \lt \infty\)</span>. This implies <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty} |X_n|^s \lt \infty\)</span> a.s. Further implies <span class="math notranslate nohighlight">\(|X_n|^s \to 0\)</span> a.s., since <span class="math notranslate nohighlight">\(s \gt 0\)</span>, this implies <span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id1">
+<h4>Theorem<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>If <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty}P(|X_n| \gt \epsilon) \lt \infty\)</span> for all <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>, then <span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s.</p>
+<p><em>Proof:</em></p>
+<p>Method 1:</p>
+<p>Fix <span class="math notranslate nohighlight">\(\epsilon = 1/k\)</span> for any positive <span class="math notranslate nohighlight">\(k\)</span>, by the Borel-Cantelli lemma <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty}P(|X_n| \gt 1/k) \lt \infty\)</span> implies <span class="math notranslate nohighlight">\([|X_n| \gt 1/k \text{ i.o}]\)</span> has probability 0. Equivalently, <span class="math notranslate nohighlight">\([|X_n| \le 1/k \text{ e.a}]\)</span> with probability one or, another equivalent interpretation is that <span class="math notranslate nohighlight">\(|X_n| \gt 1/k\)</span> occurs finite number of times with probability one. Thus, <span class="math notranslate nohighlight">\(P(\limsup_{n\to\infty} |X_n| \gt 1/k) = 0\)</span> for all positive <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>The set <span class="math notranslate nohighlight">\(\{ \limsup_{n\to\infty}|X_n| \gt 1/k \}\)</span> enlarges as <span class="math notranslate nohighlight">\(k\)</span> increases and converges to <span class="math notranslate nohighlight">\(\{ \limsup_{n\to\infty}|X_n| \gt 0 \}\)</span>. By the continuity from below property of probability measure, we have <span class="math notranslate nohighlight">\(0 = P(\{ \limsup_{n\to\infty}|X_n| \gt 1/k \}) \to P(\{ \limsup_{n\to\infty}|X_n| \gt 0 \})\)</span> as <span class="math notranslate nohighlight">\(k\to\infty\)</span>. Therefore, <span class="math notranslate nohighlight">\(P(\{ \limsup_{n\to\infty}|X_n| \gt 0 \}) = 0\)</span>. And this impies <span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p>Method 2:</p>
+<p>Let <span class="math notranslate nohighlight">\(\epsilon = 1/k\)</span> for some positive <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty}P(|X_n| \gt 1/k) = \sum_{n=1}^{\infty}E(\mathbf{1}_{(|X_n| \gt 1/k)}) \lt \infty\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{1}_{(|X_n| \gt 1/k)}\)</span> is positive, by the Fubini theorem, we could move the expection outside:</p>
+<div class="math notranslate nohighlight">
+\[
+E\Big(\sum_{n=1}^{\infty}\mathbf{1}_{(|X_n| \gt 1/k)}\Big) \lt \infty
+\]</div>
+<p>Which indicates <span class="math notranslate nohighlight">\(\sum_{n=1}^{\infty}\mathbf{1}_{(|X_n| \gt 1/k)} \lt \infty\)</span> a.s., which implies <span class="math notranslate nohighlight">\(\mathbf{1}_{(|X_n| \gt 1/k)} \to 0\)</span> a.s. as <span class="math notranslate nohighlight">\(n\to\infty\)</span>, or equivalently, <span class="math notranslate nohighlight">\(\{|X_n| \gt 1/k\}\)</span> occurs finite number of times with probability one. And the rest of the prove will be the same as method 1. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id2">
+<h4>Theorem<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. iff for every <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span> we have <span class="math notranslate nohighlight">\(P(\sup_{m\ge n}|X_m| \gt \epsilon) \to 0\)</span> as <span class="math notranslate nohighlight">\(n\to\infty\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. iff for every <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span> we have <span class="math notranslate nohighlight">\(P(\limsup_{n\to\infty}|X_n| \gt \epsilon) = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(X_n \to 0\)</span> a.s. iff for every <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span> we have <span class="math notranslate nohighlight">\(P(|X_n| \gt \epsilon \text{ i.o}) = 0\)</span></p></li>
+</ul>
+<p><em>Proof:</em></p>
+<p>If an element <span class="math notranslate nohighlight">\(\omega\)</span> such that <span class="math notranslate nohighlight">\(X_n\not\to 0\)</span>, it’s equivalent to there exist a <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span> such that <span class="math notranslate nohighlight">\(\limsup_{n\to\infty}|X_n|\gt \epsilon\)</span>. To translate it to set language we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\{\omega: X_n \not\to 0\} \equiv \cup_{\epsilon \in \mathcal{Q^+}} \{\omega: \limsup_{n\to\infty} |X_n| \gt \epsilon\} \equiv \cup_{\epsilon \in \mathcal{Q^+}} \cap_{n} \{\omega: \sup_{m \ge n} |X_m| \gt \epsilon \}
+\]</div>
+<p><span class="math notranslate nohighlight">\(A_{\epsilon,n} = \{\omega: \sup_{m \ge n} |X_m| \gt \epsilon \}\)</span> decreases as <span class="math notranslate nohighlight">\(n\to \infty\)</span> and <span class="math notranslate nohighlight">\(A_{\epsilon,n} \downarrow \cap_{n} A_{\epsilon,n}\)</span>. By the probability measure’s the continuity from above property, we have <span class="math notranslate nohighlight">\(P(A_{\epsilon,n})\downarrow P(\cap_{n} A_{\epsilon,n})\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow:\)</span> Given <span class="math notranslate nohighlight">\(P(X_n\not\to 0) = 0\)</span>, since <span class="math notranslate nohighlight">\(\{\omega: X_n \not\to 0\} \supset \cap_{n} A_{\epsilon,n}\)</span> for any <span class="math notranslate nohighlight">\(\epsilon \in \mathcal{Q^+}\)</span>, we get <span class="math notranslate nohighlight">\(P(\cap_{n} A_{\epsilon,n}) = 0\)</span> and <span class="math notranslate nohighlight">\(P(A_{\epsilon,n})\to P(\cap_{n} A_{\epsilon,n}) = 0\)</span> for all <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\Leftarrow:\)</span> Given for every <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>, <span class="math notranslate nohighlight">\(P(A_{\epsilon,n}) \to 0 = P(\cap_{n} A_{\epsilon,n})\)</span> as <span class="math notranslate nohighlight">\(n\to\infty\)</span>. We have: <span class="math notranslate nohighlight">\(P(X_n\not\to 0) \le \sum_{\epsilon\in\mathcal{Q^+}}P(\cap_{n} A_{\epsilon,n}) \to 0\)</span> as <span class="math notranslate nohighlight">\(n\to\infty\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="convergence-in-probability">
+<h2>Convergence in Probability<a class="headerlink" href="#convergence-in-probability" title="Permalink to this headline">¶</a></h2>
+<p>We say <span class="math notranslate nohighlight">\(X_n\)</span> converges to <span class="math notranslate nohighlight">\(X\)</span> <strong>in probability</strong> if for all <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>, <span class="math notranslate nohighlight">\(P(|X_n-X| \gt \epsilon) \rightarrow 0\)</span> as <span class="math notranslate nohighlight">\(n\rightarrow \infty\)</span>. Noted as <span class="math notranslate nohighlight">\(X_n\overset{P}{\rightarrow}X\)</span>.</p>
+<div class="section" id="property">
+<h3>Property<a class="headerlink" href="#property" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(p \gt 0\)</span> and <span class="math notranslate nohighlight">\(E[|X_n|^p] \rightarrow 0\)</span>, then <span class="math notranslate nohighlight">\(X_n\rightarrow 0\)</span> in probability.</p>
+<p><em>Proof:</em></p>
+<p>By Chebyshev inequality, <span class="math notranslate nohighlight">\(P(|X_n| \ge \epsilon) \le \frac{E[|X_n|^p]}{\epsilon^{p}} \rightarrow 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id3">
+<h3>Property<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X_n\rightarrow X\)</span> in probability, <span class="math notranslate nohighlight">\(Y_n\rightarrow Y\)</span> in probability, then <span class="math notranslate nohighlight">\(X_n + Y_n \rightarrow X + Y\)</span> in probability.</p>
+</div>
+<div class="section" id="id4">
+<h3>Theorem<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(X_n \rightarrow X\)</span> in probability iff for every subsequence <span class="math notranslate nohighlight">\(X_{n(m)}\)</span> there’s a further subsequence <span class="math notranslate nohighlight">\(X_{n(m_k)} \rightarrow X\)</span> a.s.</p>
+<p><em>Proof:</em></p>
+<p>Any given subsequence <span class="math notranslate nohighlight">\(X_{n(m)} \rightarrow X\)</span> in probability, for each <span class="math notranslate nohighlight">\(k\)</span>, there exist a <span class="math notranslate nohighlight">\(X_{n(m_k)}\)</span> s.t. <span class="math notranslate nohighlight">\(P(|X_{n(m_k)} - X| \gt 1/k) \le 2^{-k}\)</span>. We have <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty}{P(|X_{n(m_k)} - X| \gt 1/k)} \lt \infty\)</span>. By the Borel Cantelli lemma, <span class="math notranslate nohighlight">\(P([|X_{n(m_k)} - X| \gt 1/k \text{ i.o.}]) = 0\)</span>, therefore <span class="math notranslate nohighlight">\(X_{n(m_k)\rightarrow X}\)</span> a.s.</p>
+<p>Conversely, since every subsequence <span class="math notranslate nohighlight">\(\{P(|X_{n(m)}-X| \gt \epsilon); m=1,2....\}\)</span> there’s a further subsequence <span class="math notranslate nohighlight">\(\{P(|X_{n(m_k)}-X| \gt \epsilon); k=1,2....\} \rightarrow 0\)</span>, by the completeness of the <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>, we have <span class="math notranslate nohighlight">\(P(|X_n-X| \gt \epsilon) \rightarrow 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="corollary">
+<h3>Corollary<a class="headerlink" href="#corollary" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(f\)</span> is continuous and <span class="math notranslate nohighlight">\(X_n\rightarrow X\)</span> in probability then <span class="math notranslate nohighlight">\(f(X_n)\rightarrow f(X)\)</span> in probability.
+If <span class="math notranslate nohighlight">\(f\)</span> is bounded, <span class="math notranslate nohighlight">\(E[f(X_n)] \rightarrow E[f(X)]\)</span>.</p>
+<p><em>Proof:</em>
+Use theorem above, <span class="math notranslate nohighlight">\(X_n\rightarrow X\)</span> in probability then any subsequence <span class="math notranslate nohighlight">\(X_{n(m)}\)</span> has a further subsequence <span class="math notranslate nohighlight">\(X_{n(m_k)}\rightarrow X\)</span> a.s. <span class="math notranslate nohighlight">\(f\)</span> is continuous <span class="math notranslate nohighlight">\(f(X_{n(m_k)})\rightarrow f(X)\)</span> a.s., so every subsequence <span class="math notranslate nohighlight">\(f(X_{n(m)})\)</span> there’s futher subsequence that converges a.s, by the theorem above again, <span class="math notranslate nohighlight">\(f(X_n) \rightarrow f(X)\)</span> in probability.</p>
+<p>Since every subsequence <span class="math notranslate nohighlight">\(X_{n(m_k)}\rightarrow X\)</span> a.s, and <span class="math notranslate nohighlight">\(f\)</span> is bounded, by the bounded convergence theorem, <span class="math notranslate nohighlight">\(Ef(X_{n(m_k)}) \rightarrow Ef(X)\)</span>. <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is a complete metric space, therefore <span class="math notranslate nohighlight">\(Ef(X_n)\rightarrow Ef(X)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="thereom">
+<h3>Thereom<a class="headerlink" href="#thereom" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X_n \rightarrow X\)</span> in probability, <span class="math notranslate nohighlight">\(Y_n \rightarrow Y\)</span> in probability, then <span class="math notranslate nohighlight">\(X_n+Y_n \rightarrow X+Y\)</span> in probability.</p>
+<p><em>Proof:</em></p>
+<p><span class="math notranslate nohighlight">\(|X_n-X| + |Y_n-Y| \ge |(X_n+Y_n)-(X+Y)| \ge 2\epsilon\)</span> indicates <span class="math notranslate nohighlight">\(\{\omega: |X_n(\omega)-X(\omega)| + |Y_n(\omega)-Y(\omega)| \ge 2\epsilon \} \subset \{ \omega: |(X_n(\omega)+Y_n(\omega))-(X(\omega)+Y(\omega))| \ge 2\epsilon \}\)</span> indicates:</p>
+<div class="math notranslate nohighlight">
+\[
+P(|(X_n+Y_n)-(X+Y)| \ge 2\epsilon) \le P(|X_n-X| + |Y_n-Y| \ge 2\epsilon)
+\]</div>
+<p><span class="math notranslate nohighlight">\(\{\omega: |X_n-X| + |Y_n-Y| \ge 2\epsilon\} \subset \{\omega: |X_n-X| \ge \epsilon\} \cup \{\omega: |Y_n-Y| \ge \epsilon\}\)</span> indicates:</p>
+<div class="math notranslate nohighlight">
+\[
+P(|X_n-X| + |Y_n-Y| \ge 2\epsilon) \le P(|X_n-X| \ge \epsilon) + P(|Y_n-Y| \ge \epsilon) \rightarrow 0
+\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id5">
+<h3>Thereom<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X_n \overset{P}{\to} X\)</span>, <span class="math notranslate nohighlight">\(Y_n \overset{P}{\to} Y\)</span>, then <span class="math notranslate nohighlight">\(X_nY_n \overset{P}{\to} XY\)</span>.</p>
+<p><em>Proof:</em></p>
+<div class="math notranslate nohighlight">
+\[
+X_nY_n=\frac{1}{2}(X_n+Y_n)^2 \frac{1}{2} - X_n^2 - \frac{1}{2}Y_n^2 \overset{P}{\to} \frac{1}{2}(X+Y)^2 - \frac{1}{2}X^2 - \frac{1}{2}Y^2 = XY
+\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+<div class="section" id="weak-convergence">
+<h2>Weak Convergence<a class="headerlink" href="#weak-convergence" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math notranslate nohighlight">\(F_n(x) \rightarrow F_\infty(x)\)</span> for all continuous points <span class="math notranslate nohighlight">\(x\)</span> of <span class="math notranslate nohighlight">\(F_\infty\)</span>, then we say <span class="math notranslate nohighlight">\(X_n\)</span> <strong>converge weakly</strong> or <strong>converge in distribution</strong> to a limit <span class="math notranslate nohighlight">\(X_\infty\)</span>. Noted as <span class="math notranslate nohighlight">\(F_n \Rightarrow F_\infty\)</span>.</p>
+<div class="section" id="id6">
+<h3>Theorem<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X_n \Rightarrow b\)</span> where <span class="math notranslate nohighlight">\(b\)</span> is a constant, then <span class="math notranslate nohighlight">\(X_n \overset{P}{\to} b\)</span>.</p>
+<p><em>Proof:</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\lim_{n\to\infty}P(|X_n-b| \le \epsilon) &amp;= \lim_{n\to\infty}P(X_n \le b + \epsilon) - \lim_{n\to\infty}P(X_n \le b - \epsilon) \\
+&amp;= 1- 0 = 1
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<p>Note If <span class="math notranslate nohighlight">\(X_n \Rightarrow X\)</span>, it doesn’t always indicate <span class="math notranslate nohighlight">\(X_n \overset{P}{\rightarrow}X\)</span>. If we let <span class="math notranslate nohighlight">\(X\)</span> has a density function that is symmetric at <span class="math notranslate nohighlight">\(0\)</span> and let <span class="math notranslate nohighlight">\(X_n = X\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is even and <span class="math notranslate nohighlight">\(X_n=-X\)</span> if <span class="math notranslate nohighlight">\(n\)</span> is odd. then <span class="math notranslate nohighlight">\(X_n\)</span> has the same distribution as <span class="math notranslate nohighlight">\(X\)</span>, however, <span class="math notranslate nohighlight">\(P(|X_n-X| \gt \epsilon) \not\to 0\)</span>.</p>
+<p>However convergence in probability does indicate weak convergence.</p>
+</div>
+<div class="section" id="id7">
+<h3>Theorem<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X_n \overset{P}{\rightarrow} X\)</span> then <span class="math notranslate nohighlight">\(X_n \Rightarrow X\)</span>.</p>
+<p><em>Proof:</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+P(X_n \le x) &amp;= P(X_n \le x \cap |X_n-X| \le \epsilon) + P(X_n \le x \cap |X_n-X| \gt \epsilon) \\
+&amp;\le P(X \le x + \epsilon) + P(|X_n-X| \gt \epsilon)
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\limsup_{n\to\infty} P(X_n \le x) \le P(X \le x + \epsilon)
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+P(X_n \gt x) &amp;= P(X_n \gt x \cap |X_n-X| \lt \epsilon) + P(X_n \gt x \cap |X_n-X| \ge \epsilon) \\
+&amp;\lt P(X \gt x - \epsilon) + P(|X_n-X| \ge \epsilon) \\
+P(X_n \le x) &amp;= 1 - P(X_n \gt x) \\
+&amp;\ge 1- P(X \gt x - \epsilon) - P(|X_n-X| \ge \epsilon)
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\liminf_{n\to\infty} P(X_n \le x) \ge P(X \le x - \epsilon)
+\end{align}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(X \le x - \epsilon) \le \liminf_{n\to\infty} P(X_n \le x) \le \limsup_{n\to\infty} P(X_n \le x) \le P(X \le x + \epsilon)
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\epsilon \to 0\)</span>, We get <span class="math notranslate nohighlight">\(\lim_{n\to\infty}P(X_n\le x) = P(X \le x)\)</span>. <span class="math notranslate nohighlight">\(X_n \Rightarrow X\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span>.</p>
+</div>
+<div class="section" id="id8">
+<h3>Theorem<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(F_n \Rightarrow F\)</span> then there exist r.v <span class="math notranslate nohighlight">\(Y_n\)</span> with cdf <span class="math notranslate nohighlight">\(F_n\)</span> such that <span class="math notranslate nohighlight">\(Y_n \rightarrow Y\)</span> a.s.</p>
+<p><em>Proof idea:</em> Define <span class="math notranslate nohighlight">\(F_n^{-1}(x) = \sup\{y: F_n(y) \lt x\}\)</span>. Let <span class="math notranslate nohighlight">\(Y_n = F_n^{-1}(x)\)</span>. Similarly for <span class="math notranslate nohighlight">\(Y = F^{-1}(x)\)</span>. Show <span class="math notranslate nohighlight">\(Y_n(x)\rightarrow Y(x)\)</span> for all but countable number of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</div>
+<div class="section" id="portmanteau-lemmas">
+<h3>Portmanteau Lemmas<a class="headerlink" href="#portmanteau-lemmas" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_n \Rightarrow X_\infty\)</span> iff for every bounded continuous function <span class="math notranslate nohighlight">\(g\)</span>, we have <span class="math notranslate nohighlight">\(Eg(X_n)\rightarrow Eg(X_\infty)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_n \Rightarrow X_\infty\)</span> iff for every bounded Lipschitz continuous function <span class="math notranslate nohighlight">\(g\)</span>, we have <span class="math notranslate nohighlight">\(Eg(X_n)\rightarrow Eg(X_\infty)\)</span>. A function <span class="math notranslate nohighlight">\(f\)</span> is a Lipschitz function if <span class="math notranslate nohighlight">\(\exists{K}\)</span> such that for all <span class="math notranslate nohighlight">\(x,y\)</span>, <span class="math notranslate nohighlight">\(|f(x)-f(y)| \le K|x-y|\)</span>.</p></li>
+</ul>
+<p><em>Proof:</em></p>
+<p>By the theorem above, there exist <span class="math notranslate nohighlight">\(Y_n \rightarrow Y_\infty\)</span> a.s. holding the same distributions as <span class="math notranslate nohighlight">\(X_n, X_\infty\)</span>. Since <span class="math notranslate nohighlight">\(g\)</span> is continuous <span class="math notranslate nohighlight">\(g(X_n) \rightarrow g(X_\infty)\)</span> a.s.. Since <span class="math notranslate nohighlight">\(g\)</span> is bounded, by the bounded convergence theorem, <span class="math notranslate nohighlight">\(Eg(Y_n) \rightarrow Eg(X_\infty)\)</span>. Since <span class="math notranslate nohighlight">\(X_n, Y_n\)</span> has the same distribution, therefore <span class="math notranslate nohighlight">\(Eg(X_n)=Eg(Y_n)\)</span>, <span class="math notranslate nohighlight">\(Eg(X_\infty)=Eg(Y_\infty)\)</span>.</p>
+<p>For the converse, let:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+g_{x,\epsilon}(y) = \begin{cases}
+1 &amp;\quad y \le x \\
+0 &amp;\quad y \ge x + \epsilon \\
+-\epsilon^{-1}(y-x)+1 &amp;\quad x \le y \le x + \epsilon
+\end{cases}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(g_{x,\epsilon}\)</span> is continuous and bounded. <span class="math notranslate nohighlight">\(g_{x,\epsilon}\)</span> is also Lipschitz. <span class="math notranslate nohighlight">\(|g_{x,\epsilon}(y)-g_{x,\epsilon}(z)|\le \epsilon^{-1}|y-z|\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">create_g</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ep</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">g_x_ep</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">case_when</span><span class="p">(</span>
+      <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">~</span> <span class="m">1</span><span class="p">,</span>
+      <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">ep</span> <span class="o">~</span> <span class="m">0</span><span class="p">,</span>
+      <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">ep</span><span class="p">)</span> <span class="o">~</span> <span class="m">-1</span><span class="o">*</span><span class="p">(</span><span class="n">ep</span><span class="o">^</span><span class="m">-1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="m">+1</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">gxep</span> <span class="o">&lt;-</span> <span class="nf">create_g</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="n">gxep</span><span class="p">,</span> <span class="n">from</span><span class="o">=</span><span class="m">-10</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="m">500</span><span class="p">,</span> <span class="n">xname</span><span class="o">=</span><span class="s">&quot;y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/probability-convergence_31_0.png" src="_images/probability-convergence_31_0.png" />
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+Eg_{x,\epsilon}(X_n) = \int\limits_{\{X_n(\omega)\le x\}}{1}dP + \int\limits_{\{x \le X_n(\omega) \le x + \epsilon\}}{(-\epsilon^{-1}(X_n(\omega)-x)+1)}dP = P(X_n(\omega)\le x) + \int\limits_{\{x \le X_n(\omega) \le x + \epsilon\}}{(-\epsilon^{-1}(X_m(\omega)-x)+1)}dP
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\limsup\limits_{n\rightarrow\infty}P(X_n \le x) \le \limsup\limits_{n\rightarrow\infty}Eg_{x,\epsilon}(X_n)=Eg_{x,\epsilon}(X_\infty) \le P(X_\infty \le x+\epsilon)
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\epsilon \rightarrow 0\)</span>, <span class="math notranslate nohighlight">\(\limsup\limits_{n\rightarrow\infty}P(X_n \le x) \le P(X_\infty \le x)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\liminf\limits_{n\rightarrow \infty} P(X_n \le x) \ge \liminf\limits_{n\rightarrow\infty} Eg_{x-\epsilon,\epsilon}(X_n) = Eg_{x-\epsilon,\epsilon}(X_\infty) \ge P(X_\infty \le x-\epsilon)
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\epsilon \rightarrow 0\)</span>, <span class="math notranslate nohighlight">\(\liminf\limits_{n\rightarrow \infty} P(X_n \le x) \ge P(X_\infty \le x)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id9">
+<h3>Theorem<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(X_n \Rightarrow X\)</span>, <span class="math notranslate nohighlight">\(Y_n -X_n \overset{P}{\to} 0\)</span>, then <span class="math notranslate nohighlight">\(X_n+(Y_n-X_n)= Y_n \Rightarrow X\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>Use Portmanteau lemmas. To prove <span class="math notranslate nohighlight">\(Y_n \Rightarrow X\)</span>, we want to prvoe that for any bounded Lipschitz continuous function <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(Ef(Y_n) \to Ef(X)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+|Ef(Y_n)-Ef(X)| \le |Ef(Y_n) - Ef(X_n)| + |Ef(X_n) - Ef(X)|
+\]</div>
+<p>The second term goes to zero by the Portmanteau lemmas. We we left to prove is that the first also goes to zero. Let <span class="math notranslate nohighlight">\(f\)</span> be bounded i.e. <span class="math notranslate nohighlight">\(|f(x)| \lt M\)</span> and Lipschitz continuous i.e. <span class="math notranslate nohighlight">\(\exists{K}\)</span> such that for all <span class="math notranslate nohighlight">\(x,y\)</span>, <span class="math notranslate nohighlight">\(|f(x)-f(y)| \lt K|x-y|\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+|Ef(Y_n)-Ef(X_n)| &amp;\le E[|f(Y_n)-f(X_n)|] \\
+&amp;\le E[|f(Y_n)-f(X_n)|\mathbf{1}_{|Y_n-X_n| \le \epsilon}] + E[|f(Y_n)-f(X_n)|\mathbf{1}_{|Y_n-X_n| \gt \epsilon}] \\
+&amp;\le K\epsilon P(|Y_n-X_n| \le \epsilon) + 2M P(|Y_n-X_n| \gt \epsilon)
+\end{align}
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(n \to \infty\)</span>, <span class="math notranslate nohighlight">\(|Ef(Y_n) - Ef(X_n)| \le K\epsilon\)</span>, because <span class="math notranslate nohighlight">\(Y_n-X_n \overset{P}{\to} 0\)</span>. Since <span class="math notranslate nohighlight">\(\epsilon\)</span> is arbitrary, we get <span class="math notranslate nohighlight">\(\lim_{n\to\infty}|Ef(Y_n) - Ef(X_n)| = 0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id10">
+<h3>Theorem<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(X_n \Rightarrow X\)</span>, <span class="math notranslate nohighlight">\(Z_n \overset{P}{\to}0\)</span>, then <span class="math notranslate nohighlight">\(X_n+Z_n \Rightarrow X\)</span>.</p>
+<p><em>Proof:</em> prove is similar to proving the theorem: If <span class="math notranslate nohighlight">\(X_n \overset{P}{\rightarrow} X\)</span> then <span class="math notranslate nohighlight">\(X_n \Rightarrow X\)</span>. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="continuous-mapping-theorem">
+<h3>Continuous mapping theorem<a class="headerlink" href="#continuous-mapping-theorem" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(g\)</span> be a measurable function and <span class="math notranslate nohighlight">\(D_g=\{x: g \text{ is discountuous at } x\}\)</span>. Let <span class="math notranslate nohighlight">\(X_n \Rightarrow X_\infty\)</span> and <span class="math notranslate nohighlight">\(P(X_\infty\in D_g) = 0\)</span> then <span class="math notranslate nohighlight">\(g(X_n) \Rightarrow g(X_\infty)\)</span>. If <span class="math notranslate nohighlight">\(g\)</span> is bounded then <span class="math notranslate nohighlight">\(Eg(X_n) \rightarrow Eg(X_\infty)\)</span>.</p>
+<p><em>Proof:</em>
+To prove <span class="math notranslate nohighlight">\(g(X_n) \Rightarrow g(X_\infty)\)</span> we want to prove that for all bounded continuous function <span class="math notranslate nohighlight">\(f\)</span>, we have <span class="math notranslate nohighlight">\(Ef\circ{g}(X_n) \rightarrow Ef\circ{g}(X_\infty)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(f\)</span> be any continuous and bounded. Let <span class="math notranslate nohighlight">\(Y_n \rightarrow Y_\infty\)</span> a.s. with the distribution as <span class="math notranslate nohighlight">\(X_n, X_\infty\)</span>. <span class="math notranslate nohighlight">\(f\circ{g}(Y_n) \rightarrow f\circ{g}(Y_\infty)\)</span> a.s.. By the bounded convergence theorem, <span class="math notranslate nohighlight">\(Ef\circ{g}(Y_n) \rightarrow Ef\circ{g}(Y_\infty)\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(g\)</span> is bounded, by the bounded convergence theorem, <span class="math notranslate nohighlight">\(Eg(X_n) = Eg(Y_n) \rightarrow Eg(Y_\infty) = Eg(X_\infty)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="theorem-join-convergence-in-distribution">
+<h3>Theorem: Join convergence in distribution<a class="headerlink" href="#theorem-join-convergence-in-distribution" title="Permalink to this headline">¶</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(X_n \Rightarrow X\)</span>, <span class="math notranslate nohighlight">\(Y_n \overset{P}{\to} c\)</span>, then <span class="math notranslate nohighlight">\([X_n, Y_n]' \Rightarrow [X,c]'\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>Let <span class="math notranslate nohighlight">\(f(x,y)\)</span> be any bounded continuous function, by the Portmanteau lemma, <span class="math notranslate nohighlight">\(Ef(X_n, c) \to Ef(X,c)\)</span>, therefore <span class="math notranslate nohighlight">\([X_n,c]' \Rightarrow [X,c]'\)</span>. Therefore <span class="math notranslate nohighlight">\(\{\omega: |[X_n(\omega), Y_n(\omega)]' - [X_n(\omega), c]'|\} = \{\omega: |Y_n(\omega) - c|\} \overset{P}{\to} 0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+[X_n, c]' \Rightarrow [X, c]' \\
+[X_n, Y_n]' - [X_n, c]' \overset{P}{\to} 0
+\end{align} \bigg\} [X_n, c]' + [X_n, Y_n]' - [X_n, c]' \Rightarrow [X, c]'
+\end{split}\]</div>
+</div>
+<div class="section" id="slutsky-s-theorem">
+<h3>Slutsky’s theorem<a class="headerlink" href="#slutsky-s-theorem" title="Permalink to this headline">¶</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\(X_n \Rightarrow X\)</span>, <span class="math notranslate nohighlight">\(Y_n \overset{P}{\to} c\)</span>, <span class="math notranslate nohighlight">\(Z_n \overset{P}{\to} d\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+Z_n + Y_nX_n \Rightarrow d + cX
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(c \neq 0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+Z_n + X_n/Y_n \Rightarrow d + X/c
+\]</div>
+<p><em>Proof:</em> Since <span class="math notranslate nohighlight">\([X_n, Y_n]' \Rightarrow [X,c]'\)</span> and <span class="math notranslate nohighlight">\(g(x,y) = xy\)</span> or <span class="math notranslate nohighlight">\(g(x,y) = x/y\)</span>(given <span class="math notranslate nohighlight">\(y\)</span> is not zero) is continuous, by the continuous mapping theorem, <span class="math notranslate nohighlight">\(Y_nX_n \Rightarrow cX\)</span>, <span class="math notranslate nohighlight">\(Y_nX_n \Rightarrow X/c\)</span>.</p>
+<p>Similarly, <span class="math notranslate nohighlight">\([Y_nX_n, Z_n]' \Rightarrow [cX, d]\)</span>, <span class="math notranslate nohighlight">\([Y_nX_n, Z_n]' \Rightarrow [X/c, d]\)</span>, <span class="math notranslate nohighlight">\(g(x,y) = x+y\)</span> is continuous, then the continuous mapping theorem.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id11">
+<h3>Thereom<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X_n \Rightarrow X_\infty\)</span> then <span class="math notranslate nohighlight">\(\phi_n(t) \rightarrow \phi(t)\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>Use Continuous mapping theorem above. Applies becuase <span class="math notranslate nohighlight">\(g_t(X) = e^{itX}\)</span> is continuous and bounded.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="definition-tightness-or-bounded-in-probability">
+<h3>Definition: Tightness or Bounded in Probability<a class="headerlink" href="#definition-tightness-or-bounded-in-probability" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\{F_n\}\)</span> be a sequence of probability distributions, we say the sequence <span class="math notranslate nohighlight">\(\{F_n\}\)</span> is <strong>tight</strong> or <strong>bounded in probability</strong> if for all <span class="math notranslate nohighlight">\(\epsilon \gt 0\)</span>, <span class="math notranslate nohighlight">\(\exists\)</span> <span class="math notranslate nohighlight">\(M_\epsilon\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+\limsup\limits_{n\rightarrow\infty}(1-F_n(M_\epsilon) + F_n(-M_\epsilon)) \le \epsilon
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\limsup_{n\rightarrow\infty}\int_{|x| \gt M_\epsilon}dF_n(x) = \limsup_{n\rightarrow\infty}P(|X_n| \gt M_\epsilon) \le \epsilon
+\]</div>
+</div>
+<div class="section" id="helly-s-selection-theorem">
+<h3>Helly’s selection theorem<a class="headerlink" href="#helly-s-selection-theorem" title="Permalink to this headline">¶</a></h3>
+<p>For every distribution sequence <span class="math notranslate nohighlight">\(F_n\)</span>, <span class="math notranslate nohighlight">\(\exists\)</span> a subsequence <span class="math notranslate nohighlight">\(F_{n(k)}\)</span> and a non-decreasing and right continuous function <span class="math notranslate nohighlight">\(F\)</span> so that <span class="math notranslate nohighlight">\(\lim_{k\rightarrow\infty}F_{n(k)}(y)=F(y)\)</span> for all continuous point <span class="math notranslate nohighlight">\(y\)</span> of <span class="math notranslate nohighlight">\(F\)</span>.</p>
+<p>Note: The function <span class="math notranslate nohighlight">\(F\)</span> may not be a distribution function. If we let <span class="math notranslate nohighlight">\(F_n(x) = a\mathbf{1}_{(x \ge n)} + b\mathbf{1}_{(x \ge -n)} + cG(x)\)</span> where <span class="math notranslate nohighlight">\(G\)</span> is a distribution function and <span class="math notranslate nohighlight">\(a \gt 0,b \gt 0,c \gt 0\)</span> are constants such that <span class="math notranslate nohighlight">\(1 = a + b + c\)</span>. Then <span class="math notranslate nohighlight">\(F_n(x) \rightarrow F(x) = b+cG(x)\)</span>. but <span class="math notranslate nohighlight">\(\lim\limits_{x\downarrow{-\infty}}F(x) = b \ne 0\)</span> and <span class="math notranslate nohighlight">\(\lim\limits_{x\uparrow{\infty}}F(x) = b+c=1-a \ne 1\)</span>.</p>
+</div>
+<div class="section" id="id12">
+<h3>Theorem<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(F_n\)</span> is tight iff every subsequence’s limit function <span class="math notranslate nohighlight">\(F\)</span> in Helly’s selection theorem is a probability distribution function.</p>
+<p><em>Proof:</em></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow\)</span>: Given <span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(M_\epsilon\)</span>, we have <span class="math notranslate nohighlight">\(\limsup\limits_{n\rightarrow\infty}(1-F_n(M_\epsilon) + F_n(-M_\epsilon)) \le \epsilon\)</span>. If <span class="math notranslate nohighlight">\(F_{n(k)}\)</span> is a subsequence of <span class="math notranslate nohighlight">\(F_n\)</span> such that <span class="math notranslate nohighlight">\(F_{n(k)}\)</span> converges to a non-decreasing right continuous function <span class="math notranslate nohighlight">\(F\)</span>, then for <span class="math notranslate nohighlight">\(-x \lt -M_\epsilon\)</span> and <span class="math notranslate nohighlight">\(x \gt M_\epsilon\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+1-F(x) + F(-x) &amp;= \lim_{k\rightarrow\infty}(1-F_{n(k)}(x)+F_{n(k)}(-x)) \\
+&amp;\le \limsup_{k\rightarrow\infty}(1-F_{n(k)}(M_\epsilon)+F_{n(k)}(-M_\epsilon)) \le \epsilon
+\end{align}
+\end{split}\]</div>
+<p>Since this is true for all <span class="math notranslate nohighlight">\(x\)</span>, by taking <span class="math notranslate nohighlight">\(x\rightarrow\infty\)</span> we get <span class="math notranslate nohighlight">\(1- F(\infty) + F(-\infty) = 0\)</span>. That indicates <span class="math notranslate nohighlight">\(\lim_{x\rightarrow\infty}F(x) = 1\)</span> and <span class="math notranslate nohighlight">\(\lim_{x\rightarrow\infty}F(-x) = 0\)</span> which concludes that <span class="math notranslate nohighlight">\(F\)</span> is a distribution function.</p>
+<p><span class="math notranslate nohighlight">\(\Leftarrow:\)</span> Let’s suppose <span class="math notranslate nohighlight">\(F_n\)</span> is not tight, which means <span class="math notranslate nohighlight">\(\exists\)</span> an <span class="math notranslate nohighlight">\(\epsilon\)</span> and a subsequence <span class="math notranslate nohighlight">\(n(k)\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+1-F_{n(k)}(k) + F_{n(k)}(-k) \ge \epsilon
+\]</div>
+<p>for all <span class="math notranslate nohighlight">\(k\)</span>. By Helly’s selection theorem there’s a further subsequence <span class="math notranslate nohighlight">\(n(k_j)\)</span> such that <span class="math notranslate nohighlight">\(F_{n(k_j)}(x)\)</span> converges to <span class="math notranslate nohighlight">\(F(x)\)</span> for all continuous points of <span class="math notranslate nohighlight">\(F\)</span> which is a distribution function by assumption. However,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+1-F(x) + F(-x) &amp;= \lim_{j\rightarrow\infty}(1-F_{n(k_j)}(x)+F_{n(k_j)}(-x)) \\
+&amp;\ge \limsup_{j\rightarrow\infty}(1-F_{n(k_j)}(k_j)+F_{n(k_j)}(-k_j)) \ge \epsilon
+\end{align}
+\end{split}\]</div>
+<p>This is true for all <span class="math notranslate nohighlight">\(x\)</span>, take <span class="math notranslate nohighlight">\(x\)</span> to the limit we have <span class="math notranslate nohighlight">\(1-F(\infty) + F(-\infty) \ge \epsilon\)</span>, which contradicts the assumption that <span class="math notranslate nohighlight">\(F\)</span> is a distribution function. there for, <span class="math notranslate nohighlight">\(F_n\)</span> is tight.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="theorem-sufficient-condition-for-tightness">
+<h3>Theorem: Sufficient condition for tightness<a class="headerlink" href="#theorem-sufficient-condition-for-tightness" title="Permalink to this headline">¶</a></h3>
+<p>If there’s a function <span class="math notranslate nohighlight">\(\phi(x) \ge 0\)</span> for all <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(\phi(x) \rightarrow \infty\)</span> as <span class="math notranslate nohighlight">\(|x| \rightarrow \infty\)</span> and:</p>
+<div class="math notranslate nohighlight">
+\[
+C = \sup_{n}\int{\phi(x)}dF_n(x) \lt \infty
+\]</div>
+<p>then <span class="math notranslate nohighlight">\(\{F_n\}\)</span> is tight.</p>
+<p><em>Proof:</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+1 - F_n(M) + F_n(-M) &amp;= \int_{M}^{\infty}dF_n(x) + \int_{-\infty}^{-M}dF_n(x) \\
+&amp;= \int_{|x| \ge M}dF_n(x) \\
+&amp;\le \int_{|x| \ge M}{\frac{\phi(x)}{\inf_{|x| \ge M}\phi(x)}}dF_n(x) \\
+&amp;\le \frac{\int_{|x| \ge M}{\phi(x)}dF_n(x)}{\inf_{|x| \ge M}\phi(x)} \\
+&amp;\le \frac{\int{\phi(x)}dF_n(x)}{\inf_{|x| \ge M}\phi(x)}
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\limsup_{n\rightarrow\infty}{(1 - F_n(M) + F_n(-M))} \le \frac{\sup_{n}\int{\phi(x)}dF_n(x)}{\inf_{|x| \ge M}\phi(x)} = \frac{C}{\inf_{|x| \ge M}\phi(x)}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\phi(x) \rightarrow \infty\)</span>, the <span class="math notranslate nohighlight">\(\inf_{|x| \ge M}\phi(x)\)</span> can be made as large we we could by a larger <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id13">
+<h3>Theorem<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>If a sequence of characteristic functions <span class="math notranslate nohighlight">\(\phi_n(t)\)</span> converges pointwise to a limit <span class="math notranslate nohighlight">\(\phi(t)\)</span> and <span class="math notranslate nohighlight">\(\phi(t)\)</span> is continuous at <span class="math notranslate nohighlight">\(0\)</span>, then the associated distribution functions <span class="math notranslate nohighlight">\(F_n\)</span> is tight. Furthermore, <span class="math notranslate nohighlight">\(F_n \Rightarrow F\)</span> where <span class="math notranslate nohighlight">\(F\)</span> is the distribution function of <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>Let <span class="math notranslate nohighlight">\(a \gt 0\)</span> be a constant.</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-a}^{a}{1-e^{itx}}dt = 2a-\int_{-a}^{a}{(costx + isintx)}dt = 2a - \frac{2sinax}{x}
+\]</div>
+<p>Divide bothsides with <span class="math notranslate nohighlight">\(a\)</span>, then integrate with <span class="math notranslate nohighlight">\(dF_n(x)\)</span>, i.e. <span class="math notranslate nohighlight">\(\int{\int_{-a}^{a}{1-e^{itx}}dt}dF_n(x)\)</span>, and since <span class="math notranslate nohighlight">\(1-e^{itx}\)</span> is bounded and integrable in a bounded interval so the double integral has a finite value, by the Fubini theorem, exchange the two integrals we get:</p>
+<div class="math notranslate nohighlight">
+\[
+a^{-1}\int_{-a}^{a}{(1-\phi_n(t))}dt = 2\int{\Big(1-\frac{sinax}{ax}\Big)}dF_n(x)
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(|sinax| \le |ax|\)</span> we know the integrant is always <span class="math notranslate nohighlight">\((1-\frac{sinax}{ax}) \ge 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+2\int{\Big(1-\frac{sinax}{ax}\Big)}dF_n(x) &amp;\ge 2\int{\Big(1-\frac{1}{|ax|}\Big)}dF_n(x) \\
+&amp;\ge \int_{|x| \ge \frac{2}{a}}{\Big(2-\frac{2}{|ax|}\Big)}dF_n(x) \\
+&amp;\ge 1-F_n(2/a) + F_n(-2/a)
+\end{align}
+\end{split}\]</div>
+<p>By the L’Hospital’s rule, and the fact that Since <span class="math notranslate nohighlight">\(\phi(t)\)</span> is continuous at <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(\phi(t) \rightarrow 1\)</span> as <span class="math notranslate nohighlight">\(t\rightarrow 0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{a\rightarrow 0}a^{-1}\int_{-a}^{a}{(1-\phi(t))}dt = \lim_{a\rightarrow 0}\frac{\phi(-a)-\phi(a)}{1} = 0
+\]</div>
+<p>Therefore we could choose <span class="math notranslate nohighlight">\(a\)</span> so that <span class="math notranslate nohighlight">\(a^{-1}\int_{-a}^{a}{(1-\phi(t))}dt \lt \epsilon\)</span>.</p>
+<p>And since <span class="math notranslate nohighlight">\(\phi_n(t) \rightarrow \phi(t)\)</span> for all t. By the dominated convergence theorem, there’s a <span class="math notranslate nohighlight">\(N\)</span> such that for all <span class="math notranslate nohighlight">\(n \gt N\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\epsilon \ge a^{-1}\int_{-a}^{a}{(1-\phi_n(t))}dt - a^{-1}\int_{-a}^{a}{(1-\phi(t))}dt
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+2\epsilon \ge \epsilon + a^{-1}\int_{-a}^{a}{(1-\phi(t))}dt \ge a^{-1}\int_{-a}^{a}{(1-\phi_n(t))}dt \ge 1-F_n(2/a) + F_n(-2/a)
+\end{align}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\epsilon\)</span> is arbitrary, <span class="math notranslate nohighlight">\(F_n\)</span> is tight.</p>
+<p>To prove that <span class="math notranslate nohighlight">\(F_n \Rightarrow F\)</span> for some probability distribution <span class="math notranslate nohighlight">\(F\)</span>, we want to prove that for any continuous and bounded function <span class="math notranslate nohighlight">\(g\)</span>, <span class="math notranslate nohighlight">\(Eg(X_n) = \int{g(x)}dF_n(x) \rightarrow \int{g(x)}dF(x) = Eg(X)\)</span>.</p>
+<p>From real analysis, we know that a sequence convergence to a number iff for every subsequence there’s further subsequence that converges to that number. By Helly’s selection theorem, for every subsequence <span class="math notranslate nohighlight">\(F_{n(k)}\)</span>, there’s a further subsequence <span class="math notranslate nohighlight">\(F_{n(k_j)} \Rightarrow F\)</span>, since <span class="math notranslate nohighlight">\(F_n\)</span> is tight, <span class="math notranslate nohighlight">\(F\)</span> is a probability distribution. Every further subsequence converges to the same <span class="math notranslate nohighlight">\(F\)</span> because all <span class="math notranslate nohighlight">\(F\)</span> have the same characteristic function <span class="math notranslate nohighlight">\(\phi\)</span> by the condition that <span class="math notranslate nohighlight">\(\phi_n(t) \rightarrow \phi(t)\)</span>.</p>
+<p>Therefore, for every subsequence <span class="math notranslate nohighlight">\(\int{g(x)}dF_{n(k)}(x)\)</span>, there’s a further subsequence <span class="math notranslate nohighlight">\(\int{g(x)}dF_{n(k_j)}(x) \rightarrow \int{g(x)}dF(x)\)</span>, we have <span class="math notranslate nohighlight">\(\int{g(x)}dF_{n(k)}(x) \rightarrow \int{g(x)}dF(x)\)</span>. <span class="math notranslate nohighlight">\(F_n \Rightarrow F\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+<div class="section" id="central-limit-theorem">
+<h2>Central Limit Theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lemma">
+<h3>Lemma<a class="headerlink" href="#lemma" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\Big| e^{ix} - \sum_{k=0}^{n}\frac{(ix)^k}{k!} \Big| \le \frac{|x|^{n+1}}{(n+1)!} \wedge \frac{2|x|^n}{n!}
+\]</div>
+<p><em>Proof:</em></p>
+<p>Integration by parts:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{0}^{x}(x-s)^ne^{is}ds = \frac{x^{n+1}}{n+1} + \frac{i}{n+1}\int_{0}^{x}{(x-s)^{n+1}e^{is}}ds \tag{1}
+\]</div>
+<p>When we replace <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n-1\)</span> in (1):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\int_{0}^{x}(x-s)^{n-1}e^{is}ds &amp;= \frac{x^{n}}{n} + \frac{i}{n}\int_{0}^{x}{(x-s)^{n}e^{is}}ds \\
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{i}{n}\int_{0}^{x}{(x-s)^{n}e^{is}}ds &amp;= \int_{0}^{x}{(x-s)^{n-1}e^{is}}ds - \int_{0}^{x}{(x-s)^{n-1}}ds \\
+&amp;= \int_{0}^{n}{(x-s)^{n-1}(e^{ix}-1)}ds \tag{2}
+\end{align}
+\end{split}\]</div>
+<p>When <span class="math notranslate nohighlight">\(n=0\)</span>, (1) gives us:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\int_{0}^{x}e^{is}ds &amp;= x + i\int_{0}^{x}(x-s)e^{is}ds \\
+\frac{e^{ix}-1}{i}&amp;= x + i\int_{0}^{x}(x-s)e^{is}ds \\
+e^{ix} &amp;= 1 + ix + i^2 \int_{0}^{x}{(x-s)e^{is}}ds
+\end{align}
+\end{split}\]</div>
+<p>Iterate over <span class="math notranslate nohighlight">\(n\)</span> and using (1) we have:</p>
+<div class="math notranslate nohighlight">
+\[
+e^{ix} = \sum_{k=0}^{n}\frac{(ix)^k}{k!} + \frac{i^{n+1}}{n!}\int_{0}^{x}(x-s)^ne^{is}ds \tag{3}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Big|e^{ix} - \sum_{k=0}^{n}\frac{(ix)^k}{k!} \Big| \le \frac{1}{n!}\int_{0}^{x}\Big|(x-s)^n\Big|ds \le \frac{|x|^{n+1}}{(n+1)!} \tag{4}
+\]</div>
+<p>If we replace the integral on the right side of (3) with (2) we get:</p>
+<div class="math notranslate nohighlight">
+\[
+e^{ix} = \sum_{k=0}^{n}\frac{(ix)^k}{k!} + \frac{i^{n}}{(n-1)!}\int_{0}^{x}(x-s)^{n-1}(e^{is}-1)ds \tag{5}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(|e^{ix}-1| \le 2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\Big|e^{ix} - \sum_{k=0}^{n}\frac{(ix)^k}{k!} \Big| \le \frac{2}{(n-1)!}\int_{0}^{x}\Big|(x-s)^{n-1}\Big|ds \le \frac{2|x|^{n}}{n!} \tag{6}
+\]</div>
+<p>(4) and (6) gives the result we want.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id14">
+<h3>Theorem<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\int{|x|^n}\mu(dx) \lt \infty\)</span>, then the c.f <span class="math notranslate nohighlight">\(\phi\)</span> has a continuous derivative of order <span class="math notranslate nohighlight">\(n\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi^{(n)}(t) = E[(iX)^ne^{itX}]
+\]</div>
+<p><em>Proof:</em></p>
+<p>Prove by induction. first prove when <span class="math notranslate nohighlight">\(n=1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\Big|\frac{\phi(t+h) - \phi(t)}{h} - E[(iX)e^{itX}]\Big| = E\Big[ e^{itX}\frac{e^{ihX}-1-ihX}{h} \Big]
+\end{align}
+\]</div>
+<p>The integrand on the right is bounded:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E\Big| e^{itX}\frac{e^{ihX}-1-ihX}{h} \Big| &amp;\le E\Big|\frac{e^{ihX}-1-ihX}{h} \Big| \\
+&amp;\le E\Big[\Big( \frac{|hX|^2}{2}  \wedge \frac{4|hX|}{2} \Big)\frac{1}{h}\Big]
+\end{align}
+\end{split}\]</div>
+<p>The last inequality is bounded <span class="math notranslate nohighlight">\(\le E2|X| \lt \infty\)</span>. And as <span class="math notranslate nohighlight">\(h \to 0\)</span> the right hand goes to zero.</p>
+<p>Repeat the process to <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="id15">
+<h3>Theorem<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(E|X|^2 \lt \infty\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi(t) = 1 + itEX - \frac{t^2}{2} E[X^2] + o(t^2) \tag{7}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(o(t^2)/t^2 \to 0\)</span> as <span class="math notranslate nohighlight">\(t \to 0\)</span>.</p>
+<p><em>Proof:</em></p>
+<p>By the theorem above, we know that <span class="math notranslate nohighlight">\(\phi\)</span> is twice differentiable. Taylor series applies. By the Lemma above, we know that the remainder term is bounded and goes to zero as <span class="math notranslate nohighlight">\(t\to 0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+| \phi(t) - (1 + itEX - \frac{t^2}{2} E[X^2]) | \le \frac{t^2}{3!}E[|t|\dot |X|^3 \wedge 6|X|^2] \tag{8}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+<div class="section" id="clt-theorem">
+<h3>CLT Theorem<a class="headerlink" href="#clt-theorem" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X_1, X_2,\text{...}\)</span> be iid with common mean and variance <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\(S_n=\sum_{i=1}^{n}X_i\)</span>, <span class="math notranslate nohighlight">\(\bar{X} = S_n/n\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\bar{X} - \mu}{\sqrt{Var(\bar{X})}} = \frac{S_n-n\mu}{\sigma\sqrt{n}} \Rightarrow \Phi(0,1)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Phi(\text{mean}, \text{variance})\)</span> is the normal distribution.</p>
+<p><em>Proof:</em></p>
+<p>without loss of generality, we only need to prove <span class="math notranslate nohighlight">\(Y_i = X_i - \mu\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\phi_{Y_i}(t) = E[e^{itY_1}] = 1 - \frac{\sigma^2t^2}{2} + o(t^2)
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\phi_{S_n/\sigma\sqrt{n}}(t) &amp;= E[e^{itS_n/\sigma\sqrt{n}}] = \prod_{i=1}^{n}{\phi_{Y_i}(t/\sigma\sqrt{n})} \\
+&amp;=  \Big( 1- \frac{t^2}{2n} + o(n^{-1}) \Big)^n \\
+&amp;=  \Big( 1- \frac{t^2/2 + n\cdot o(n^{-1})}{n}\Big)^n
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(t^2/2 + n\cdot o(n^{-1} \to t^2/2\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>. <span class="math notranslate nohighlight">\(\Big( 1- \frac{t^2/2 + n\cdot o(n^{-1})}{n}\Big)^n \to e^{-t^2/2}\)</span> which is the characteristic function of standard normal.</p>
+<p><span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="characteristic-function.html" title="previous page">Characteristic Function</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

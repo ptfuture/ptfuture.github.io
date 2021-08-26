@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prerequisites &#8212; Statistical Regression</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Simple Linear Model" href="simple-linear-model.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Statistical Regression</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="simple-linear-model.html">
+   Simple Linear Model
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/prerequisites.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorem">
+   Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projection-matrix-and-least-squared-method">
+   Projection Matrix and Least Squared Method
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h1>
+<p><strong>Video lecture: <a class="reference external" href="https://youtu.be/Xtjt4QddNQw">https://youtu.be/Xtjt4QddNQw</a></strong></p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\norm}[1]{\left\lVert#1\right\rVert}\)</span></p>
+<div class="section" id="theorem">
+<h2>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is an <span class="math notranslate nohighlight">\(m \times n\)</span> matrix with rank <span class="math notranslate nohighlight">\(n\)</span>, then <span class="math notranslate nohighlight">\(A^{\intercal}A\)</span> is invertible.</p>
+<p>Proof:</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> be such that <span class="math notranslate nohighlight">\(\mathbf{A}^{\intercal}\mathbf{A}\mathbf{x}=\mathbf{0}\)</span>, then <span class="math notranslate nohighlight">\(\mathbf{x^{\intercal}A^{\intercal}}\mathbf{Ax} = \langle\mathbf{Ax}, \mathbf{Ax}\rangle = 0\)</span> which indicates <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is in the null space of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, therefore, <span class="math notranslate nohighlight">\(\mathbf{x} = 0\)</span>.</p>
+</div>
+<div class="section" id="projection-matrix-and-least-squared-method">
+<h2>Projection Matrix and Least Squared Method<a class="headerlink" href="#projection-matrix-and-least-squared-method" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(\mathbf{Xb}=\mathbf{y}\)</span> where <span class="math notranslate nohighlight">\(X\)</span> is the predictor variables, <span class="math notranslate nohighlight">\(b\)</span> is the parameters of the linear equations and <span class="math notranslate nohighlight">\(y\)</span> is the response variables.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+b_0 + b_1x_1 =&amp; y_1 \\
+b_0 + b_1x_2 =&amp; y_2 \\
+b_0 + b_1x_3 =&amp; y_3 \\
+b_0 + b_1x_4 =&amp; y_4
+\end{align}
+\end{split}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(X = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2 \\ 1 &amp; x_3 \\ 1 &amp; x_4 \end{bmatrix}\)</span>, <span class="math notranslate nohighlight">\(b=[b_0, b_1]^{\intercal}\)</span>, <span class="math notranslate nohighlight">\(y=[y_1, y_2, y_3, y_4]^{\intercal}\)</span>.</p>
+<p>We may not be able to solve this linear equation. But we could find the closest solution <span class="math notranslate nohighlight">\(\hat{b}\)</span> such that <span class="math notranslate nohighlight">\(X\hat{b}\)</span> is the closest to the <span class="math notranslate nohighlight">\(y\)</span>. That is <span class="math notranslate nohighlight">\(\hat{b} = \underset{b}{\mathrm{argmin}} \norm{y-Xb}^2\)</span>.</p>
+<p>Interpretting in vectors, the projected vector of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> onto the column space of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is what minimized <span class="math notranslate nohighlight">\(\norm{\mathbf{y-Xb}}\)</span>. Which indicates <span class="math notranslate nohighlight">\(\mathbf{y} - \mathbf{X\hat{b}}\)</span> is orthnogal to all linear span of the columns of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>. Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{X}^{\intercal} (\mathbf{y}-\mathbf{X\hat{b}})=0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{\hat{b}} = \mathbf{(X^{\intercal}X)^{-1}X^{\intercal}y}
+\]</div>
+<p>And the projected vector is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Proj}_{X}(y) = X\hat{b} = \mathbf{X(X^{\intercal}X)^{-1}X^{\intercal}y}
+\]</div>
+<p>The project matrix is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Proj}_{X} = \mathbf{X(X^{\intercal}X)^{-1}X^{\intercal}}
+\]</div>
+<p>When <span class="math notranslate nohighlight">\(X\)</span> is a one dimensional vector, say <span class="math notranslate nohighlight">\(a\)</span>, then the projection matrix becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Proj}_{a} = \mathbf{\frac{aa^{\intercal}}{a^{\intercal}a}}
+\]</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Welcome to your Jupyter Book</a>
+    <a class='right-next' id="next-link" href="simple-linear-model.html" title="next page">Simple Linear Model</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alex Lew<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
